@@ -1,0 +1,747 @@
+\documentclass[handout,aspectratio=1610]{beamer}
+%\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{%
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{%
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{%
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\resetcounteronoverlays{exx}
+
+\title{Einführung in die Sprachwissenschaft\\
+7.~Wortbildung}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\11.~Dezember 2018}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Vorab}
+
+\begin{frame}
+  {Schreib- und Schriftunterricht}
+  \pause
+  \begin{itemize}[<+->]
+    \item Berliner Schulen (zumindest einige; und wer weiß wo sonst noch):
+      \begin{itemize}[<+->]
+        \item Kinder sollen in der ersten und zweiten Klasse\\
+          erstmal schreiben, wie sie sprechen.
+        \item \alert{"`Sehr gut! Aber Erwachsene würden das anders schreiben."'}
+      \end{itemize}
+      \Halbzeile
+    \item schlimmer als die klassische \alert{Hinhörschreibung}:\\
+      \rot{\textbf{Hinhörschreibung\slash Sprechschreibung ohne Anleitung\slash Steuerung}}
+      \Halbzeile
+    \item \rot{ohne jede Fundierung in Lerntheorien}
+    \item \rot{kann zu erheblichen permanenten Rechtschreibschwächen führen}
+    \item \rot{\textbf{Machen Sie so einen Schwachsinn nicht mit!}}
+    \Halbzeile
+    \item Natürlich "`lernen es die meisten \rot{trotzdem}"' (durch Lesen),\\
+      aber ebenso natürlich gibt es selbst \rot{unter Ihnen} immer noch\\
+      Personen mit erheblichen Mängeln in Orthographie, Interpunktion und\\
+      bildungssprachlichen Kompetenzen!
+    \item \alert{Das muss} \rot{für alle} \alert{vermieden werden.}
+  \end{itemize}
+\end{frame}
+
+\section{Rückblick}
+
+\begin{frame}
+  {Wortbildung und Flexion}
+  \pause
+  \begin{itemize}[<+->]
+    \item Flexion als Mittel zur Dekodierung von (syntaktischer) Struktur
+    \item Wortbildung als Mittel der Wortschatzerweiterung und -optimierung
+      \Zeile
+    \item Markierungsfunktion von Morphen:\\
+      \alert{Einschränkung} der möglichen Funktion
+    \item Stämme: mit lexikalischer Markierungsfunktion
+    \item Affixe: ohne lexikalische Markierungsfunktion; nicht wortfähig
+      \Zeile
+    \item Umlaut: (morphologisch bedingt und) phonologisch beschreibbar
+    \item Ablaut: phonologisch nicht generell beschreibbar
+      \Zeile
+    \item Wortbildung (gegenüber Flexion)
+      \begin{itemize}
+        \item Änderung statische Merkmale
+        \item Bildung neuer lexikalischer Wörter
+        \item meist (semantisch und formal) eingeschränkte Anwendbarkeit
+      \end{itemize} 
+  \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%   {Flexionskategorien}
+%   \pause
+% \end{frame}
+
+\section{Überblick}
+
+\begin{frame}
+  {Wortbildung}
+  \pause
+  \begin{itemize}[<+->]
+    \item virtuell\rot{(!)} unbegrenzter Wortschatz
+      \Zeile
+    \item gut durchschaubares und \alert{gut lernbares} System
+    \item (viele Probleme und Einschränkungen im Detail)
+      \Zeile
+    \item Funktionen der Wortbildung?
+      \Halbzeile
+      \begin{itemize}
+        \item Komposition: \alert{komplexe Konzepte} (\textit{Lötzinnschmelztemperatur})
+          \Halbzeile
+        \item Konversion: \alert{Reifizierung} (z.B.\ eines Ereignisses als Objekt: \textit{der Lauf})
+          \Halbzeile
+        \item Derivation: \alert{Modifikation von Bedeutungen} (\textit{un:glaublich}),\\
+          \alert{Bezug auf Teilaspekte von Konzepten} (z.\,B.\ Ereigniskonzepten: \textit{Fahr:er})
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Wichtigkeit von Komposition (inkl.\ Bildungssprache)}
+  \pause
+  \begin{itemize}[<+->]
+    \item Wortbildung als einer der Kerne der Bildungssprache
+    \item kann sowohl \alert{verdichten} als auch \alert{präzisieren}
+    \Halbzeile
+    \item komplexe Sachverhalte \alert{optimiert} formulieren
+      \begin{itemize}[<+->]
+        \item möglichst kurz
+        \item maximal verständlich (Wortbildung hochgradig etabliert\\
+          im Deutschen → problemlose Verarbeitung durch Hörer*innen)
+      \end{itemize}
+      \Halbzeile
+    \item Aber meine Position: \rot{Das Unterrichten von\\
+      externen Funktionsregularitäten ist gerade im Fall\\
+      der Wortbildung extrem schwierig.}
+      \Halbzeile
+      \begin{itemize}[<+->]
+        \item "`Wenn du kommunikativ X erreichen willst,\\
+          nimm eine Derivation auf \textit{-igkeit}."'
+        \item \dots \alert{wohl kaum!}
+        \item \alert{allgemeine souveräne Beherrschung des formalen Systems →\\
+          globale Optimierung der Schrift- und Bildungssprache}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Komposition}
+
+\begin{frame}
+  {Beispiele für Komposition}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{Kopf.hörer}
+      \pause
+      \ex{Laut.sprecher}
+      \pause
+      \ex{Studenten.werk}
+      \pause
+      \ex{Lehr.veranstaltung}
+      \pause
+      \ex{Rot.eiche}
+      \pause
+      \ex{Lauf.schuhe}
+      \pause
+      \ex{Ess.besteck}
+      \pause
+      \ex{Fertig.gericht}
+      \pause
+      \ex{feuer.rot}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Produktivität und Transparenz}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{alle} Beispiele auf vorheriger Folie: \alert{lexikalisiert}
+      \begin{itemize}[<+->]
+        \item hohe Häufigkeit
+        \item überwiegend spezifischere Bedeutung als Bestandteile vermuten lassen
+        \item aber: Art der Bildung erkennbar
+        \item \ldots zumindest für erwachsene Sprecher*innen auch bewusst
+      \end{itemize}
+      \Halbzeile
+    \item \alert{transparent}: Rekonstruierbarkeit der Bildung\\
+      (auch bei abweichender Gesamtbedeutung)
+      \Halbzeile
+    \item \alert{produktiv gebildet}: Neubildung durch Sprecher*innen\\
+      in einer gegebenen Situation
+    \item Produktivität ist \rot{graduell} aufzufassen!
+    \item \textit{Buchbutter} > \textit{Batterieschublade} > \textit{Laufschuhe} > \textit{Hundstage}
+      \Halbzeile
+    \item \alert{produktives Bildungsmuster}: wird häufig spontan\\
+      zur Wortbildung verwendet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  {Rekursion}
+  \pause
+  \begin{itemize}[<+->]
+    \item Wortbildung: immer \alert{binär}, also \alert{Wort+Wort} (nicht \rot{Wort+Wort+Wort})
+      \Viertelzeile
+    \item Erinnerung: \alert{hierarchische Strukturbildung} durch \\
+      wiederholtes lineares Aneinanderfügen
+      \Viertelzeile
+    \item Rekursion allgemein: \alert{Eine Verknüpfung hat als Ergebnis\\
+      eine Einheit, die wieder auf dieselbe Art verknüpft werden kann.}
+    \item linguistische Rekursion: immer eingeschränkt, nicht "`endlos"'
+  \end{itemize}
+  \pause
+  \begin{center}
+    \scalebox{0.7}{
+      \begin{forest}
+        [Bushaltestellenunterstandsreparatur
+          [Bushaltestellenunterstand
+            [Bushaltestelle
+              [Bus]
+              [Haltestelle
+                [halten]
+                [Stelle]
+              ]
+            ]
+            [Unterstand
+              [unter]
+              [Stand]
+            ]
+          ]
+          [Reparatur]
+        ]
+      \end{forest}
+    }
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Köpfe}
+  \pause
+  \begin{itemize}[<+->]
+    \item Wortbildung:
+      \begin{itemize}[<+->]
+        \item Änderung statischer Merkmale
+        \item oder \rot{Löschen} (und Hinzufügen) \rot{von Merkmalen}
+      \end{itemize}
+      \Viertelzeile
+  \end{itemize}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex \rot<9->{Laut}.\alert<8->{sprecher} \onslide<9->{\rot{(verliert Wortklasse, \dots)}}
+      \pause
+      \pause
+      \pause
+      \ex \rot<12->{Studenten}.\alert<11->{werk} \onslide<12->{\rot{(verliert Wortklasse, Genus, \dots)}}
+      \pause
+      \pause
+      \pause
+      \ex \rot<15->{Lauf}.\alert<14->{schuhe} \onslide<15->{\rot{(verliert Wortklasse? Genus? \dots)}}
+      \pause
+      \pause
+      \pause
+      \ex \rot<18->{Ess}.\alert<17->{besteck} \onslide<18->{\rot{(verliert Wortklasse, \dots)}}
+      \pause
+      \pause
+      \pause
+      \ex \rot<21->{feuer}.\alert<20->{rot} \onslide<21->{\rot{(verliert Wortklasse, \dots)}}
+      \pause
+      \pause
+    \end{xlist}
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Kopf}:
+      \begin{itemize}[<+->]
+        \item immer rechts
+        \item bestimmt grammatische Merkmale
+      \end{itemize}
+    \item \alert{Nicht-Kopf}
+      \begin{itemize}[<+->]
+        \item immer links
+        \item verliert alle grammatischen Merkmale
+        \item nur Bedeutung bleibt
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Relevante Kompositionstypen: Determinativkomposita}
+  \pause
+  \textit{Schulheft}, \textit{Regalbrett} usw.
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Kopf-Kern-Test:
+      \begin{itemize}[<+->]
+        \item Ein Schulheft ist ein Heft. \Ck
+        \item Ein Regalbrett ist ein Brett. \Ck
+      \end{itemize}
+    \item Nicht-Kopf-Kern-Test:
+      \begin{itemize}[<+->]
+        \item Ein Schulheft ist eine Schule. \Fl
+        \item Ein Regalbrett ist ein Regal. \Fl
+      \end{itemize}
+      \Halbzeile
+    \item Rektionstest:
+      \begin{itemize}[<+->]
+        \item \rot{Bei einem Schulheft wird eine geheftet\slash verheftet\slash beheftet... \Fl}
+        \item \rot{Bei einem Regalbrett wird ein Regal gebrettert\slash\dots \Fl}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Relevante Kompositionstypen: Rektionskomposita}
+  \pause
+  \textit{Hemdenwäsche}, \textit{Geldfälschung} usw.
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Kopf-Kern-Test:
+      \begin{itemize}[<+->]
+        \item Eine Hemdenwäsche ist eine Wäsche. \Ck
+        \item Eine Geldfälschung ist eine Fälschung. \Ck
+      \end{itemize}
+    \item Nicht-Kopf-Kern-Test:
+      \begin{itemize}[<+->]
+        \item Eine Hemdenwäsche ist ein Hemd. \Fl
+        \item Eine Geldfälschung ist Geld. \Fl
+      \end{itemize}
+      \Halbzeile
+    \item Rektionstest:
+      \begin{itemize}[<+->]
+        \item \alert{Bei einer Hemdenwäsche werden Hemden gewaschen. \Ck}
+        \item \alert{Bei einer Geldfälschung wird Geld gefälscht. \Ck}
+      \end{itemize}
+      \Halbzeile
+    \item Kopf: prototypischerweise von einem Verb abgeleitet
+    \item Nicht-Kopf zu Kopf wie Objekt zu Verb
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Kompositionsfugen bei Substantiv-Substantiv-Komposita}
+  \pause
+  \begin{center}
+    \scalebox{1}{
+      \begin{tabular}{llrr}
+        \toprule
+        Fuge          & Beispiel                        & Komposita \% & Erstglieder \% \\
+        \midrule                                                                                                    
+        $\varnothing$ & \textit{Garten.tür}             & 60.25        & 41.77          \\ 
+        -(e)s         & \textit{Gelegenheit-s.dieb}     & 23.69        & 45.74          \\ 
+        -n            & \textit{Katze-n.pfote}          & 10.38        &  5.29          \\ 
+        -en           & \textit{Frau-en.stimme}         &  3.02        &  4.19          \\ 
+        *e            & \textit{Kirsch.kuchen}          &  0.78        &  0.20          \\ 
+        -e            & \textit{Geschenk-e.laden}       &  0.71        &  1.90          \\ 
+        -er           & \textit{Kind-er.buch}           &  0.38        &  0.07          \\ 
+        \char`~er     & \textit{Büch-er.regal}          &  0.37        &  0.11          \\ 
+        \char`~e      & \textit{Händ-e.druck}           &  0.22        &  0.63          \\ 
+        -ns           & \textit{Name-ns.schutz}         &  0.13        &  0.04          \\ 
+        \char`~       & \textit{Mütter.zentrum}        &  0.05        &  0.06           \\ 
+        -ens          & \textit{Herz-ens.angelegenheit} &  0.03        &  0.01          \\ 
+        \bottomrule
+      \end{tabular}
+    }\\
+    \Halbzeile
+    \footnotesize{(aus: \citealt{SchaeferPankratz2018})}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Fugen: erstgliedkontrolliert}
+  \pause
+  \begin{itemize}[<+->]
+    \item Wörter mit s-Plural (\textit{Kaffees}, \textit{Omas}) \rot{niemals mit s-Fuge}
+      \Halbzeile
+    \item \alert{derivierte} Substantive (meist Abstrakta) (\textit{-heit}, \textit{-keit}, \textit{-tum}):\\
+      \alert{prototypisch s-Fuge}
+      \begin{itemize}[<+->]
+        \item sehr viele Feminina, Fuge nicht paradigmatisch (= keine Flexionsform)
+      \end{itemize}
+      \Halbzeile
+    \item starke\slash gemischte Maskulina: manchmal -(\textit{e})\textit{s}
+      \begin{itemize}[<+->]
+        \item Genitiv? Welche Funktion sollte ein Genitiv im Kompositum haben?
+        \item Lassen sich die Komposita mit s-Fuge mit Genitiv umformulieren?
+        \item \textit{Freundeskreis → \rot{*Kreis des Freundes}}
+        \item \textit{Geschlechtsverkehr → \rot{*Verkehr des Geschlechts}}
+        \item \textit{Berufstätigkeit → \rot{*Tätigkeit des Berufs}}
+        \item \textit{Auslandsaufenthalt → \rot{*Aufenthalt des Auslands}}
+      \end{itemize}
+    \Halbzeile
+  \item o.\,g.\ s-Fugen an \alert{Feminina} sowieso nicht als Genitiv möglich:
+      \begin{itemize}
+        \item \textit{der Dieb \rot{*der Gelegenheits}}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Konversion}
+
+\begin{frame}
+  {Beispiele für Konversion}
+  \pause
+  \begin{exe}
+    \ex[ ]{einkauf-en → Einkauf}
+    \pause
+    \ex[ ]{einkauf-en → Einkaufen}
+    \pause
+    \ex[ ]{ernst → Ernst}
+    \pause
+    \ex[ ]{schwarz → Schwarz}
+    \pause
+    \ex[ ]{gestrichen → gestrichen}
+    \pause
+    \ex[!]{schwarz → schwärzen}
+    \pause
+    \ex[!]{schieß-en → Schuss}
+    \pause
+    \ex[?]{stech-en → Stich}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Stammkonversion}
+  \pause
+  \begin{itemize}[<+->]
+    \item Ausgangswort: Stamm
+    \item → Zielwort: Stamm \alert{(mit Wortklassenwechsel)}
+      \Halbzeile
+    \item also \textit{Einkauf}, \textit{Schwarz}, \textit{Ernst}
+      \Halbzeile
+    \item Zielwort: andere Flexion, gemäß Zielwortklasse
+      \begin{itemize}[<+->]
+        \item \textit{einkaufst}; \textit{des Einkaufs}
+        \item \textit{dem schwarzen Schal}; \textit{dem Schwarz der Nacht}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Wortformenkonversion}
+  \pause
+  \begin{itemize}[<+->]
+    \item Ausgangswort: \alert{flektierte Wortform}
+    \item → Zielwort: Stamm \alert{(mit Wortklassenwechsel)}
+      \Halbzeile
+    \item also (\textit{das}) \textit{Einkaufen}, (\textit{das}) \textit{Gemahlene} usw.
+      \Halbzeile
+    \item bildungsferne Konversion: \textit{"`Wir brauchen noch Fleisch fürs Gehacktes."'}\\
+      (ca.\ 2007 im Real Weende, Göttingen)
+  \end{itemize}
+\end{frame}
+
+\section{Derivation}
+
+\begin{frame}
+  {Beispiele für Derivation}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Scherz → scherzhaft
+      \pause
+      \ex brenn-en → brennbar
+      \pause
+      \ex grün → grünlich
+    \end{xlist}
+    \pause
+    \Halbzeile
+    \ex
+    \begin{xlist}
+      \ex doof → Doofheit
+      \pause
+      \ex Fahrer → Fahrerin
+      \pause
+      \ex Kunde → Kundschaft
+      \pause
+      \ex Hund → Hündchen
+    \end{xlist}
+    \pause
+    \Halbzeile
+    \ex
+    \begin{xlist}
+      \ex Schlange → schlängeln
+      \pause
+      \ex Ruck → ruckeln
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Mit und ohne Wortklassenwechsel}
+  \pause
+  \begin{itemize}[<+->]
+    \item mit Wortklassenwechsel: Wortart ändert sich (\textit{Hand} → \textit{händ:isch})
+    \item ohen Wortklassenwechsel: Wortart bleibt gleich (\textit{rot} → röt:lich)
+      \Zeile
+    \item ohne Wortklassenwechsel: geänderte statische Merkmale?
+      \begin{itemize}[<+->]
+        \item in jedem Fall \alert{Bedeutung}
+        \item prototypisch: \textit{Tiefe → Un:tiefe}, \textit{bedeutend → un:bedeutend}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Etwas schwierigere Fälle}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{bebeispielen, bestuhlen, bevölkern}
+      \ex{entvölkern, entgräten, entwanzen}
+      \ex{verholzen, vernageln, verwanzen, verzinnen}
+    \end{xlist}
+    \pause
+    \ex
+    \begin{xlist}
+      \ex{ergrauen, ermüden, erneuern}
+      \ex{befreien, beengen, begrünen}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item entweder Stammkonversion + Präfigierung
+    \item oder wortartenverändernde Präfixe
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {In welchem Bereich wird vor allem suffigiert?}
+  \pause
+  \begin{center}
+    \scalebox{0.5}{
+      \begin{tabular}{llll}
+        \toprule
+        \textbf{Ausgangsklasse} & \textbf{Substantiv-Affix} & \textbf{Adjektiv-Affix} & \textbf{Verb-Affix} \\
+       \midrule
+       \multirow{8}{*}{\textbf{Substantiv}} & \~:chen & :haft & \\
+       & \textit{Äst:chen} & \textit{schreck:haft} & \\
+       \cmidrule{2-4}
+       
+       & :in & :ig & \\
+       & \textit{Arbeiter:in} & \textit{fisch:ig} & \\
+       \cmidrule{2-4}
+       
+       & :ler & \~:isch & \\
+       & \textit{Volkskund:ler} & \textit{händ:isch} & \\
+       \cmidrule{2-4}
+       
+       & :schaft & \~:lich & \\
+       & \textit{Wissen:schaft} & \textit{häus:lich} & \\
+       
+       \midrule
+       \multirow{6}{*}{\textbf{Adjektiv}} & :heit & \~:lich & \\
+       & \textit{Schön:heit} & \textit{röt:lich} & \\
+       \cmidrule{2-4}
+       
+       & :keit && \\
+       & \textit{Heiter:keit} & & \\
+       \cmidrule{2-4}
+       
+       & :igkeit && \\
+       & \textit{Neu:igkeit} & & \\
+       
+       \midrule
+       \multirow{6}{*}{\textbf{Verb}} & :er & :bar & \~:el \\
+       & \textit{Arbeit:er} & \textit{bieg:bar} & \textit{kreis:el-n} \\
+       \cmidrule{2-4}
+       
+       & :erei && \\
+       & \textit{Arbeit:erei} & & \\
+       \cmidrule{2-4}
+       
+       & :ung && \\
+       & \textit{Les:ung} & & \\
+       
+       \bottomrule
+      \end{tabular}
+    }\\
+    \Zeile
+    \alert{\large \ldots zum Nomen hin, vor allem zum, Substantiv.}\\
+    \rot{\large Und wo wird prototypisch präfigiert?}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Notationskonvention im Buch}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Flexion (und Fuge)} mit Bindestrich: \textit{Tisch-es}, \textit{Fäng-e}
+    \item \alert{Komposition} mit Punkt: \textit{Tasche-n.tuch}
+    \item \alert{Derivation} mit Doppelpunkt: \textit{Läuf:er}, \textit{be:äugen}
+    \item \alert{Verbpartikeln} mit Gleichheitszeichen: \textit{ab=trenn-en}, \textit{um=renn-en}
+    \Halbzeile
+    \item bei Angabe der einzelnen Affixe, wenn sie Umlaut auslösen:
+      \begin{itemize}[<+->]
+        \item \char`~ bei Flexion (Plural \textit{\char`~er})
+        \item \~: bei Derivation (wie bei \textit{\~:lich})
+      \end{itemize}
+    \Halbzeile
+  \item keine allgemeine Konvention
+  \end{itemize}
+\end{frame}
+
+\section{Vorschau}
+
+\begin{frame}
+  {Die Flexionssysteme}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Nominalflexion}
+      \begin{itemize}[<+->]
+        \item An welchen Formen erkennen wir die vier Kasus?
+        \item Welche Klassen von Substantiven gibt es?
+        \item Was unterscheidet Artikel und Pronomina?
+        \item Wie sind die \alert{vier} verschiedenen Flexionsmuster\\
+          der Artikel und Pronomina beschaffen?
+        \item Gibt es wirklich 48 verschiedene Formen des Adjektivs?
+      \end{itemize}
+      \Zeile
+    \item \alert{Verbalflexion}
+      \begin{itemize}[<+->]
+        \item Wie funktioniert reduzierte Person\slash Numerus-Flexionssystem?
+        \item Es gibt nur zwei Tempus- und zwei Modusbildungen!
+        \item Was sind infinite und finite Formen?
+        \item Was für Verbklassen gibt es (inkl.\ Modal- und Hilfsverben)?
+      \end{itemize}
+  \end{itemize}
+  \pause
+  \begin{center}
+    Bitte lesen Sie bis nächste Woche:\\
+    \alert{Abschnitt 9.2--9.4 9, S.~257--284, Abschnitt 10.2, S.~300--315}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Literatur}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \setbeamertemplate{bibliography item}{}
+  \printbibliography
+\end{frame}
+
+
+\end{document}

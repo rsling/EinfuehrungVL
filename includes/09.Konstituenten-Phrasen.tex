@@ -1,0 +1,947 @@
+\documentclass[handout,aspectratio=1610]{beamer}
+%\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{multicol}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\forestset{
+  narroof/.style={roof, inner xsep=-0.25em, rounded corners},
+}
+
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+\newcommand{\blaw}[1]{{\color[rgb]{0,0,.9}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{%
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{%
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{%
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\newcommand{\whyte}[1]{\textcolor{white}{#1}}
+
+\newcommand{\KTArr}[1]{\ding{226}~\textit{#1}~\ding{226}}
+\newcommand{\Ast}{*}
+
+\resetcounteronoverlays{exx}
+
+\title{Einführung in die Sprachwissenschaft\\
+9.~Konstituenten und Phrasen}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\8.~Januar 2019}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% \section{Rückblick}
+% 
+% \begin{frame}
+%   {Rückblick: }
+%   \pause
+%   \begin{itemize}[<+->]
+%     \item x
+%   \end{itemize}
+% \end{frame}
+
+\section{Überblick}
+
+\begin{frame}
+  {Überblick: Konstituenten und Phrasen}
+  \pause
+  \begin{itemize}[<+->]
+    \item Warum und wie syntaktische Analyse?
+    \item syntaktische Generalisierungen formulieren
+    \item größere und kleinere Teilstrukturen (Konstituenten) identifizieren
+      \Zeile
+    \item Strukur der deutschen \alert{Nominalphrase}
+    \item Struktur der Verbalphrase und der Komplementiererphrase\\
+      (= Nebensatz mit Komplementierer)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Syntax und Sprachfunktion (BiS)}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{hohe Komplexität} des syntaktischen Systems
+    \item \rot{Regularitätensystem kaum vollständig explizit lernbar}
+    \item überall \alert{starke Interaktion mit Semantik, Pragmatik usw.}
+    \item \rot{Kompositionalität}
+      \Zeile
+    \item reduzierte Syntax = erhebliche Einschränkung des Ausdrucks
+    \item komplexe schriftsprachliche Syntax, ggf.\ \rot{Rezeptionsprobleme}
+    \item Ein Versuch, Funktionen zu beschreiben, ohne Formsystem zu kennen,\\
+      wäre in der Syntax \rot{geradezu lächerlich}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Zugabe: Die Kunst der Beispielwahl}
+  \pause
+  Fehlgriffe beim \alert{Passiv} (im Deutschen ein eher syntaktisches Thema)\ldots\\
+  \Zeile
+  \pause
+  "`Beim Vergleich wird z. B. auch das Passiv thematisiert (\rot{\textit{Jetzt wird aber sofort ins Bett gegangen}}) und in seiner Wirkung von konkurrierenden Ausdrucksformen abgegrenzt. Sich anschließende Untersuchungen zeigen, dass durchaus nicht immer die so g. Agensverschweigung als Effekt der Passivnutzung entsteht, sondern im Gegenteil das Agens sogar hervorgehoben werden kann (\rot{\textit{Von der damaligen Opposition wurden die Wahlen gewonnen.}})."'\\
+  \Halbzeile
+  \citet{Gornik2003}, über \citet{Klotz1995}
+\end{frame}
+
+
+\section{Konstituenten}
+
+\begin{frame}
+  {Strukturbildung auf allen Ebenen}
+  \pause
+  \begin{center}
+    \begin{forest}
+      [Verb-Wortform
+        [{[Verb-Wortform]}
+          [Verb-Stamm
+            [Wortbildungspräfix, tier=preterm
+              [\textit{ver-}]
+            ]
+            [Verb-Stamm, tier=preterm
+              [\textit{säg-}]
+            ]
+          ]
+          [Flexionssuffix, tier=preterm
+            [\textit{-e}]
+          ]
+        ]
+        [Flexionssuffix, tier=preterm
+          [\textit{-st}]
+        ]
+      ]
+    \end{forest}    
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  {Strukturbildung in der Syntax}
+  \pause
+  \begin{center}
+    \begin{forest}
+      [NP, calign=child, calign child=2
+        [AP, tier=preterminal
+          [\textit{rote}, narroof]
+        ]
+        [N, tier=preterminal
+          [\textit{Zahnbürsten}]
+        ]
+        [NP, tier=preterminal
+          [\textit{des Königs}, narroof]
+        ]
+        [RS, tier=preterminal
+          [\textit{die benutzt waren}, narroof]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Wortarten und Merkmale in der Syntax}
+  \pause
+  \begin{center}
+    \begin{forest}
+      [Satz
+        [\it Ein]
+        [\it Snookerball]
+        [\it ist]
+        [\it eine]
+        [\it Kugel]
+        [\it aus]
+        [\it Kunststoff]
+      ]
+    \end{forest}
+    \pause
+    \begin{forest}
+      [Satz
+        [Art]
+        [Subst]
+        [Kopula-Verb]
+        [Art]
+        [Subst]
+        [Prp]
+        [Subst]
+      ]
+    \end{forest}        
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  {"`Flache Beschreibungen"'}
+  \pause
+  \rot{Extrem ineffizient!}\\
+  \Zeile
+  \pause
+  Aus Korpus mit \alert{über 1 Mrd.\ Wörtern} (DeReKo) alle Sätze mit der Struktur\\
+  von der vorherigen Folie (Art Subst Kopula Art Subst Prp Subst):\\
+  \pause
+  \Zeile
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{Die Verlierer sind die Schulkinder in Weyerbusch.}
+      \pause
+      \ex{Die Vienne ist ein Fluss in Frankreich.}
+      \pause
+      \ex{Ein Baustein ist die Begegnung beim Spiel.}
+      \pause
+      \ex{Das Problem ist die Ortsdurchfahrt in Großsachsen.}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Viele ähnliche Strukturen auf einmal beschreiben}
+  \pause
+  Strukturen, die ähnlich, aber \alert{nicht genau} wie\\
+  \alert{Art Subst Kopula Art Subst Prp Subst} sind:\\
+  \pause
+  \Zeile
+  \begin{exe}
+    \ex\label{ex:syntaktischestruktur013}
+    \begin{xlist}
+      \ex{\label{ex:syntaktischestruktur014} [Dieses Endspiel] ist [eine spannende Partie].}
+      \pause
+      \ex{\label{ex:syntaktischestruktur015} [Eine Hose] war [eine Hose].}
+      \pause
+      \ex{\label{ex:syntaktischestruktur016} [Sieger] wurde [ein Teilnehmer aus dem Vereinigten Königreich].}
+      \pause
+      \ex{\label{ex:syntaktischestruktur017} [Lemmy] ist [Ian Kilmister].}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  Ähnlich? --- \rot{Sie verhalten sich in syntaktischen Kontexten gleich!}
+\end{frame}
+
+
+\begin{frame}
+  {Bauplan und Analyse}
+  \pause
+  Bauplan "`Kopula-Satz"' (vorläufig):\\
+  \pause
+  \Halbzeile
+  \begin{center}
+    \begin{forest}
+      [Satz
+        [NP]
+        [Kopula-Verb]
+        [NP]
+      ]
+    \end{forest}\\
+    \pause
+    \Zeile
+    \raggedright
+    Analyse auf Basis dieses Plans (vorläufig):\\
+    \pause
+    \Halbzeile
+    \centering
+    \begin{forest}
+      [Satz
+        [NP
+          [\it Dieses Endspiel, narroof]
+        ]
+        [Kopula-Verb
+          [\it ist]
+        ]
+        [NP
+          [\it eine spannende Partie, narroof]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  {Konstituenten und Konstituententests}
+  \pause
+  \alert{Achtung!}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \rot{Konstituententests sind heuristisch!}
+    \item unerwünschte Ergebnisse in beide Richtungen
+    \item keine "`wahre Konstituentenstruktur"'
+    \item theorieabhängig bzw.\ abhängig von gewählten Tests
+    \Zeile
+    \item Ziel: kompakte Beschreibung aller möglichen Strukturen
+    \item gewiss: möglichst "`natürliche"' Analyse erwünscht
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Pronominalisierungstest}
+  \pause
+  \begin{exe}
+    \ex{\label{ex:konstituententests024} Mausi isst [den leckeren Marmorkuchen].\\
+    \KTArr{PronTest} Mausi isst [ihn].}
+    \pause
+    \ex{\label{ex:konstituententests025} [Mausi isst] den Marmorkuchen.\\
+    \KTArr{PronTest} \Ast [Sie] den Marmorkuchen.}
+    \pause
+    \ex{\label{ex:konstituententests026} Mausi isst [den Marmorkuchen und das Eis mit Multebeeren].\\
+    \KTArr{PronTest} Mausi isst [sie].}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \alert{Pronominalausdrücke i.\,w.\,S.:}
+  \begin{exe}
+    \ex{\label{ex:konstituententests027} Ich treffe euch [am Montag] [in der Mensa der FU].\\
+      \KTArr{PronTest} Ich treffe euch [dann] [dort].}
+      \pause
+    \ex{\label{ex:konstituententests028} Er liest den Text [auf eine Art, die ich nicht ausstehen kann].\\\KTArr{PronTest} Er liest den Text [so].}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Vorfeldtest}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{Sarah sieht den Kuchen [durch das Fenster].\\
+        \KTArr{VfTest} [Durch das Fenster] sieht Sarah den Kuchen.}
+      \pause
+      \ex{Er versucht [zu essen]. \KTArr{VfTest} [Zu essen] versucht er.}
+      \pause
+      \ex{Sarah möchte gerne [einen Kuchen backen].\\
+        \KTArr{VfTest} [Einen Kuchen backen] möchte Sarah gerne.}
+      \pause
+      \ex{Sarah möchte [gerne einen] Kuchen backen.\\
+        \KTArr{VfTest} \Ast [Gerne einen] möchte Sarah Kuchen backen.}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  verallgemeinerter "`Bewegungstest"':\\
+  \begin{exe}
+    \ex\label{ex:konstituententests037}
+    \begin{xlist}
+      \ex{\label{ex:konstituententests038} Gestern hat [Elena] [im Turmspringen]\\
+      {}[die Goldmedaille] gewonnen.}
+      \pause
+      \ex{\label{ex:konstituententests039} Gestern hat [im Turmspringen] [Elena]\\
+      {}[die Goldmedaille] gewonnen.}
+      \pause
+      \ex{\label{ex:konstituententests040} Gestern hat [im Turmspringen]\\
+      {}[die Goldmedaille] [Elena] gewonnen.}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Koordinationstest}
+  \pause
+  \begin{exe}
+    \ex\label{ex:konstituententests041}
+    \begin{xlist}
+      \ex{\label{ex:konstituententests042} Wir essen [einen Kuchen].\\
+        \KTArr{KoorTest} Wir essen [[einen Kuchen] und [ein Eis]].}
+      \pause
+      \ex{\label{ex:konstituententests043} Wir [essen einen Kuchen].\\
+        \KTArr{KoorTest} Wir [[essen einen Kuchen] und [lesen ein Buch]].}
+      \pause
+      \ex{\label{ex:konstituententests044} Sarah hat versucht, [einen Kuchen zu backen].\\
+        \KTArr{KoorTest} Sarah hat versucht, [[einen Kuchen zu backen] und \\{}[heimlich das Eis aufzuessen]].}
+      \pause
+      \ex{\label{ex:konstituententests046} Wir sehen, dass [die Sonne scheint].\\
+        \KTArr{KoorTest} Wir sehen, dass [[die Sonne scheint] und \\{}[Mausi den Rasen mäht]].}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \rot{\begin{exe}
+    \ex{\label{ex:konstituententests047} Der Kellner notiert, dass [meine Kollegin einen Salat] möchte.\\
+      \KTArr{KoorTest} Der Kellner notiert, dass [[meine Kollegin einen Salat]\\
+    und [mein Kollege einen Sojaburger]] möchte.}
+    \end{exe}}
+\end{frame}
+
+
+
+\section{Satzglieder}
+
+\begin{frame}
+  {Satzglieder?}
+  \pause
+  \begin{exe}
+    \ex\label{ex:konstituentenundsatzglieder052}
+    \begin{xlist}
+      \ex{\label{ex:konstituentenundsatzglieder053} Sarah riecht den Kuchen [mit ihrer Nase].\\
+        \KTArr{VfTest} [Mit ihrer Nase] riecht Sarah den Kuchen.}
+        \pause
+      \ex{\label{ex:konstituentenundsatzglieder054} \KTArr{KoorTest} Sarah riecht den Kuchen\\
+      {}[[mit ihrer Nase] und [trotz des Durchzugs]].}
+    \end{xlist}
+    \pause
+    \ex\label{ex:konstituentenundsatzglieder055}
+    \begin{xlist}
+      \ex{\label{ex:konstituentenundsatzglieder056} Sarah riecht den Kuchen [mit der Sahne].\\
+        \KTArr{VfTest} \Ast [Mit der Sahne] riecht Sarah den Kuchen.}
+        \pause
+      \ex{\label{ex:konstituentenundsatzglieder057} \KTArr{KoorTest} Sarah riecht den Kuchen\\
+      {}[[mit der Sahne] und [mit den leckeren Rosinen]].}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \resizebox{0.9\textwidth}{!}{
+    \begin{forest}
+      [Satz
+        [\it Sarah]
+        [\it riecht]
+        [\it den Kuchen]
+        [\it mit ihrer Nase]
+      ]
+    \end{forest}\pause\begin{forest}
+      [Satz
+        [\it Sarah, tier=term]
+        [\it riecht, tier=term]
+        [Konstituente
+          [\it den Kuchen, tier=term]
+          [\it mit der Sahne, tier=term]
+        ]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+\begin{frame}
+  {Satzglieder als vorfeldfähige Konstituenten}
+  \pause
+  Ganz so einfach ist das nicht\ldots\\
+  \Zeile
+  \pause
+  \begin{exe}
+    \ex{\label{ex:daspraedikat021} \rot{[Kaufen können]} möchte Alma die Wolldecke.}
+    \pause
+    \ex{\label{ex:phrasenkoepfeundmerkmale084} \rot{[Über Syntax]} hat Sarah sich \alert{ein Buch} ausgeliehen.}
+  \end{exe}
+  \Zeile
+  \pause
+  \alert{Wozu überhaupt den begriff des Satzglieds?}
+  \begin{itemize}[<+->]
+    \item in der Linguistik kaum von Interesse
+    \item Sammelbegriff für "`Objekte und Adverbiale"'? -- \rot{Wozu?}
+    \item Vorfeldfähigkeit? -- Wohl kaum, denn das wäre \rot{zirkulär}.
+    \item Desambiguierung von Sätzen (s.\ Kuchen-Nase)? -- \rot{Da hilft aber der Begriff nicht bei.}
+    \item Also: \rot{Fördert das die Sprachkompetenz, oder kann das weg?}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Strukturelle Ambiguitäten: \alert{Kompositionalität}}
+  \pause
+  \begin{exe}
+    \ex{\label{ex:strukturelleambiguitaet060} Scully sieht den Außerirdischen mit dem Teleskop.}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \alert{Kompositionalität}: Die syntaktische Struktur ist die Basis für\\
+  die Interpretation des Satzes (bzw.\ jedes syntaktisch komplexen Ausdrucks).
+  \pause
+  \Halbzeile
+  \begin{exe}
+    \ex\label{ex:strukturelleambiguitaet061}
+    \begin{xlist}
+      \ex{\label{ex:strukturelleambiguitaet062} [Scully sieht [den Außerirdischen] [mit dem Teleskop]].}
+      \pause
+      \ex{\label{ex:strukturelleambiguitaet063} [Scully sieht [den Außerirdischen [mit dem Teleskop]]].}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Repräsentationsformat: Bäume}
+  \pause
+  Knoten: Mütter, Töchter, Schwestern\\
+  \pause
+  \Halbzeile
+  \centering
+  \begin{multicols}{2}
+    \alert{\begin{forest}
+      [C
+        [A]
+        [B, baseline
+          [D][E][F]
+        ]
+      ]
+    \end{forest}}\pause
+    
+    \begin{exe}
+      \ex{[\Sub{C}~A~[\Sub{B}~D~E~F~]~]}
+    \end{exe}
+  \end{multicols}
+  \Halbzeile
+  \pause
+  \rot{\begin{forest}
+    grow=north
+    [A
+      [C, baseline][B]
+    ]
+  \end{forest}\hspace{4em}\pause\begin{forest}
+    baseline
+    [G, name=NotreeG
+      [E
+        [A][B]
+      ]
+      [F
+        [C]
+        {\draw[-] (.north) -- (NotreeG.south);}
+        [D]
+      ]
+    ]
+  \end{forest}}
+\end{frame}
+
+
+\begin{frame}
+  {Repräsentationsformat: Phrasenschemata}
+  \begin{itemize}[<+->]
+    \item Phrasenschemata = \alert{Baupläne} für Konstituenten
+    \item Bei einer konkreten Analyse muss für jeden Knoten\\
+      ein Phrasenschema vorliegen, \rot{sonst ist die Analyse nicht zulässig}.
+    \item \alert{Grammatikalität = Konformität zu einer spezifischen Grammatik}
+    \item Strukturen ohne spezifizierte Struktur: \rot{ungrammatisch}
+  \end{itemize}
+  \pause
+  \Halbzeile
+  \centering
+  \begin{multicols}{2}
+    \scalebox{0.6}{%
+      \begin{forest}
+      phrasenschema, baseline
+      [NP, Ephr, calign=last
+        [Artikel, Eopt, Emult
+          [Pronomen, Eopt]
+        ]
+        [A, Eoptrec]
+        [N, Ehd]
+      ]
+    \end{forest}
+    \hspace{4em}
+    erlaubt~die~Analyse:
+    }
+    \scalebox{0.6}{%
+      \begin{forest}
+        [NP, calign=last, baseline
+          [Artikel
+            [\it ein]
+          ]
+          [A
+            [\it leckerer]
+          ]
+          [A
+            [\it geräucherter]
+          ]
+          [\textbf{N}
+            [\it Tofu]
+          ]
+        ]
+      \end{forest}
+    }
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  {Jede Phrase hat genau einen Kopf}
+  \pause
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{lll}
+      \toprule
+      \textbf{Kopf} & \textbf{Phrase} & \textbf{Beispiel} \\
+      \midrule
+      Nomen (Substantiv, Pronomen) & Nominalphrase (NP) & \textit{die tolle \alert{Auf"|führung}} \\
+      Adjektiv & Adjektivphrase (AP) & \textit{sehr \alert{schön}} \\
+      Präposition & Präpositionalphrase (PP) & \textit{\alert{in} der Uni} \\
+      Adverb & Adverbphrase (AdvP) & \textit{total \alert{offensichtlich}} \\
+      Verb & Verbphrase (VP) & \textit{Sarah den Kuchen gebacken \alert{hat}} \\
+      Komplementierer & Komplementiererphrase (KP) & \textit{\alert{dass} es läuft} \\
+      \bottomrule
+    \end{tabular}
+  } 
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Der Kopf bestimmt den \alert{internen Aufbau} der Phrase.
+    \item Der Kopf bestimmt die \alert{externen kategorialen Merkmale} der Phrase\\
+      und so das syntaktische Verhalten der Phrase (Parallele: \alert{Kompositum}).
+  \end{itemize}
+  \pause
+  \Halbzeile
+  \centering
+  \scalebox{0.8}{
+    \begin{forest}
+      [AP\\{[\alert{\textsc{Klasse}: \textbf{adj}}, \textsc{Segmente}: \textit{sehr schön}]}, calign=last
+        [Ptkl\\{[\rot{\textsc{Klasse}: \textbf{ptkl}}, \textsc{Segmente}: \textit{sehr}]}]
+        [\textbf{A}\\{[\alert{\textsc{Klasse}: \textbf{adj}}, \textsc{Segmente}: \textit{schön}]}]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+
+\section{Phrasentypen}
+
+\begin{frame}
+  {Wieviele Wortklassen? Wieviele Phrasentypen?}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Phrasentyp: passend zur Wortklasse des Kopfes}
+    \item maximal so viele Phrasentypen wie Wortklassen
+    \item aber: nicht alle Wortklassen kopffähig (\alert{Funktionswörter})
+    \item je nach Grammatik\slash "`Theorie"' anders\\
+      (\zB Theorien mit "`Determiniererphrasen"')
+      \Zeile
+    \item hier nur die "`wichtigsten"' Phrasentypen:
+      \begin{itemize}[<+->]
+        \item Nominalphrase
+        \item Präpositionalphrase
+        \item Verbphrase mit Verbkomplex
+      \end{itemize}
+    \item \rot{in der Klausur: alle Phrasentypen}\\
+      (ab nächster Woche vorausgesetzt)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Ziemlich volle NP-Struktur mit Substantiv-Kopf}
+  \pause
+  \centering
+  \begin{forest}
+    [NP, calign=child, calign child=3
+      [Art
+        [\it die]
+      ]
+      [AP
+        [\it antiken, narroof]
+      ]
+      [\textbf{N}, tier=preterminal
+        [\it Zahnbürsten]
+      ]
+      [NP, tier=preterminal
+        [\it des Königs, narroof
+        ]
+      ]
+      [RS
+        [\it die nicht benutzt wurden, narroof]
+      ]
+    ]
+  \end{forest}
+  \pause
+  \Zeile
+  \begin{itemize}[<+->]
+    \item Baum über dem Kopf aufgebaut
+    \item inneres Rechtsattribut \textit{des Königs}
+    \item Substantiv-Kopf: Material \alert{links und rechts des Kopfes}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Struktur mit pronominalem Kopf}
+  \pause
+  \centering
+  \begin{forest}
+    [NP, calign=child, calign child=1
+      [\textbf{N}, tier=preterminal
+        [\it einige]
+      ]
+      [NP, tier=preterminal
+        [\it des Königs, narroof
+        ]
+      ]
+      [RS
+        [\it die geklaut wurden, narroof]
+      ]
+    ]
+  \end{forest}
+  \pause
+  \Zeile
+  \begin{itemize}[<+->]
+    \item links vom Kopf: \rot{nichts}
+    \item Determinierung erfolgt beim Pronomen \alert{im Kopf}.
+    \item Determinierung schließt NP nach links ab.
+    \item → \alert{Also kann links vom Pron-Kopf nichts stehen!}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Nominalphrase allgemein (Schema)}
+  \pause
+  \centering
+  \begin{forest}
+    phrasenschema
+    [NP, Ephr
+      [Art, Eopt, Emult, [NP\Sub{Genitiv}, Eopt]]
+      [AP, Eopt, Erec]
+      [N, Ehd, name=Nkopf]
+      [innere Rechtsattribute, Eopt, Erec]
+      {\draw [bend left=45, dashed,<-] (.south) to (Nkopf.south);}
+      [RS, Eopt, Erec]
+    ]
+  \end{forest}
+\end{frame}
+
+
+\begin{frame}
+  {Regierte Rechtsattribute}
+  \pause
+  \begin{exe}
+    \ex die Beachtung \alert{[ihrer Lyrik]}
+    \pause
+    \ex mein Wissen \alert{[um die Bedeutung der komplexen Zahlen]}
+    \pause
+    \ex die Überzeugung, \alert{[dass die Quantenfeldtheorie \\
+    die Welt korrekt beschreibt]}
+    \pause
+    \ex die Frage, \alert{[ob sich die Luftdruckanomalie von 2018 wiederholen wird]}
+    \pause
+    \ex die Frage \alert{[nach der möglichen Wiederholung der Luftdruckanomalie]}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item typisch: postnominale Genitive, PPs, satzförmige Recta
+    \item oft Konkurrenz einer PP- und einer satzförmigen Variante
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Korrespondenzen zwischen Verben und Nomina(lisierungen)}
+  \pause
+  Viele Substantive entsprechen einem Verb mit bestimmten Rektionsanforderungen.\\
+  \pause
+  \Zeile
+  \begin{itemize}[<+->]
+    \item \rot{Akkusativ} beim transitiven Verb $\Leftrightarrow$ \rot{Genitiv}\slash\rot{von-PP} beim Substantiv
+    \item \orongsch{Nominativ} beim transitiven Verb $\Leftrightarrow$ \orongsch{durch-PP} beim Substantiv
+  \end{itemize}
+  \pause
+  \begin{exe}
+    \ex\label{ex:rektionundvalenzindernp031}
+    \begin{xlist}
+      \ex{\label{ex:rektionundvalenzindernp032} \orongsch{Sarah} \alert{verziert} \rot{[den Kuchen]}.}
+      \pause
+      \ex{\label{ex:rektionundvalenzindernp033} [Die \alert{Verzierung} \rot{[des Kuchens]} \orongsch{[durch Sarah]}]}
+      \pause
+      \ex{\label{ex:rektionundvalenzindernp034} [Die \alert{Verzierung} \rot{[von dem Kuchen]} \orongsch{[durch Sarah]}]}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Alternative Korrespondenzen für Nominative}
+  \pause
+  \orongsch{Nominativ} beim transitiven Verb $\Leftrightarrow$ \orongsch{pränominaler Genitiv} beim Substantiv
+  \pause
+  \begin{exe}
+    \ex\label{ex:rektionundvalenzindernp035}
+    \begin{xlist}
+      \ex{\label{ex:rektionundvalenzindernp036} \orongsch{[Sarah]} rettet [den Kuchen] [vor dem Anbrennen].}
+      \pause
+      \ex{\label{ex:rektionundvalenzindernp037} [\orongsch{[Sarahs]} Rettung [des Kuchens] [vor dem Anbrennen]]}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \orongsch{Nominativ} beim intransitiven Verb $\Leftrightarrow$\\
+    \orongsch{prä-\slash postnominaler Genitiv}\slash\orongsch{von-PP} beim Substantiv
+    \pause
+  \begin{exe}
+    \ex[ ]{\orongsch{[Die Schokolade]} wirkt gemütsaufhellend.}
+    \pause
+    \ex[ ]{[Die Wirkung \orongsch{[der Schokolade]}] ist gemütsaufhellend.}
+    \pause
+    \ex[?]{[Die Wirkung \orongsch{[von der Schokolade]}] ist gemütsaufhellend.}
+    \pause
+    \ex[?]{[\orongsch{[Der Schokolade]} Wirkung] ist gemütsaufhellend.}
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Präpositionalphrasen}
+  \pause
+  \begin{exe}
+    \ex\label{ex:normalepp096}
+    \begin{xlist}
+      \ex{\alert{[Auf [dem Tisch]]} steht Ischariots Skulptur.}
+      \pause
+      \ex{\alert{[[Einen Meter] unter [der Erde]]} ist die Skulptur versteckt.}
+    \end{xlist}
+    \pause
+    \ex{\label{ex:normalepp097} Seit der EM springt Christina \alert{[weit über [ihrem früheren Niveau]]}.}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \centering
+  \begin{forest}
+    phrasenschema
+    [PP, Ephr, calign=child, calign child=2
+      [Modifizierer, Eopt]
+      [P, Ehd, name=Ppkopf]
+      [NP, Eobl]
+      {\draw [<-, bend left=45] (.south) to (Ppkopf.south);}
+    ]
+  \end{forest}  
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item strikt \alert{einstellige Valenz}
+    \item \alert{Kasusrektion}
+  \end{itemize}
+\end{frame}
+
+
+\section{Vorschau}
+
+\begin{frame}
+  {Sätze und Nebensätze}
+  \pause
+  \begin{itemize}[<+->]
+    \item Was ist ein Satz?
+    \item Form oder oder und oder oder und und Funktion?
+    \item Sätze vs. Nebensätze
+      \Halbzeile
+    \item Form Funktion von Komplementsätzen (Subjekt- und Objektsätze)
+    \item \ldots von \rot{Relativsätzen}
+    \item \ldots von Fragesätzen
+    \Halbzeile
+  \item \alert{systematische Analyse von Sätzen}
+  \end{itemize}
+  \pause
+  \Zeile
+  \begin{center}
+    Bitte lesen Sie bis nächste Woche:\\
+    \alert{Kapitel 13 (S.~383--419)}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Literatur}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \setbeamertemplate{bibliography item}{}
+  \printbibliography
+\end{frame}
+
+
+\end{document}

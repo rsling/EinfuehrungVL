@@ -1,0 +1,967 @@
+\documentclass[handout,aspectratio=1610]{beamer}
+%\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\resetcounteronoverlays{exx}
+
+
+\title{Einführung in die Sprachwissenschaft\\
+5.~Wortklassen}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\14.~und 15.~November 2018}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Rückblick}
+
+\begin{frame}
+  {Silbenphonologie}
+  \pause
+  \begin{itemize}[<+->]
+    \item Silben sind nicht lexikalisch\slash zugrundeliegend.
+    \item Sonorität: Öffnen und Schließen des Vokaltrakts
+    \item Sonoritätskontur: Anstieg zum Vokal, dann Abfall
+    \item Anfangsrand, Kern, Endrand; Reim
+    \item \alert{extrasilbische} Sonoritätsverletzungen: /ʃ/, /s/, /t/
+    \item prototypischer komplexe Anfangsrand: \alert{Obstruent + Liquid}
+    \item prototypischer komplexe Endrand: \alert{Liquid + Obstruent}
+    \item Wichtig: \alert{Das gilt für betonte Silben im Kernwortschatz.}
+    \item Silbengewicht in \alert{Moren} (Vokal: eine\slash zwei, Kons.: je eine)
+    \item normale Silben: zwei- oder dreimorig; Schwa-Silben: einmorig
+    \item Überschwere: verhindert durch Extrasilbizität
+    \item Silbengelenk: geteilter Konsonant statt überleichter Silbe im Trochäus
+    \item Anfangsrandmaximierung bei Zweifelsfällen der Silbifizierung
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Warum Reim?}
+  \pause
+  \begin{itemize}[<+->]
+    \item Reim = Kern und Endrand
+    \item \alert{Für das Silbengewicht zählt nur der Reim!}
+    \item Prinzip: eigene Regularität → eigene Struktur
+      \Zeile
+    \item außerdem: literarischer \alert{Endreim}: \alert{Anfangsrand egal}
+    \item und: literarischer \alert{Anfangsreim} (Stabreim): \alert{Silbenreim egal} 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Alfred Lichtenstein: Die Dämmerung}
+  \pause
+  Ein dicker Junge spielt mit einem \textbf{\rot<3>{T}\alert<3>{eich}}.\\
+  Der Wind hat sich in einem Baum ge\textbf{\rot<4>{f}\alert<4>{an}}/gen.\\
+  Der Himmel sieht verbummelt aus und \textbf{\rot<3>{bl}\alert<3>{eich}},\\
+  Als wäre ihm die Schminke ausge\textbf{\rot<4>{g}\alert<4>{an}}/gen.\\
+  \Zeile
+  Auf lange Krücken schief herabge\textbf{\rot<5>{b}\alert<5>{ückt}}\\
+  Und schwatzend kriechen auf dem Feld zwei \textbf{\rot<6>{L}\alert<6>{ah}}|me.\\
+  Ein blonder Dichter wird vielleicht ver\textbf{\rot<5>{r}\alert<5>{ückt}}.\\
+  Ein Pferdchen stolpert über eine \textbf{\rot<6>{D}\alert<6>{a}}|me.\\
+  \Zeile
+  An einem Fenster klebt ein fetter \textbf{\rot<7>{M}\alert<7>{ann}}.\\
+  Ein Jüngling will ein weiches Weib be\textbf{\rot<8>{s}\alert<8>{u}}|chen.\\
+  Ein grauer Clown zieht sich die Stiefel \textbf{\alert<7>{an}}.\\
+  Ein Kinderwagen schreit und Hunde \textbf{\rot<8>{fl}\alert<8>{u}}|chen.\\
+  \Zeile
+  \footnotesize
+  Aus: Pinthus, Kurt (Hrsg.). 1920. \textit{Menschheitsdämmerung}. Berlin: Rowohlt. S.~11.\\
+  Mit | sind normale Silbengrenzen und mit / Silbengelenke markiert.
+\end{frame}
+
+\begin{frame}
+  {Besser als die Klatschmethode}
+  \pause
+  \begin{itemize}[<+->]
+    \item eigentlich nicht meine Aufgabe, aber\dots
+      \Zeile
+    \item \alert{Bewusstsein für Vokallänge und Silbengewicht}
+    \item Bewusstsein für \alert{Vokallänge je nach Position}
+    \item kurz\slash leicht vor Konsonat im Trochäus $\Rightarrow$ Silbengelenk, Gelenkschreibung
+      \Zeile
+    \item \rot{\textbf{geschriebene(!)} Formenreihen als Ausgangsbasis}, \alert{nur Kernwortschatz}
+    \item Anfang mit dem \alert{Einsilbler} (möglichst ohne Dehnungsschreibung)
+    \item weiter mit dem \alert{trochäischen Zweisilbler ohne Silbengelenk}
+    \item schließlich \alert{Zweisilbler mit Silbengelenk}
+    \item Silbengelenke \alert{ohne Doppelschreibung} zuletzt (\textit{ng}, \textit{tsch} usw.)
+    \item[!] Da sind schon zwei Konsonanten!
+    \item für Anfangsrandmaximierung: Parallele zum \alert{Einsilbler}
+  \end{itemize}
+\end{frame}
+
+\section{Überblick}
+
+\begin{frame}
+  {Überblick}
+  \pause
+  \begin{itemize}[<+->]
+    \item Was sind Wörter?
+    \item Lexikalisches vs.\ syntaktisches Wort
+      \Zeile
+    \item Wozu Wortklassen?
+    \item \rot{Bedeutungsklassen} und Wortklassen
+    \item \alert{Morphologie} von Wortklassen
+    \item \alert{Syntax} von Wortklassen
+      \Zeile
+    \item wichtige Wortklassen
+      \begin{itemize}[<+->]
+        \item Nomen
+        \item Verb
+        \item Präposition
+        \item Komplementierer
+        \item Adverb
+        \item Partikel
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Wortklassen und Bildungssprache\slash Lehramt}
+  \pause
+  \begin{itemize}[<+->]
+    \item direkter Einfluss von Wortklassenwissen auf\\
+      bildungssprachliche Fähigkeiten: \rot{keiner}
+      \Zeile
+    \item Sprachbetrachtung (Woche 1):
+      \begin{itemize}[<+->]
+        \item \rot{Form} → \alert{Funktion}
+        \item \rot{systematisch}, also basierend auf \alert{Generalisierungen}
+        \item essentiell für formale Generalisierungen: \alert{Wortklassen}
+      \end{itemize}
+      \Zeile
+    \item Normfragen und Wortklassenbezug
+      \begin{itemize}
+        \item \alert{Substantivgroßschreibung}
+        \item Nebensätze: Komplementierer, Pronomina, Kommas
+        \item Flexion (Problemfälle: Konjunktiv, Adjektive usw.)
+        \item \dots alles nicht ohne Wortklassen beschreibbar
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Wörter}
+
+\begin{frame}
+  {Ebenen und Einheiten}
+  \pause
+  \begin{itemize}[<+->]
+    \item Wortakzent: \textit{\alert{\textbf{Sie}}ges\alert{säu}le}\\
+      $\rightarrow$ phonologisches\slash prosodisches Wort
+      \Zeile
+    \item Eigenschaften von Wörtern jenseits der Phonologie?
+  \end{itemize}
+  \Zeile
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex[]{Staat-es}
+      \pause
+      \ex[*]{Tür-es}
+    \end{xlist}
+    \pause
+    \Zeile
+    \ex
+    \begin{xlist}
+      \ex[]{Der Satz ist eine grammatische Einheit.}
+      \pause
+      \ex[*]{Die Satz ist eine grammatische Einheit.}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Wört haben eine Bedeutung?}
+  \pause
+  \begin{exe}
+    \ex \alert{Es} \alert{wird} schon wieder früh dunkel.
+    \pause
+    \ex Kristine denkt, \alert{dass} \alert{es} bald regnen \alert{wird}.
+    \pause
+    \ex Adrianna \alert{hat} gestern \alert{den} Keller inspiziert.
+    \pause
+    \ex Camilla \alert{und} Emma sehen \alert{sich} \alert{die} Fotos \alert{an}.
+  \end{exe}
+  \Zeile
+  \pause
+  \large
+  \alert{Bedeutungstragende Wörter und Funktionswörter}
+\end{frame}
+
+\begin{frame}
+  {Morphologie und Syntax}
+  \pause
+  \begin{itemize}[<+->]
+    \item Kombinatorik für \alert{Wortbestandteile}: Morphologie
+      \begin{itemize}[<+->]
+        \item Wortbestandteile \zB mit \alert{Umlaut}: \textit{rot} -- \textit{röter}
+        \item oder \alert{Ablaut}: \textit{heben} -- \textit{hob}
+      \end{itemize}
+    \item Kombinatorik für \alert{Wörter}: Syntax
+      \Zeile
+    \item \alert{Zirkuläre oder leere Definitionen?}
+    \item \rot{Nein!} Prinzip: eigene Regularität → eigene Struktur
+      \Zeile
+    \item Wortbestandteile \alert{nicht trennbar}:
+      \begin{itemize}
+        \item \textit{heb-t}\\
+          *\textit{heb mit Mühe t}
+        \item \textit{Ge-hob-en-heit} \\
+          *\textit{Gehoben anspruchsvolle heit}
+        \item \textit{Sie geht schnell heim.}\\
+          \textit{Schnell geht sie heim.}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Wort und Wortform}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex (der) Tisch
+      \pause
+      \ex (den) Tisch
+      \pause
+      \ex (dem) Tisch\alert{e}
+      \pause
+      \ex (des) Tisch\alert{es}
+      \pause
+      \ex (die) Tisch\alert{e}
+      \pause
+      \ex (den) Tisch\alert{en}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Der \_\_\_\ ist voll hässlich.
+      \pause
+      \ex Ich kaufe den \_\_\_ nicht.
+      \pause
+      \ex Wir speisten am \_\_\_\ des Bundespräsidenten.
+      \pause
+      \ex Der Preis des \_\_\_\ ist eine Unverschämtheit.
+      \pause
+      \ex Die \_\_\_\ kosten nur noch die Hälfte.
+      \pause
+      \ex Mit den \_\_\_\ können wir nichts mehr anfangen.
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+% \begin{frame}
+%   {Wort und Wortform II}
+%   \pause
+%   \large
+%   Eine \alert{Wortform} ist eine in syntaktischen Strukturen auftretende und in diesen Strukturen nicht weiter zu unterteilende Einheit.
+%   Die Werte der Merkmale von Wortformen sind gemäß ihrem Paradigma vollständig spezifiziert.\\
+%   \Zeile
+%   \pause
+%   Das (\alert{lexikalische}) \alert{Wort} ist eine Repräsentation von paradigmatisch zusammengehörenden Wortformen.
+%   Für das lexikalische Wort sind die Werte nur für diejenigen Merkmale spezifiziert, die in allen Wortformen des Paradigmas dieselben Werte haben.
+%   Die restlichen Werte werden gemäß der Position im Paradigma bei den konkret vorkommenden Wortformen des Wortes gesetzt.
+% \end{frame}
+
+\section{Methode}
+
+\begin{frame}
+  {Klassische Grundschul-Wortarten.}
+  \pause
+  \begin{itemize}[<+->]
+    \item Dingwort
+    \item Tuwort, Tätigkeitswort
+    \item Wiewort, Eigenschaftswort
+    \item Umstandswort
+      \Halbzeile
+    \item Noch besser die Vermittlungsversuche:
+      \begin{itemize}[<+->]
+        \item Dingwörter kann man anfassen. \onslide<8->{\rot{D'oh!}}
+          \pause
+        \item Wie ist die Kanzlerin? -- Katatonisch.
+        \item Was macht Johanna? -- Laufen.
+        \item Wie, wo oder warum schläft Johanna? -- Ruhig.
+      \end{itemize}
+    \Halbzeile
+    \item Wieso auch nicht?
+      \begin{itemize}[<+->]
+        \item Anfassen? Wolken, Ideen, Steckdosen, Rasierklingen, \dots
+        \item *Die Kanzlerin ist ehemalig.
+        \item Was macht Johanna? -- Hausaufgaben.
+        \item Was tut Johanna? -- *Verlaufen. \slash *Unterliegen.
+        \item *Was macht\slash tut das Yoghurt? -- Verschimmeln.
+        \item Wie schläft Johanna? -- *Erstaunlicherweise.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Ein paar neue Wortarten nach Bedeutungen I}
+  \pause
+  \begin{itemize}[<+->]
+    \item "`Wie, wo, warum?"' \onslide<3->{--- Warum eigentlich nicht drei Wortarten?}
+      \Halbzeile
+      \pause
+    \item \alert{Bewegungsverben}: \textit{laufen}, \textit{springen}, \textit{fahren}, \dots
+    \item \alert{Zustandsverben}: \textit{duften}, \textit{wohnen}, \textit{liegen}, \dots
+      \Halbzeile
+    \item \alert{Konkreta}: \textit{Haus}, \textit{Buch}, \textit{Blume}, \textit{Stier}, \dots
+    \item \alert{Abstrakta}: \textit{Konzept}, \textit{Glaube}, \textit{Wunder}, \textit{Kausalität}, \dots
+    \item \alert{Zählsubstantive}: \textit{Kumquat}, \textit{Student*in}, \textit{Mikrobe}, \textit{Kneipe}, \dots
+    \item \alert{Stoffsubstantive}: \textit{Wasser}, \textit{Wein}, \textit{Zement}, \textit{Mehl}, \dots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Ein paar neue Wortarten nach Bedeutungen II}
+  \pause
+  Aber Moment mal\dots\\
+  \pause
+  \Zeile
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex \alert{Wein} kann lecker sein.
+      \ex \alert{Kumquats können}\slash \alert{Eine Kumquat kann} lecker sein.
+    \end{xlist}
+%     \pause
+%     \ex
+%     \begin{xlist}
+%       \ex Ein Glas \alert{guter Wein}\slash\alert{guten Weins} kostet 10€.
+%       \ex Ein Glas \alert{?gute Kumquats}\slash\alert{guter Kumquats} kostet 4€.
+%     \end{xlist}
+%     \pause
+%     \ex
+%     \begin{xlist}
+%       \ex Johanna hätte gerne \alert{eine Kumquat}.
+%       \ex Johanna hätter gerne \alert{einen Wein}.
+%     \end{xlist}
+  \end{exe}
+  \pause
+  \Zeile
+  Es gibt hier durchaus auch \alert{formale} Unterschiede.
+\end{frame}
+
+\begin{frame}
+  {Morphologische Klassifikation}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{Ich pfeif\alert{e}.\\
+      Du pfeif\alert{st}.\\
+      Die Schiedsrichterin pfeif\alert{t}.}
+        \pause
+        \ex{Ich schlaf\alert{e}.\\
+        {Du schl\rot{ä}f\alert{st}.}\\
+        Die Schiedsrichterin schl\rot{ä}f\alert{t}.}
+    \end{xlist}
+        \pause
+    \ex
+    \begin{xlist}
+      \ex{der Berg\\
+        des Berg\alert{es}\\
+        die Berg\alert{e}}
+        \pause
+      \ex{der Mensch\\
+        des Mensch\alert{en}\\
+        die Mensch\alert{en}}
+        \pause
+      \ex{der Staat\\
+        des Staat\alert{es}\\
+        die Staat\alert{en}}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Achtung!}
+  \pause
+  \alert{Änderung der Paradigmenzugehörigkeit} eines Wortes:
+  \pause
+  \Zeile
+  \begin{exe}
+    \ex\label{ex:paradigmatischeklassifikation017}\begin{xlist}
+      \ex{Wir sind des \alert{Wanderns} müde.}
+      \pause
+      \ex{Wir \alert{wandern}.}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Zeile
+  $\Rightarrow$ \rot{Zwei verschiedene} lexikalische Wörter.
+\end{frame}
+
+
+\begin{frame}
+  {Syntaktische Klassifikation}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex[]{Alexandra spielt schnell \alert{und} präzise.}
+      \pause
+      \ex[*]{Alexandra spielt schnell \alert{obwohl} präzise.}
+      \pause
+      \ex[]{Alexandra \alert{und} Dzsenifer spielen eine gute Saison.}
+      \pause
+      \ex[*]{Alexandra \alert{obwohl} Dzsenifer spielen eine gute Saison.}
+    \end{xlist}
+    \pause
+    \Zeile
+    \ex
+    \begin{xlist}
+      \ex[]{Alexandra spielt herausragend,\\
+        \alert{obwohl} der Leistungsdruck hoch ist.}
+      \pause
+      \ex[*]{Alexandra spielt herausragend, \alert{und} der Leistungsdruck hoch ist.}
+    \end{xlist}
+  \end{exe}
+    \pause
+    \Zeile
+    Alles nur wegen der Bedeutung?
+    \pause
+  \begin{exe}
+    \ex Der Marmorkuchen spielt schnell \alert{und} präzise.
+  \end{exe}
+\end{frame}
+
+\begin{frame}[fragile]
+  {Filter}
+  \begin{itemize}
+    \item<2-> Kapitel 2: \alert{Kategorien} definiert über Merkmale und Werte.
+      \begin{itemize}[<+->]
+        \item<3-> Hat \textsc{Numerus} oder nicht?
+        \item<4-> Hat \textsc{Genus} oder nicht?
+        \item<5-> \dots
+      \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \begin{forest}
+      /tikz/every node/.append style={font=\footnotesize},
+      for tree={l sep=2em, s sep=2.5em},
+      [\textit{Wort}, intrme, {visible on=<6->}, for children={visible on=<7->}
+        [{Hat  Numerus?}, decide, for children={visible on=<8->}
+          [\textit{flektierbar}, intrme, yes, {visible on=<9->}, for children={visible on=<11->}
+            [{Ist finit  flektierbar?}, decide, {visible on=<11->}, for children={visible on=<12->}
+              [\textbf{Verb}, finall, yes, {visible on=<13->}]
+              [\textit{Nomen}, intrme, no, {visible on=<14->}]
+            ]
+          ]
+          [\textit{nicht flektierbar}, intrme, no, {visible on=<10->}, for children={visible on=<15->}
+            [{Hat Valenz-\slash  Kasusrektion?}, decide, {visible on=<15->}, for children={visible on=<16->}
+              [\textbf{Präposition}, finall, yes, {visible on=<17->}]
+              [\textit{andere}, intrme, no, {visible on=<18->}]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+\end{frame}
+
+
+\section{Wortklassen}
+
+\begin{frame}
+  {Flektierbare Wörter: Numerus}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Tüte, Tüten
+      \pause
+      \ex Baum, Bäume
+    \end{xlist}
+    \pause
+    \ex
+    \begin{xlist}
+      \ex (ich) gehe, (wir) gehen
+      \pause
+      \ex (du) gehst, (ihr) geht
+    \end{xlist}
+    \Zeile
+    \pause
+    \ex
+    \begin{xlist}
+      \ex \alert<12->{Ein} \alert<13->{roter} \alert<8->{Apfel} \alert<9->{hängt} am Baum.
+      \pause
+      \ex \alert<14->{Rote} \alert<10->{Äpfel} \alert<11->{hängen} am Baum.
+    \end{xlist}
+  \end{exe}
+  \Zeile
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  Als \alert{Kongruenzmerkmal} ist Numerus in der Definition\\
+  der flektierbaren Wortklassen \alert{strukturell motiviert}.
+\end{frame}
+
+\begin{frame}
+  {Substantive vs.\ Nomina}
+  \pause
+  \begin{exe}
+    \ex \alert<5->{Die stärkste} Gewichtheberin wurde Weltmeisterin.
+    \pause
+    \ex \alert<5->{Der stärkste} Versuch war der zweite.
+    \pause
+    \ex \alert<5->{Das höchste} Gewicht wurde von Tatjana gerissen.
+  \end{exe}
+  \Zeile
+  \pause
+  \pause
+  \begin{itemize}[<+->]
+    \item Substantive: festes Genus
+    \item andere Nomina (Artikel\slash Pronomen, Adjektiv):\\
+      \alert{Genuskongruenz mit dem Substantiv}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Adjektive}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Kein \alert<3->{großer} Ball wurde gespielt.
+      \ex Der \alert<3->{große} Ball wurde gespielt.
+    \end{xlist}
+    \pause
+    \pause
+    \ex
+    \begin{xlist}
+      \ex Keine \alert<5->{großen} Bälle wurden gespielt.
+      \ex Die \alert<5->{großen} Bälle wurden gespielt.
+      \ex Große \alert<5->{Bälle} wurden gespielt.
+    \end{xlist}
+  \end{exe}
+  \Zeile
+  \pause
+  \pause
+  \centering
+  \resizebox{0.45\textwidth}{!}{
+    \begin{tabular}{lllllll}
+      \toprule
+      \multicolumn{3}{l}{} & \textbf{Mask} & \textbf{Neut} & \textbf{Fem} & \textbf{Pl} \\
+      \midrule
+      \multirow{4}{*}{\textbf{stark}} & \textbf{Nom} & \multirow{4}{*}{heiß-} & er & es & e & e \\
+      & \textbf{Akk} && en & es & e & e \\
+      & \textbf{Dat} && em & em & er & en \\
+      & \textbf{Gen} && en & en & er & er \\
+      \midrule
+      \multirow{4}{*}{\textbf{schwach}} & \textbf{Nom} & \multirow{4}{*}{(der) heiß-} & e & e & e & en \\
+      & \textbf{Akk} && en & e & e & en \\
+      & \textbf{Dat} && en & en & en & en \\
+      & \textbf{Gen} && en & en & en & en \\
+      \midrule
+      \multirow{4}{*}{\textbf{gemischt}} & \textbf{Nom} & \multirow{4}{*}{(kein) heiß-} & er \Dim & es \Dim & e & en \\
+      & \textbf{Akk} && en & es \Dim & e & en \\
+      & \textbf{Dat} && en & en & en & en \\
+      & \textbf{Gen} && en & en & en & en \\
+      \bottomrule
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  {Präpositionen}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{\alert<3-4>{Mit} \alert<4>{dem kaputten Rasen} ist nichts mehr anzufangen.}
+      \pause
+      \pause
+      \pause
+      \ex{\alert<6-7>{Angesichts} \alert<7>{des kaputten Rasens} wurde das Spiel abgesagt.}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \pause
+  \pause
+  \Zeile
+  \large
+  In einer \alert{Rektionsrelation} werden durch die regierende Einheit (das \alert{Regens}) Werte für bestimmte Merkmale (und ggf.\ auch die Form) beim regierten Element (dem \alert{Rectum}) verlangt.\\
+  \Zeile
+  \pause
+  \alert{Präpositionen} kasusregieren eine obligatorische Nominalphrase.
+\end{frame}
+
+\begin{frame}
+  {Komplementierer}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex[]{Ich glaube, [\alert<3->{dass} dieser Nebensatz ein Verb \alert<4->{enthält}].}
+      \ex[]{[\alert<6->{Während} die Spielzeit \alert<7->{läuft}], zählt jedes Tor.}
+      \ex[]{Es fällt ihnen schwer [\rot<8->{zu laufen}].}
+      \ex[\rot<11->{*}]{[\alert<9->{Obwohl} kein Tor \alert<10->{fiel}].}
+    \end{xlist}
+  \end{exe}
+  \Zeile
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \pause
+  \large
+  \alert{Komplementierer} leiten Nebensätze ein.\\
+  Die Rede von der \textit{unterordnenden Konjunktion} ist Unsinn.
+\end{frame}
+
+\begin{frame}
+  {Nicht-flektierbare Wörter im Vorfeld}
+  \pause
+  Was steht im unabhängigen Aussagesatz am Satzanfang?\\
+  \pause
+  {\rot{Antworten Sie nie mehr mit "`das Subjekt"'!}}
+  \pause
+  \begin{exe}
+    \ex\label{ex:adverbenadkopulasundpartikeln038}
+    \begin{xlist}
+      \ex[ ]{\alert<5->{Gestern} hat der FCR Duisburg gewonnen.}
+      \pause
+      \pause
+      \ex[ ]{\alert<7->{Erfreulicherweise} hat der FCR Duisburg gestern gewonnen.}
+      \pause
+      \pause
+      \ex[ ]{\alert<9->{Oben} finden wir andere Beispiele.}
+      \pause
+      \pause
+      \ex[*]{\alert<11->{Doch} ist das aber nicht das Ende der Saison.}
+      \pause
+      \pause
+      \ex[*]{\alert<13->{Und} ist die Saison zuende.}
+      \pause
+      \pause
+    \end{xlist}
+    \ex\label{ex:adverbenadkopulasundpartikeln044} Das ist aber \alert{doch} nicht das Ende der Saison.
+  \end{exe}
+  \pause
+  \Zeile
+  \alert{Adverben} sind die übriggebliebenen nicht-flektierbaren Wörter,\\
+  die im Vorfeld stehen können.
+\end{frame}
+
+\begin{frame}
+  {Adkopulas}
+  \pause
+  Kopulas: \textit{sein}, \textit{bleiben}, \textit{werden}\\
+  \pause
+  Spezielle Klasse von Hilfsverben\dots
+  \pause
+  \Zeile
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex[ ]{Hamlet \alert<6->{ist} \alert<5->{meschugge}.}
+      \pause
+      \pause
+      \pause
+      \ex[ ]{\alert<8->{Quitt} \alert<9->{bin} ich mit dir noch lange nicht.}
+      \pause
+      \pause
+      \pause
+    \end{xlist}
+    \Zeile
+    \ex
+    \begin{xlist}
+      \ex[ ]{Tatjana \alert<11->{ist} \alert<12->{stark}.}
+      \pause
+      \pause
+      \pause
+      \ex[ ]{Die \alert<14->{starke} \alert<15->{Gewichtheberin} ist Weltmeisterin.}
+      \pause
+      \pause
+      \pause
+    \end{xlist}
+    \Zeile
+    \ex
+    \begin{xlist}
+      \ex[ ]{Der Staat \alert<18->{ist} \alert<17->{pleite}.}
+      \pause
+      \pause
+      \pause
+      \ex[*]{Der \alert<20->{pleite} \alert<21->{Staat} bricht zusammen.}
+      \pause
+      \pause
+      \pause
+    \end{xlist}
+  \end{exe}
+  \Zeile
+  \large
+  \alert{Adkopulas} treten immer in Abhängigkeit einer Kopula auf.
+\end{frame}
+
+\begin{frame}
+  {Konjunktionen}
+  \pause
+  \begin{exe}
+    \ex\label{ex:konjunktionen052}
+    \begin{xlist}
+      \ex{[Dzsenifer] \alert<3->{und} [eine andere Spielerin] haben Tore geschossen.}
+      \pause
+      \pause
+      \ex{Sätze können wir [aufschreiben] \alert<5->{oder} [aussprechen].}
+      \pause
+      \pause
+      \ex{Spielt bitte [konzentriert] \alert<7->{und} [offensiv].}
+      \pause
+      \pause
+    \end{xlist}
+  \end{exe}
+  \Zeile
+  \large
+  \alert{Konjunktionen} verbinden Satzteile der gleichen Kategorie.\\
+  Die Rede von der \textit{neben-}\slash\textit{beiordnenden Konjunktion} ist Unsinn.
+\end{frame}
+
+\begin{frame}[fragile]
+  {"`Alle Wortklassen"'}
+  \pause
+  \begin{center}
+    \scalebox{0.4}{
+    \begin{minipage}{\textwidth}
+    \centering
+    \begin{forest}
+      /tikz/every node/.append style={font=\footnotesize},
+      for tree={l sep=2em, s sep=2.5em, align=center},
+      [\textit{Wort}, intrme
+        [{Hat\\Numerus?}, decide
+          [\textit{flektierbar}, intrme, yes
+            [{Ist finit\\flektierbar?}, decide
+              [\textbf{Verb}, finall, yes]
+              [\textit{Nomen}, intrme, no
+                [{Hat festes\\Genus?}, decide
+                  [\textbf{Substantiv}, finall, yes]
+                  [{\textit{anderes}\\\textit{Nomen}}, intrme, no
+                    [{Hat Stärke-\\flexion?}, decide
+                      [\textbf{Adjektiv}, finall, yes]
+                      [{\textit{Artikel\slash}\\\textit{Pronomen}}, intrme, no]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+          [\textit{nicht flektierbar}, intrme, no
+          [{Hat Valenz-\slash\\Kasusrektion?}, decide
+              [\textbf{Präposition}, finall, yes]
+              [\textit{andere}, intrme, no
+                [{Leitet Neben-\\Sätze ein?}, decide
+                  [\textbf{Komplementierer}, finall, yes]
+                  [{\textit{Partikel\slash}\\\textit{Adverb}}, intrme, no
+                    [{Kann das Vor-\\feld besetzen?}, decide
+                      [{\textit{Adverb\slash}\\\textit{Adkopula}}, intrme, yes
+                        [{Wird typisch mit\\Kopula verwendet?}, decide
+                          [\textbf{Adkopula}, finall, yes]
+                          [\textbf{Adverb}, finall, no]
+                        ]
+                      ]
+                      [\textit{Partikel}, intrme, no
+                        [{Kann Sätze\\ersetzen?}, decide
+                          [\textbf{Satzäquivalent}, finall, yes]
+                          [\textit{andere}, intrme, no
+                            [{Kann Konsti-\\tuenten verbinden?}, decide
+                              [\textbf{Konjunktion}, finall, yes]
+                              [\textit{Rest}, intrme, no]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+    \end{minipage}
+    }
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  {Wie viele Wortklassen gibt es?}
+  \pause
+  \begin{itemize}[<+->]
+    \item Alle Wörter sind \alert{Wörter}.
+    \item Also gibt es \rot{eine Wortklasse}.
+      \Zeile
+    \item Jedes Wort hat \alert{individuelle Eigenschaften}.
+    \item Also gibt es \rot{so viele Wortklassen wie Wörter}.
+      \Zeile
+    \item Wozu brauchen wie überhaupt Wortklassen?\\
+      Wortklassen\dots
+      \begin{itemize}[<+->]
+        \item \dots sind \alert{das Rüstzeug für Morphologie und Syntax}.
+        \item \dots erlauben die Formulierung von \rot{Generalisierungen}.
+        \item \dots sind so fein unterteilt, wie es unsere Beschreibung erfordert.
+        \item \dots sind \rot{nicht universell}!
+        \item \dots sind \alert{Artefakte unserer Theorie bzw.\ Grammatik}.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Vorschau}
+
+\begin{frame}
+  {Morphologie}
+  \pause
+  \textit{"`Das ist wegen der Spannendheit."'}\\
+  \pause
+  \textit{"`Die Vase ist vollansichtlich reliefiert."}\\
+  \Zeile
+  \pause
+  \begin{itemize}[<+->]
+    \item (Wort-)Formen, ihre Bestandteile und ihre Funktionen
+    \item Umlaut und Ablaut und ihre Funktionen
+    \item Unterschied von Flexion und Wortbildung
+      \Zeile
+    \item Funktion nominaler Flexionskategorien
+    \item \rot{Wichtig!} \alert{Inklusive: Was ist Kasus?}
+    \item Funktionen verbaler Flexionskategorien
+    \item \rot{Wichtig!} \alert{Inklusive: Was ist Tempus?}
+  \end{itemize}
+  \pause
+  \Zeile
+  \centering
+  Bitte lesen: \alert{Kapitel 7 (195--220), 9.1 (248--257), 10.1 (287--299)}\\
+  Bitte denken Sie daran: Sie haben dafür \alert{3 Wochen} Zeit!
+\end{frame}
+
+\end{document}

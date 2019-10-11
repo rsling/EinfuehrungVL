@@ -1,0 +1,572 @@
+\documentclass[handout,aspectratio=1610]{beamer}
+%\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\resetcounteronoverlays{exx}
+
+
+\title{Einführung in die Sprachwissenschaft\\1a.~Sprache und Grammatik\\1b.~Linguistik und Grammatik im Lehramt}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\16.~Oktober 2018}
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Organisatorisches}
+
+\begin{frame}
+  {Kontakt und Sprechstunde}
+  \begin{itemize}
+    \item Sprechstunde: mittwochs 14:00–16:00\\
+      \alert{Bitte unbedingt 24h vorher eintragen!}
+    \item Büro: JK 31/231 (Rostlaube)
+    \item Email: \texttt{roland.schaefer@fu-berlin.de}
+      \vspace{\baselineskip}
+    \item Klausur: Freitag, den 15. Februar 2019, 14–16 c.t. in HS 1a und 2\\
+      \rot{Die Klausur für Grundschuldidaktiker*innen findet im Sommer statt!}
+      \vspace{\baselineskip}
+    \item \alert{Alle Fragen zur Organisation der Klausur richten Sie bitte\\
+      an die Dozent*innen der Basisseminare.}
+  \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%   {Tutorium}
+%   \begin{itemize}
+%     \item Tutorium: donnerstags 8:30--10:00
+%       \vspace{\baselineskip}
+%     \item Tutorin: Liliya Starodubtseva
+%       \vspace{\baselineskip}
+%     \item Anmeldeverfahren:
+%       \begin{enumerate}
+%         \item Schreiben Sie \textbf{mir} bis Sonntag, 21. Oktober, eine Email.
+%         \item Subject: \rot{\textit{Tutoriumsanmeldung: IHR NAME}}
+%         \item Einen Text bzw.\ Anrede und Gruß brauchen Sie nicht zu schreiben.
+%         \item Wir losen am 22. Oktober 20 Plätze aus.
+%         \item Sie müssen dann regelmäßig teilnehmen, sonst droht Platzverlust.
+%       \end{enumerate}
+%   \end{itemize}
+% \end{frame}
+
+\begin{frame}
+  {Ablauf und Inhalte der Vorlesung}
+  \begin{itemize}
+    \item 14 Sitzungen von mir: Überblick über die Grammatik des Deutschen
+    \item Zwei Sitzungen von Friedemann Pulvermüller\\
+      (Semantik, klinische Linguistik)
+      \vspace{\baselineskip}
+    \item Meine Inhalte entsprechen meiner \alert{\textit{Einführung in die\\
+      grammatische Beschreibung des Deutschen:\\
+      Dritte, überarbeitete und erweiterte Auflage}}
+    \item \url{http://langsci-press.org/catalog/book/224} (\alert{open access})
+      \vspace{\baselineskip}
+    \item Bei Amazon zum Einführungspreis von 13,91€\\
+      \url{https://www.amazon.de/dp/3961101183/}
+      \vspace{\baselineskip}
+    \item Alle Referenzen zu diesen Folien finden Sie im Buch.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Fragen und Interaktion}
+  \begin{itemize}
+    \item Interaktion in der VL ist leider völlig ausgeschlossen.
+      \vspace{\baselineskip}
+    \item Wenn Sie Fragen zum Stoff oder zum Buch haben:
+      \texttt{roland.schaefer@fu-berlin.de}
+    \item Ich würde geeignete Fragen auch gerne in meinem Blog beantworten:\\
+      \url{http://grammatick.de}
+      \vspace{\baselineskip}
+    \item \rot{Bitte beachten Sie folgende Hinweise zur Email-Kommunikation:\\
+        \url{http://rolandschaefer.net/?page_id=1736}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Der Plan für heute}
+  \pause
+  \begin{itemize}
+    \item Grammatik
+      \begin{itemize}
+        \item Grammatik als System
+        \item Kern und Peripherie des Systems
+        \item Norm und Beschreibung, Regel und Regularität
+      \end{itemize}
+      \vspace{\baselineskip}
+      \pause
+    \item Grammatik in Schule und Studium
+      \begin{itemize}
+        \item Bildungssprache
+        \item Sprachbetrachtung
+        \item Welche Grammatik für das Germanistikstudium?
+      \end{itemize}
+      \vspace{\baselineskip}
+      \pause
+    \item EGBD3: 1--75 (= Kapitel 1 bis 3)
+      \pause
+    \item Das Müssen Sie nicht alles (jetzt) lesen.\\
+      \alert{Für Lehramtsstudent*innen wird aber Kapitel 3 dringend empfohlen.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Lektüre für nächste Woche}
+
+  \begin{center}
+    Weil es am Ende der VL sowieso untergehen würde:\\[\baselineskip]
+    \Large
+    \alert{Lesen Sie für nächste Woche bitte}\\
+    \alert{Kapitel 4 \textit{Phonetik} (S.~79--110)}
+  \end{center}
+
+\end{frame}
+
+\section{Grammatik}
+
+\begin{frame}
+  {Deutsche Sätze erkennen und interpretieren}
+  \pause
+  \begin{exe}
+    \ex Dies ist ein Satz.
+  \pause
+    \ex Satz dies ein ist.
+  \pause
+    \ex Kno kna knu.
+  \pause
+    \ex This is a sentence.
+  \pause
+    \vspace{\baselineskip}
+    \ex Dies ist ein Satz
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Form und Bedeutung: Kompositionalität}
+  \begin{exe}
+    \ex Das ist ein Kneck.
+    \pause
+    \vspace{\baselineskip}
+  \ex Jede Farbe ist ein Kurzwellenradio.
+  \ex Der dichte Tank leckt.
+\end{exe}
+    \vspace{\baselineskip}
+  \pause
+  {\Large\textit{Die Bedeutung komplexer sprachlicher Ausdrücke ergibt sich aus der Bedeutung ihrer Teile und der Art ihrer grammatischen Kombination. Diese Eigenschaft von Sprache nennt man \alert{Kompositionalität}.}}
+\end{frame}
+
+\begin{frame}
+  {Grammatik als System und Grammatikalität}
+  \pause
+  \Large\textit{Eine Grammatik ist ein \alert{System von Regularitäten},\\
+nach denen aus einfachen Einheiten komplexe Einheiten einer Sprache gebildet werden.}\\[\baselineskip]
+
+\pause
+
+\textit{Jede von einer bestimmten Grammatik beschriebene Symbolfolge ist \alert{grammatisch} relativ zu dieser Grammatik, alle anderen sind \alert{ungrammatisch}.}
+\end{frame}
+
+\begin{frame}
+  {(Un)grammatisch ist nicht gleich (in)akzeptabel}
+  \pause
+  \begin{exe}
+    \ex\begin{xlist}
+      \ex Bäume wachsen werden hier so schnell nicht wieder.
+      \pause
+      \ex Touristen übernachten sollen dort schon im nächsten Sommer.
+      \pause
+      \ex Schweine sterben müssen hier nicht.
+      \pause
+      \ex Der letzte Zug vorbeigekommen ist hier 1957.
+      \pause
+      \ex Das Telefon geklingelt hat hier schon lange nicht mehr.
+      \pause
+      \ex Häuser gestanden haben hier schon immer.
+      \pause
+      \ex Ein Abstiegskandidat gewinnen konnte hier noch kein einziges Mal.
+      \pause
+      \ex Ein Außenseiter gewonnen hat hier erst letzte Woche.
+      \pause
+      \ex Die Heimmannschaft zu gewinnen scheint dort fast jedes Mal.
+      \pause
+      \ex Ein Außenseiter gewonnen zu haben scheint hier noch nie.
+      \pause
+      \ex Ein Außenseiter zu gewinnen versucht hat dort schon oft.
+      \pause
+      \ex Einige Außenseiter gewonnen haben dort schon im Laufe der Jahre.
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Kern und Peripherie}
+  \pause
+\begin{exe}
+  \ex\label{ex:kernundperipherie022}
+    \begin{xlist}
+      \ex \alert{Baum, Haus, Matte, Döner, Angst, Öl, Kutsche, \ldots}
+      \ex \rot{System, Kapuze, Bovist, Schlamassel, Marmelade, Melodie, \ldots}
+    \end{xlist}
+    \pause
+    \ex
+    \begin{xlist}
+      \ex \alert{geht, läuft, lacht, schwimmt, liest, \ldots}
+      \ex \rot{kann, muss, will, darf, soll, mag}
+    \end{xlist}
+    \pause
+    \ex
+    \begin{xlist}
+      \ex \alert{des Hundes, des Geistes, des Tisches, des Fußes, \ldots}
+      \ex \rot{des Schweden, des Bären, des Prokuristen, des Phantasten, \ldots}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \vspace{\baselineskip}
+  \Large
+  \centering
+  \alert{Hohe Typenhäufigkeit} vs.\ \rot{niedrige Typenhäufigkeit}.  
+\end{frame}
+
+\begin{frame}
+  {Regel vs.\ Regularität bzw.\ Generalisierung}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex{Relativsätze und eingebettete \textit{w}-Sätze werden nicht durch Komplementierer eingeleitet.}
+      \pause
+      \ex{\textit{fragen} ist ein schwaches Verb.}
+      \pause
+      \ex{\textit{zurückschrecken} bildet das Perfekt mit dem Hilfsverb \textit{sein}.}
+      \pause
+      \ex{Im Aussagesatz steht vor dem finiten Verb genau ein Satzglied.}
+      \pause
+      \ex{In Kausalsätzen mit \textit{weil} steht das finite Verb an letzter Stelle.}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Normkorm? Regularitätenkonform?}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Dann sieht man auf der ersten Seite \alert{wann, wo und wer} \rot{dass} kommt.
+      \pause
+      \ex Er \rot{frägt} nach der Uhrzeit.
+      \pause
+      \ex Man \rot{habe} zu jener Zeit nicht vor Morden \alert{zurückgeschreckt}.
+      \pause
+      \ex \rot{Der Universität} \alert{zum Jubiläum} gratulierte auch Bundesminister Dorothee Wilms, die in den fünfziger Jahren in Köln studiert hatte.
+      \pause
+      \ex Das ist Rindenmulch, \alert{weil} hier \rot{kommt} noch ein Weg.
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+
+\begin{frame}
+  {Regel und Regularität}
+  \pause
+  \Large \textit{Eine grammatische \alert{Regularität} innerhalb eines Sprachsystems liegt dann vor, wenn sich Klassen von Symbolen unter vergleichbaren Bedingungen gleich (und damit vorhersagbar) verhalten.}\\
+  \pause
+  \vspace{\baselineskip}
+  \textit{Eine grammatische \alert{Regel} ist die Beschreibung einer Regularität, die in einem normativen Kontext geäußert wird.}\\
+  \pause
+  \vspace{\baselineskip}
+  \textit{Eine grammatische \alert{Generalisierung} ist eine durch Beobachtung zustandegekommene Beschreibung einer Regularität.}
+\end{frame}
+
+\begin{frame}
+  {Norm ist Beschreibung}
+  \pause
+  \begin{itemize}[<+->]
+    \item Norm als Grundkonsens
+    \item Sprache und Norm im Wandel
+    \item Norm und Situation (Register, Stil, \dots)
+    \item Variation in der Norm
+      \vspace{\baselineskip}
+    \item \alert{Wichtigkeit der Norm, insbesondere im schulischen Deutschunterricht}
+  \end{itemize}
+\end{frame}
+
+\section{Grammatik im Lehramtsstudium}
+
+\begin{frame}
+  {Bildungssprache in der siebten Jahrgangsstufe}
+  \pause
+  Aufgabe: In eigenen Worten die Aufgabe wiedergeben\\
+  (Gogolin \& Lange 2011; nach Feilke 2012).\\[0.5\baselineskip]
+  \pause
+  \centering
+  \includegraphics[height=0.68\textheight]{feilke}
+\end{frame}
+
+\begin{frame}
+  {Sprachbetrachtung und Literatur im Deutsch-Abitur I}
+  \pause
+  Sprachlich-grammatische Betrachtung zur Literatur in Abiturarbeiten\\
+  (Häcker 2009).\\[\baselineskip]
+  \pause
+  \centering
+  \includegraphics[height=0.5\textheight]{haecker1}
+\end{frame}
+
+\begin{frame}
+  {Sprachbetrachtung und Literatur im Deutsch-Abitur II}
+  Sprachlich-grammatische Betrachtung zur Literatur in Abiturarbeiten\\
+  (Häcker 2009).\\[\baselineskip]
+  \centering
+  \includegraphics[height=0.4\textheight]{haecker2}
+\end{frame}
+
+\begin{frame}
+  {Bildungssprache}
+  \pause
+  \alert{\textit{Der Deutschunterricht führt zu einem kompletten Umbau\\
+  der Grammatik des Kindes.}} (nach Bredel\slash Eisenberg)\\[\baselineskip]
+  \pause
+  \begin{itemize}[<+->]
+    \item Anforderungen:
+    \begin{itemize}[<+->]
+      \item Darstellung komplexer Sachverhalte
+      \item \dots und nicht-faktischer (z.\,B.\ hypothetischer) Sachverhalte
+      \item Intensionalität
+      \item Registerbewusstsein
+    \end{itemize}
+        \vspace{\baselineskip}
+      \item Eigenschaften:
+    \begin{itemize}[<+->]
+      \item dekontextualisiert
+      \item schriftorientiert
+      \item normorientiert
+    \end{itemize}
+        \vspace{\baselineskip}
+      \item \alert{Das alles ist verknüpft mit spezifischen grammatischen Formen!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Sprachbetrachtung}
+  \pause
+  \begin{itemize}[<+->]
+    \item Bildungssprache $\Leftrightarrow$ Sprachbetrachtung
+      \vspace{\baselineskip}
+    \item Bewusstsein über richtige und angemessene Form
+      \vspace{\baselineskip}
+    \item explizite Sprachbetrachtung im Alltag:
+      \begin{itemize}[<+->]
+        \item Selbst- oder Fremdkorrektur
+        \item Suche nach dem richtigen Ausdruck
+        \item Orthographie optimieren
+        \item Texte optimieren
+        \item Begriffe definieren
+        \item Grammatikalität beurteilen
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Die Ausgangsbasis: vorliterate Kinder und Sprachbetrachtung}
+  \pause
+  Klassische Studien nach Bredel (2013), Bredel et al. (2017) (s.\ EGBD3: 57--58)\\
+  (Beispiele hier vereinfacht\slash dem Effekt nach neu konstruiert)\\[\baselineskip]
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{bedeutungsbezogene} bzw.\ \alert{holistische} Betrachtung
+    \item \textit{Welches Wort ist länger: Haus oder Streichholzschächtelchen?} --- \textit{Haus.}
+    \item Assoziationen zu Substantiven wie \textit{Bett}: \alert{Ereignisse} \textit{schlafen gehen} usw.\\
+      Erwachsene: \alert{Substantive} für andere Möbel usw.
+    \item \textit{Warum heißt der Geburtstag  "`Geburtstag"'?} ---\\
+      \textit{"`Weil es Geschenke und Kuchen gibt."'}
+    \item \textit{Wieviele Wörter in "`Im alten Haus lebt eine junge Frau."'} --- \textit{Zwei.}
+    \item \textit{Wieviele Wörter in "`Alex hat sieben Schwestern."'} --- \textit{Sieben.}
+      \vspace{\baselineskip}
+    \item Erfolgreich: \textit{Benenne das letzte Wort des Satzes.}
+    \item[$\Rightarrow$] Die mentale Grammatik basiert auf Wörtern,\\
+      der sprachbetrachtende Zugriff allerdings noch nicht!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Schulunterricht}
+  \begin{itemize}[<+->]
+    \item \alert{systematisch}
+      \begin{itemize}
+        \item in knapper Zeit das Ganze im Blick
+      \end{itemize}
+      \vspace{\baselineskip}
+    \item funktional im Sinn von \alert{Form-Funktion-Beziehung}
+      \begin{itemize}
+        \item Formen systematisieren
+        \item erst dann auf Funktionen beziehen
+      \end{itemize}
+      \vspace{\baselineskip}
+    \item \alert{induktiv}
+      \begin{itemize}
+        \item keine rein deduktive Anwendung vorgegebener Begriffe
+        \item Erkenntnisprozesse über sprachliche Formen und Funktionen
+        \item \alert{\textit{Grammatik machen}} (Eisenberg)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Aufgaben von Lehrpersonen}
+  \pause
+  \alert{\textit{Lehrkräften wird die Sprache der Lernenden anvertraut.}} (nach Eisenberg)\\[\baselineskip]
+  \pause
+  \begin{itemize}[<+->]
+    \item Unterrichten der Schrift, Orthographie und Schreibung
+    \item Unterweisung in Bildungssprache\slash Sprachbetrachtung
+    \item Erkennen und \alert{Einordnen} von \alert{sprachlichen Defiziten}
+    \item Erkennen von \alert{Interferenz mit Dialekt bzw.\ anderen Erstsprachen}
+    \item \alert{Bewerten} von sprachlichen Leistungen
+    \item \alert{Erklären} der Bewertung (auch gegenüber Eltern)
+      \vspace{\baselineskip}
+    \item[$\Rightarrow$] Anforderung: vertieftes Wissen über Sprache, vor allem Grammatik
+    \item[$\Rightarrow$] Methode der sprachlichen Analyse über Faktenwissen hinaus
+    \item[$\Rightarrow$] \rot{Die Grammatik für Studierende des Lehramts ist eine völlig andere\\
+      als die, die sie später an Schulkinder und Jugendliche vermitteln!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {"`Wozu brauchen wir das denn?"'}
+  \pause
+  \begin{itemize}[<+->]
+    \item beantwortet
+    \item Linguistik und Fachdidaktik: keine praktische Anleitungen\\
+      für erfolgreiche Schulstundenkonzepte
+    \item Grundausbildung im \alert{Umgang mit Sprache} (Linguistik)\\
+      und zum \alert{richtigen Handeln im Unterricht} (Fachdidaktik; nach Bredel)
+      \vspace{\baselineskip}
+    \item Minimalforderung: \alert{Examinierte Lehrkräfte müssen die\\
+      Aufgaben für die späteren Lernenden selber lösen und einordnen können.}
+    \item \alert{Bis nächste Woche: Bitte schauen Sie sich den Fragebogen\\
+      aus Schäfer \& Sayatz (2017) an (siehe Blackboard).}
+  \end{itemize}
+\end{frame}
+
+\end{document}

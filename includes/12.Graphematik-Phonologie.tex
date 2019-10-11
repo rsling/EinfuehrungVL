@@ -1,0 +1,891 @@
+%\documentclass[handout,aspectratio=1610]{beamer}
+\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{multicol}
+\usepackage{stmaryrd}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\forestset{
+  narroof/.style={roof, inner xsep=-0.25em, rounded corners},
+}
+
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+\newcommand{\UpSub}[2]{\ensuremath{^{\text{#1}}_{\text{#2}}}}
+ 
+\newcommand{\Spur}[1]{t\Sub{#1}}
+\newcommand{\Ti}{\Spur{1}}
+\newcommand{\Tii}{\Spur{2}}
+\newcommand{\Tiii}{\Spur{3}}
+\newcommand{\Tiv}{\Spur{4}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+\newcommand{\blaw}[1]{{\color[rgb]{0,0,.9}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{%
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{%
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{%
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\newcommand{\whyte}[1]{\textcolor{white}{#1}}
+
+\newcommand{\KTArr}[1]{\ding{226}~\textit{#1}~\ding{226}}
+\newcommand{\Ast}{*}
+
+\newcommand{\SL}{\ensuremath{\llbracket}}
+\newcommand{\SR}{\ensuremath{\rrbracket}}
+
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\newcounter{lastpagemainpart}
+
+\resetcounteronoverlays{exx}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\title{Einführung in die Sprachwissenschaft\\
+12.~Graphematik und Phonologie}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\29.~Januar 2019}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Rückblick}
+
+\begin{frame}
+  {Rückblick: Syntaktische Relationen}
+  \pause
+  \begin{itemize}[<+->]
+    \item semantische Rollen: Syntax-Semantik-Schnittstelle für Verben
+      \Halbzeile
+    \item Satzprädikat: entweder "`finites Verb"' oder \rot{undefiniert}
+    \item andere "`prädikative"' Konstituenten: \alert{Kopula-Test}
+      \Halbzeile
+    \item \alert{Valenzänderungen und Valenzanreicherungen}
+      \begin{itemize}[<+->]
+        \item Vorgangspassiv (\textit{werden}, \orongsch{Nom\_Ag→\textit{von}-PP}, \alert{ggf.\ Akk→Nom})
+        \item Rezipientenpassiv (\textit{bekommen}, \orongsch{Nom\_Ag→\textit{von}-PP}, \rot{Dat→Nom})
+        \item "`freie Dative"': Valenzerweiterung (bis auf Bewertungsdativ)
+      \end{itemize}
+      \Halbzeile
+    \item Ergänzungen und Angaben:
+      \begin{itemize}[<+->]
+        \item Subjekt: regierter und mit Verb kongruierender \alert{Nom}\\
+           (oder Satz an dessen Stelle)
+         \item dir.\ Objekt: verbregierter (ggf.\ vom Vorgangspassiv betroffener) \alert{Akk}\\
+          (oder Satz an dessen Stelle)
+        \item indir.\ Objekt: verbregierter (vom Rezipientenpassiv betroffener) \alert{Dat}
+        \item \alert{Rollenbindung ans Verb} oder nicht
+        \item bei PPs: Auskopplungstest (aber problematisch)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\section{Überblick}
+
+\begin{frame}
+  {Graphematik: Segmentschreibungen}
+  \pause
+  \begin{itemize}[<+->]
+    \item Graphematik als Teil der Grammatik\slash Linguistik
+      \Halbzeile
+    \item \alert{phonologisches Schreibprinzip}:\\
+      zugrundeliegende Form $\Leftrightarrow$ Buchstabe
+    \item große Ausnahme davon bei den Vokalen 
+      \Halbzeile
+    \item Nicht-Prinzip der Dehnungsschreibung (unsystematisch)
+    \item \alert{Prinzip der Gelenkschreibung} ("`Schärfungsschreibung"')
+      \Halbzeile
+    \item Eszett und die Eliminierung des zugrundeliegenden /s/
+    \item Grenz-\textit{h}
+      \Halbzeile
+    \item nicht gesondert behandelt: \alert{Orthographie} (Norm)\\
+      vs.\ \alert{Graphematik} (linguistische Analyse der Schreibprinzipien)
+    \item idealerweise: Orthographie folgt (verzögert) der Graphematik\\
+      (Prinzip: Norm als Beschreibung und vorsichtige Standardisierung)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Bedeutung für Erwerb und Lehre der Schriftsprache}
+  \pause
+  \begin{itemize}[<+->]
+    \item Das müssen wir nicht besonders betonen, oder?
+      \Halbzeile
+    \item extreme Aufgabe für Lerner*innen ab JGS 1:
+      \begin{itemize}[<+->]
+        \item Erwerb der Buchstaben\ldots\ naja, kein Problem
+        \item aber: Schreibprinzipien mit allen grammatischen Ebenen verbunden
+        \item \rot{explizites Erlernen für (Grund-)Schulkinder nahezu unmöglich}
+      \end{itemize}
+      \Halbzeile
+    \item Aufgaben der Lehrpersonen im weitgehend impliziten Lernprozess:
+      \begin{itemize}[<+->]
+        \item \alert{korrekten und \textbf{geschriebenen} Input auswählen}\\
+          (vgl.\ Anlaut-\slash Auslautreihen oder das Prinzip \alert{Kern vor Peripherie})
+        \item \alert{Produktionsprobleme richtig klassifizieren, richtig helfen}
+        \item notgedrungen: \alert{Aussprache des Standards parallel vermitteln}
+      \end{itemize}
+      \Halbzeile
+    \item Viele Dinge sind so einfach\ldots\ Bitte:
+      \begin{itemize}[<+->]
+        \item \rot{\textbf{nicht}} sofort zur Lese-\slash Schreibförderung schicken,\\
+          denn das heißt zu \rot{kapitulieren}, \rot{brandmarken} und \rot{demotivieren}
+        \item \rot{\textbf{niemals}} \rot{Hinhörschreibungen} lehren: \alert{immer und}\\
+          \alert{von Anfang an den korrekten geschriebenen Input geben}
+        \item folglich: \rot{\textbf{niemals} "`Ausprobierschreibungen"' zulassen}  
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\section{Graphematik als Teil der Grammatik?}
+
+\begin{frame}
+  {Was ist hier falsch?}
+  \pause
+  Alle diese Schreibungen sind mögliche Schreibungen,\\
+  kodieren aber etwas Anderes als im Kontext grammatisch nötig.\\
+  \Halbzeile
+  \pause
+  \begin{exe}
+    \ex\label{ex:graphematikalsteildergrammatik001}
+    \begin{xlist}
+      \ex[*]{\label{ex:graphematikalsteildergrammatik002} Fine findet, \rot{das} die Schuhe gut aussehen.}
+      \pause
+      \ex[*]{\label{ex:graphematikalsteildergrammatik003} Wenn ich Geld hätte, \rot{nehme} ich den Kopfhörer mit.}
+      \pause
+      \ex[*]{\label{ex:graphematikalsteildergrammatik004} Um voranzukommen, nimmt Fine an der Fortbildung \rot{Teil}.}
+      \pause
+      \ex[*]{\label{ex:graphematikalsteildergrammatik005} \rot{Zurückbleibt} der Schreibtisch nur, wenn der LKW randvoll ist.}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item falsche lexikalische Schreibung → Wort existiert,\\
+      \alert{hier falsche Wortklasse}
+    \item falsche Segmentschreibung → Form möglich, \alert{hier falsche Flexionsform}
+    \item falsche Wort(klassen)schreibung → Wort existiert,\\
+      \alert{hier falscher morphosyntaktischer Status}
+    \item falsche Wortschreibung (Spatium) → \textit{zurückbleibt} anderswo möglich\\
+      \alert{hier durch Bewegungssyntax ausgeschlossen}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Einordnung und andere Meinungen I}
+  \pause
+  \begin{itemize}[<+->]
+    \item Graphematik als eins der \alert{Kodierungssysteme der Grammatik}
+    \item Relevanzunterschied zu Phonetik (= anderes Medium)? --- \alert{Keiner!}
+    \item Und \alert{Gebärdensprache}?
+    \Halbzeile
+    \item \alert{Natürlich gehört die Graphematik zur Grammatik\slash Linguistik.}
+    \Halbzeile
+    \item \rot{Aber viele Sprachen haben keine Schriftsysteme!}
+      \begin{itemize}[<+->]
+        \item \alert{Ja und? Viele haben eins, \zB das Deutsche.}
+      \end{itemize}
+      \Viertelzeile
+    \item \rot{Aber es gibt Sprachen ohne Schrift und keine Schrift ohne Sprache!}
+      \begin{itemize}[<+->]
+        \item \alert{Ja und? Im Gegenteil: In \textit{Kulturen}, die Jahrhunderte oder -tausende lang\\
+        verschriften, gibt es erhebliche Rückkopplungen\\
+        zwischen Gesprochenem und Geschriebenem, \zB\ im Deutschen.}
+      \end{itemize}
+      \Viertelzeile
+    \item \rot{Aber die Schrift haben sich Leute ausgedacht!}\\
+      (soll heißen: Die Schreibung hat sich nicht natürlich entwickelt.)
+      \begin{itemize}[<+->]
+        \item \alert{Ach? Schonmal die Entwicklung der deutschen Schreibung angesehen?}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Einordnung und andere Meinungen II}
+  \pause
+  \begin{itemize}[<+->]
+    \item \rot{Aber die Schriftsprache ist nicht spontan, daher uninteressant\\
+      für Linguistik (= Erforschung unbewusster kognitiver Vorgänge)!}
+      \begin{itemize}[<+->]
+        \item \alert{Ach? Sagen Linguist*innen, die glauben, dass sie selber (oder andere)\\
+          durch Introspektion an ihre interne Grammatik rankommen!}
+        \item Bildungssprache tendiert generell zur reflektierten \alert{Überformung},\\
+          das Medium spielt dafür nur tendentiell eine Rolle.
+      \end{itemize}
+      \Viertelzeile
+    \item \rot{Aber Kinder lernen zuerst Sprechen, ohne Schrift!}
+      \begin{itemize}[<+->]
+        \item \alert{Ja und? Wir beschreiben beide Kodierungssysteme ja auch getrennt.\\
+          Niemand sagt, dass das dasselbe ist.}
+        \item Das akustische Medium hat meist aus praktischen Gründen Vorrang\\
+          (aber vgl.\ \zB gehörlose Kinder).
+      \end{itemize}
+      \Viertelzeile
+    \item \rot{Aber aus diesen } (falschen) \rot{Gründen, hält die gesprochene Sprache\\
+      in der Linguistik traditionell das Primat über die geschriebene!}
+      \begin{itemize}[<+->]
+        \item \alert{Blanker Unsinn. Die meisten Linguist*innen, die sowas behaupten,\\
+          haben keinerlei Ahnung von gesprochener Sprache.}
+        \item \grau{Vgl.\ \citet{Schwitalla2011} zur Einführung in gesprochene Sprache.}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Erinnerung: der Kernwortschatz}
+  \pause
+  Was war nochmal der Kernwortschatz?\\
+  \Halbzeile
+  \pause
+  \begin{itemize}[<+->]
+    \item Wörter, für die \alert{die weitreichenden Generalisierungen gelten}
+    \item = Wörter und Wortklassen mit \alert{hoher Typenhäufigkeit}
+    \item \rot{nicht} die "`häufigen Wörter"' (= Tokenhäufigkeit)
+    \item \rot{nicht} die Erbwörter (aber Erbwörter meistens im Kern)
+      \Halbzeile
+    \item Kern-Substantive: Einsilbler (im Plural Trochäus) oder Trochäus
+    \item warum gerade Substantive so zentral?\\
+      \alert{mit Abstand die mächtigste Wortklasse}
+      \Halbzeile
+    \item \rot{Missverständnis}: Kern\slash Peripherie klar abgegrenzt
+    \item je höher die Typenhäufigkeit, desto kerniger
+    \item periphere Wörter, Konstruktionen usw.\ \alert{nicht weniger grammatisch}
+      \Halbzeile
+    \item Egal, was man Ihnen erzählt: \rot{Die Definition ist nicht zirkulär!}
+  \end{itemize}
+\end{frame}
+
+\section{Segment\-schreibungen}
+
+\begin{frame}
+  {Ordnung total: die Konsonantenzeichen}
+  \pause
+  \centering
+  \resizebox{0.48\textwidth}{!}{
+    \begin{tabular}{lll}
+      \toprule
+      \textbf{Segment} & \textbf{Buchstabe(n)} & \textbf{Beispielwörter} \\
+      \midrule
+     p & p & \textit{Plan} \\
+     b & b & \textit{Baum}, \textit{Trab} \\
+     p͡f & pf & \textit{Pfad} \\
+     f & f & \textit{Fahrt} \\
+     v & w & \textit{Wand} \\
+     m & m & \textit{Mus} \\
+     t & t & \textit{Tau} \\
+     d & d & \textit{Dach}, \textit{Bild}\\
+     t͡s & z & \textit{Zeit} \\
+     \rot{s} & \rot{s} & \textit{Los} \\
+     \rot{z} & \rot{s} & \textit{Sau} \\
+     ʃ & sch & \textit{Schiff} \\
+     n & n & \textit{Not}, \textit{Klang} \\
+     l & l & \textit{Lob} \\
+     ç & ch & \textit{Blech}, \textit{Wacht} \\
+     ʝ & j & \textit{Jahr} \\
+     k & k & \textit{Kiel} \\
+     g & g & \textit{Gans}, \textit{Weg}, \textit{König} \\
+     ʁ & r & \textit{Ritt}, \textit{Tür} \\
+     h & h & \textit{Herz} \\
+      \bottomrule
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  {Invarianz der Konsonantenzeichen}
+  \pause
+  \alert{Wir schreiben, wie unsere zugrundeliegenden Formen aussehen.}\\
+  \pause
+  \Zeile
+  \centering
+  \resizebox{0.9\textwidth}{!}{
+    \begin{tabular}{lp{0.15cm}lp{0.15cm}llp{0.15cm}llp{0.15cm}l}
+      \toprule
+      \textbf{zugr.} && \textbf{Buch-} && \multicolumn{2}{l}{\textbf{phonetische}}    && \multicolumn{2}{l}{\textbf{phonologische}} && \textbf{phonetische} \\
+      \textbf{Segm.} && \textbf{stabe(n)} && \multicolumn{2}{l}{\textbf{Realisierungen}} && \multicolumn{2}{l}{\textbf{Schreibungen}}  && \textbf{Schreibung} \\
+      \midrule
+      b && b && ba͡ɔm & loːp && \textit{Baum} & \textit{Lob} && *\textit{Lop} \\
+      d && d && daχ & ʁɪnt && \textit{Dach} & \textit{Rind} && *\textit{Rint} \\
+      n && n && naχt & klaŋ && \textit{Nacht} & \textit{Klang} && *\textit{Klaŋ} \\
+      ç && ch && lɪçt & vaχt && \textit{Licht} & \textit{Wacht} && *\textit{Waχt} \\
+      g && g && gans & køːnɪç && \textit{Gans} & \textit{König} && *\textit{Könich} \\
+      ʁ && r && ʁuːm & to͡ɐ && \textit{Ruhm} & \textit{Tor} && *\textit{Toe} \\
+      \bottomrule
+    \end{tabular}
+  }
+  \Zeile
+  \pause
+  \begin{itemize}[<+->]
+    \item einige Substitutionsphänome (anlautendes /kv/ als \textit{qu} usw.)
+    \item \alert{Das Problem mit den \textit{s}-Schreibungen wird noch gelöst!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Ordnung naja: Vokalzeichen}
+  \pause
+  \centering
+  \scalebox{0.8}{%
+    \begin{tabular}{lp{0.5cm}llp{0.25cm}ll}
+      \toprule
+      \multirow{2}{*}{\textbf{Buchstabe}} && \multicolumn{2}{l}{\textbf{Segment}} && \multicolumn{2}{l}{\textbf{Segment}} \\
+       && \textbf{gespannt} & \textbf{Beispiel} && \textbf{ungespannt} & \textbf{Beispiel} \\
+      \midrule
+      i  && i  & \textit{Igel} && ɪ & \textit{Licht} \\
+      ü  && y  & \textit{Rübe} && ʏ & \textit{Rücken} \\
+      u  && u  & \textit{Mut} && ʊ & \textit{Butter} \\
+      e  && e  & \textit{Mehl} && ɛ̆ & \textit{Bett} \\
+      ö  && ø & \textit{Höhle} && œ & \textit{Löffel} \\
+      o  && o  & \textit{Ofen} && ɔ & \textit{Motte} \\
+      ä  && ɛ  & \textit{Gräte} && ɛ̆ & \textit{Säcke} \\
+      a  && a  & \textit{Wal} && ă & \textit{Wall} \\
+      \bottomrule
+    \end{tabular}
+  }
+    \Zeile
+    \pause
+    \begin{itemize}[<+->]
+      \item \alert{für gespannte\slash ungespannte Vokalpaare nur je ein Zeichen}
+      \item außerdem \textit{e}→/ɛ̆/ und \textit{ä}→/ɛ̆/
+      \item "`speter"'-Dialekte zusätzlich \textit{e}→/e/ und \textit{ä}→/e/
+        \Halbzeile
+      \item \alert{Diphthonge} brechen zusätzlich das phonematische Prinzip (s.\ Buch)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Gründe für das System der Vokalzeichen}
+  \pause
+  \begin{itemize}[<+->]
+    \item im Kern: \alert{starke Kopplung von Gespanntheit, Länge und Betonung}
+    \item nahe an \alert{einer zugrundeliegenden Form} für Gespanntheitspaare
+    \item zusammen mit \alert{Silbengelenkschreibung} (s.\,u.) daher\\
+      kaum Bedarf an graphematischer Differenzierung
+      \Halbzeile
+    \item außerdem Entwicklung von \alert{Dehnungsschreibungen}\\
+      zur Desambiguierung
+    \item \ldots weil \alert{Länge + Akzent → Gespanntheit}
+      \Halbzeile
+    \item trotzdem suboptimal
+  \end{itemize}
+\end{frame}
+
+
+\section{Dehnung und Schärfung}
+
+\begin{frame}
+  {Das Kreuz mit der Dehnungsschreibung}
+  \pause
+  \begin{itemize}[<+->]
+    \item Dehnungs-\textit{h} (\textit{Reh}, \textit{Pfahl}) oder Dehnungs-Doppelvokal (\textit{Saat}, \textit{Boot})
+    \item speziell bei \textit{i} (dort fast immer): Dehnungs-\textit{e} (\textit{Knie}, \textit{Dieb})
+      \Halbzeile
+    \item \alert{weitgehend redundant} (erst recht im Kern)
+    \item \alert{unsystematisch} (\textit{Lid}, \textit{Lied} usw.)
+      \Halbzeile
+    \item mangels Systematik: \alert{oft Erwerbsprobleme}
+    \item \ldots denen kaum systematisch zu begenen ist
+  \end{itemize}
+\end{frame}
+
+\newcommand{\LocStrutGrph}{\hspace{0.1\textwidth}}
+\newcommand{\Nono}{---}
+
+\begin{frame}
+  {Das Faszinosum der Schärfungsschreibung}
+  \pause
+  Dehnungs-\slash Schärfungsschreibungen (Einsilbler\slash trochäischer Zweisilbler)\\
+  \Zeile
+  \pause
+  \centering
+  \resizebox{0.85\textwidth}{!}{
+    \begin{tabular}{lllllllll}
+      \toprule
+      & & & \textbf{ɪ} & \textbf{ʊ} & \multicolumn{2}{l}{\LocStrutGrph\textbf{ɛ̆}} & \textbf{ɔ} & \textbf{ă} \\
+      \midrule
+
+      \multirow{4}{*}{\rotatebox{90}{\textbf{ungespannt}}}
+
+      & \multirow{2}{*}{\rotatebox{90}{\textbf{offen}}}
+      & \textbf{einsilb.}  & \textit{\Nono}  & \textit{\Nono}           & \multicolumn{2}{l}{\LocStrutGrph\textit{\Nono}}         & \textit{\Nono}        & \textit{\Nono}           \\
+      && \textbf{zweisilb.}  & \textit{Li.\alert{pp}e} & \textit{Fu.\alert{tt}er}         & \multicolumn{2}{l}{\LocStrutGrph\textit{We.\alert{ck}e}}        & \textit{o.\alert{ff}en}       & \textit{wa.\alert{ck}er}         \\
+        & \multirow{2}{*}{\rotatebox{90}{\textbf{gesch.}}}
+        & \textbf{einsilb.}  & \textit{Ki\rot{nn}}   & \textit{Schu\rot{tt}}    & \multicolumn{2}{l}{\LocStrutGrph\textit{Be\rot{tt}}}           & \textit{Ro\rot{ck}}         & \textit{Wa\rot{tt}}            \\
+        && \textbf{zweisilb.}  & \textit{Rin.de} & \textit{Wun.der}        & \multicolumn{2}{l}{\LocStrutGrph\textit{Wen.de}}        & \textit{pol.ter}      & \textit{Tan.te}          \\
+
+      \midrule
+
+      \multirow{4}{*}{\rotatebox{90}{\textbf{gespannt}}}
+
+      & \multirow{2}{*}{\rotatebox{90}{\textbf{offen}}}
+        & \textbf{einsilb.}  & \textit{Knie}   & \textit{Schuh}       & \textit{Schnee, Reh}  & \textit{zäh}          & \textit{roh}          & (\textit{da})            \\
+      && \textbf{zweisilb.}  & \textit{Bie.ne} & \textit{Kuh.le, Schu.le} & \textit{we.nig}       & \textit{Äh.re, rä.kel} & \textit{oh.ne, O.fen} & \textit{Fah.ne, Spa.ten} \\
+
+      & \multirow{2}{*}{\rotatebox{90}{\textbf{gesch.}}}
+        & \textbf{einsilb.}  & \textit{lieb}  & \textit{Ruhm, Glut}      & \textit{Weg}          & \textit{spät}           & \textit{rot}          & \textit{Tat}             \\
+      && \textbf{zweisilb.}  & (\textit{lieb.lich}) & (\textit{lug.te})   & (\textit{red.lich})   & (\textit{wähl.te})     & (\textit{brot.los})   & (\textit{rat.los})       \\
+
+      \midrule
+      & & & \textbf{i} & \textbf{u} & \textbf{e} & \textbf{ε} & \textbf{o} & \textbf{a} \\
+
+      \bottomrule
+    \end{tabular}
+  }
+  \Halbzeile\pause
+  \begin{itemize}[<+->]
+    \item \alert{Schärfungsschreibung im Trochäus nur nach ungespanntem Vokal\\
+      in offener Silbe, wenn Anfangsrand der Zweitsilbe konsonantisch}
+    \item (\ldots und im geschlossenen Einsilbler mit ungespannten Vokal)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Details und oft Übersehenes}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Schärfungsschreibung = Silbengelenkschreibung}
+    \item Aber warum dann im Einsilbler (\textit{Kinn}, \textit{Bett}, \textit{Rock})?
+      \begin{itemize}[<+->]
+        \item Siehe nächste Woche!
+      \end{itemize}
+      \Halbzeile
+    \item Merke: Silbengelenkschreibung nur da, wo auch Silbengelenk:
+      \begin{itemize}[<+->]
+        \item \alert{zwischen Erst- und Zweitsilbe des Trochäus}
+        \item \alert{nach ungespanntem} (=kurzem) \alert{Vokal}
+      \end{itemize}
+      \Halbzeile
+    \item \alert{keine Schärfungsschreibung bei Di- und Trigraphen}
+      \begin{itemize}[<+->]
+        \item \textit{Esche} [ɛʃ̣ə], \textit{zischen} [t͡sɪʃ̣ən]
+        \item \textit{Kachel} [kaχ̣əl], \textit{Zeche} [t͡sɛç̣ə]
+        \item \textit{Kringel} [kʁɪŋ̣əl], \textit{Zunge} [t͡sʊŋ̣ə]
+      \end{itemize}
+      \Halbzeile
+    \item \rot{Warum sind stimmhaften Obstruenten im Silbengelenk unmöglich?}
+      \begin{itemize}[<+->]
+        \item Obstruent auch im Endrand der Erstsilbe: \alert{Endrand-Desonorisierung}
+        \item \textit{Kladde}, \textit{Robbe}, \textit{Bagger}, ?\textit{prasseln} [pʁazəln], *\textit{quivveln}
+        \item \ldots \rot{nicht Kern} (fünf oder sechs Typen, alle niederdeutsch)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Eszett: Warum ist mir das wichtig, und worum gehts?}
+  \pause
+  \begin{itemize}[<+->]
+    \item Problem für manche Schreiber*innen
+    \item herrliches Beispiel für reduktionistische Methode
+    \item theorieinterne deduktive Argumentation (= Wissenschaft)
+    \item Eliminierung des zugrundeliegenden /s/
+      \Halbzeile
+    \item immerhin: erhebliche \alert{Systemstraffung} durch Orthographiereform!
+      \Halbzeile
+    \item Erinnerung: Verteilung von /s/ und /z/
+      \begin{itemize}[<+->]
+        \item Wortanfang: nur /z/ (\textit{Sog} [zoːk], niemals *[soːk])
+        \item Wortauslaut: nur /s/ (\textit{Mus} [muːs], niemals *[muːz])
+        \item \alert{im Wortinneren nach ungespanntem Vokal: nur /s/ (\textit{Masse} [maṣə])}
+        \item \rot{im Wortinneren nach gespanntem Vokal:\\
+            /s/ (\textit{Straße} [ʃtʁaːsə]) und /z/ (\textit{Hase} [haːzə])}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\newcommand{\phopro}{\ensuremath{\Rightarrow}}
+
+\begin{frame}
+  {Analyse des Eszett}
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Alle Positionen bis auf die \textit{ß}-Umgebung sind herleitbar:}
+      \begin{itemize}[<+->]
+        \item Wortanlaut (\textit{Sog} [zoːk]): zugrundeliegendes /z/ bleibt [z]
+        \item Wortauslaut (\textit{Mus} [muːs]): zugrundeliegendes /z/ würde sowieso [s]\\
+          wegen Endrand-Desonorisierung
+        \item Wortinneren nach ungespanntem Vokal (\textit{Masse} [maṣə]): \alert{Silbengelenk}\\
+          immer stimmlos wegen Endranddesonorisierung (/măzə/ denkbar)
+      \end{itemize}
+      \Halbzeile
+    \item \alert{Bis hierhin brauchen wir noch kein zugrundeliegendes /s/!}
+      \Halbzeile
+    \item zugrundeliegendes /s/ \rot{nur für das Wortinnere nach gespanntem Vokal}\\
+      \textit{Straße} [ʃtʁaːsə] gegenüber \textit{Hase} [haːzə]
+    \item \alert{Und wenn statt /s/ einfach /zz/ zugrundeliegt?}
+    \item \alert{Und wenn /zz/ nach gespanntem Vokal mit \textit{ß} geschrieben wird?}
+    \item also: \textit{Bußen} als /buzzən/ \phopro [buːssən]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Eszett-Silben und die anderen \textit{s}}
+  \pause
+  \centering
+  {\footnotesize\textit{Busen}:}\hspace{1em}\scalebox{0.6}{%
+    \begin{forest}
+      for tree={s sep+=1em}
+      [Phonologisches Wort, calign=first
+        [Silbe, calign=last
+          [Ar., ake
+            [b]
+          ]
+          [Reim
+            [Kern, ake
+              [uː]
+            ]
+          ]
+        ]
+        [Silbe, calign=last
+          [Ar., ake, baseline
+            [z]
+          ]
+          [Reim, calign=first
+            [Kern, ake
+              [ə]
+            ]
+            [Er., ake
+              [n]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  }~\pause\hspace{1.5em}{\footnotesize\textit{Bussen}:}\hspace{1em}\scalebox{0.6}{%
+    \begin{forest}
+      for tree={s sep+=1em}
+      [Phonologisches Wort, calign=first
+        [Silbe, calign=last
+          [Ar., ake
+            [b]
+          ]
+          [Reim, calign=first
+            [Kern, ake
+              [ʊ]
+            ]
+            [Er., ake, name=BusenEr]
+          ]
+        ]
+        [Silbe, calign=last
+          [Ar., ake, baseline
+            [s]
+            {\draw[-] (.north) -- (BusenEr.south);}
+          ]
+          [Reim, calign=first
+            [Kern, ake
+              [ə]
+            ]
+            [Er., ake
+              [n]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  }\\
+  \pause
+  \Zeile
+  {\footnotesize\textit{Bußen} mit \alert{Auslautverhärtung} und \orongsch{Assimilation}:}\hspace{1em}\scalebox{0.6}{%  
+    \begin{forest}
+      for tree={s sep+=1em}
+      [Phonologisches Wort, calign=first
+        [Silbe, calign=last
+          [Ar., ake
+            [b]
+          ]
+          [Reim, calign=first
+            [Kern, ake
+              [uː]
+            ]
+            [Er., ake
+              [\alert{\textbf{s}}]
+            ]
+          ]
+        ]
+        [Silbe, calign=last
+          [Ar., ake, baseline
+            [\orongsch{\textbf{s}}]
+          ]
+          [Reim, calign=first
+            [Kern, ake
+              [ə]
+            ]
+            [Er., ake
+              [n]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+
+\begin{frame}
+  {Schritt für Schritt}
+  \pause
+  \begin{enumerate}[<+->]
+    \item zugrundeliegende Form: \alert{/buzzən/}
+    \item Silbifizierung \phopro \{buz\orongsch{.}zən\}
+    \item Längung gespannter Vokale \phopro \{b\orongsch{uː}z.zən\}
+    \item Endranddesonorisierung \phopro \{buː\orongsch{s}.zən\}
+    \item Assimilation des Anfangsrands \phopro \alert{[buːs.}\orongsch{s}\alert{ən]}
+  \end{enumerate}
+  \pause
+  \begin{itemize}[<+->]
+    \item Ist die Assimilation ein Taschenspielertrick?
+    \item Nein, denn sie findet auch in anderen Fällen statt!
+  \end{itemize}
+  \pause
+  \begin{exe}
+    \ex\label{ex:dehnungsundschaerfungsschreibungen024}
+    \begin{xlist}
+      \ex{\label{ex:dehnungsundschaerfungsschreibungen025} /ɛ̆k\alert{z}ə/ \phopro\ [ʔɛk.\orongsch{s}ə] (\textit{Echse})}
+      \pause
+      \ex{\label{ex:dehnungsundschaerfungsschreibungen026} /ɛ̆ʁb\alert{z}e/ \phopro\ [ʔɛ͡əp.\orongsch{s}ə] (\textit{Erbse})}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item Also ist das Konsonantenzeichen \textit{s} \rot{nicht} doppelt belegt.
+    \item \alert{Es gibt zugrundeliegend nur /z/.}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Achtung: Grenz-\textit{h}: weder Dehnung noch Segment}
+  \pause
+  \begin{exe}
+    \ex wehe /veə/
+    \pause
+    \ex Ruhe /ʁuə/
+    \pause
+    \ex fliehe /fliə/
+    \pause
+    \ex Krähe /kʁɛə/
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item keine Dehnungsschreibung, siehe \textit{fliehe}
+    \item \alert{Silbengrenzenanzeiger} zwischen Vokalen
+      \Halbzeile
+    \item Ausnahme: nach Diphthong steht Grenz-\textit{h} nicht\\
+      (\textit{Reue}, \textit{Kleie}, \textit{Schreie}, \textit{Säue})
+    \item bis auf Ausnahmen (\textit{verzeihen}, \textit{leihen}, \textit{Reihe}, \textit{Weiher})
+  \end{itemize}
+\end{frame}
+
+
+\section{Vorschau}
+
+\begin{frame}
+  {Wortschreibungen}
+  \pause
+  \begin{itemize}[<+->]
+    \item Prinzip der Spatienschreibung
+    \item Prinzip der positionsabhängigen Majuskelschreibung
+    \item Prinzip der \alert{Konstantschreibung}
+      \Halbzeile
+    \item kurz zu den Interpunktionszeichen
+      \Halbzeile
+    \item Da bleibt noch Zeit\ldots
+    \item Mal sehen, wofür die genutzt wird.
+  \end{itemize}
+  \pause
+  \Halbzeile
+  \begin{center}
+    Bitte lesen Sie bis nächste Woche:\\
+    \alert{Kapitel 16 (S.~495--515)}
+  \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>[noframenumbering]
+  {Exklusiv nur in der VL und wenn Sie dageblieben sind\ldots}
+  \pause
+  Teil 1 der Klausurtipps:\\
+  \Halbzeile
+  \pause
+  \rot{Sie sollten sich folgende Themen dringend genauer ansehen!}
+  \Halbzeile
+  \pause
+  \begin{itemize}
+    \item<4> phonologische Prozesse (grob)
+    \item<5> \alert{Strukturbedingungen der Silbifizierung}
+    \item<6> die wichtigen Wortklassenfilter (je höher im Baum, desto wichtiger),\\
+      \zB Nomen vs.\ Verb, Partikel vs.\ Adverb
+    \item<7> Komposition und Derivation
+    \item<8> Flexionssysteme der verschiedenen Nomina (Subst, Art, Pron, Adj)
+    \item<9> Phrasentypen (besondere, nicht ausschließliche Beachtung: NP, VP)
+    \item<10> Form von (Neben-)Satztypen und Bewegung
+    \item<11> \alert{Valenzänderungen aller Art} (auch Dative)
+    \item<12> Ergänzungen, Angaben und Valenz (auch Kapitel 2!)
+    \item<13> Schreibprinzipien für Segmentschreibungen
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}<handout:0>[noframenumbering]
+  {Wortschreibungen}
+  \begin{itemize}
+    \item Prinzip der Spatienschreibung
+    \item Prinzip der positionsabhängigen Majuskelschreibung
+    \item Prinzip der \alert{Konstantschreibung}
+      \Halbzeile
+    \item kurz zu den Interpunktionszeichen
+      \Halbzeile
+    \item Das bleibt noch Zeit\ldots
+    \item Mal sehen, wofür die genutzt wird.
+  \end{itemize}
+  \Halbzeile
+  \begin{center}
+    Bitte lesen Sie bis nächste Woche:\\
+    \alert{Kapitel 16 (S.~495--515)}
+  \end{center}
+\end{frame}
+
+\makeatletter
+\setcounter{lastpagemainpart}{\the\c@framenumber}
+\makeatother
+
+\appendix
+
+\begin{frame}
+  {Literatur}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \setbeamertemplate{bibliography item}{}
+  \printbibliography
+\end{frame}
+
+\mode<beamer>{\setcounter{framenumber}{\thelastpagemainpart}}
+
+\end{document}

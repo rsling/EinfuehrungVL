@@ -1,0 +1,1419 @@
+\documentclass[handout,aspectratio=1610]{beamer}
+%\documentclass[aspectratio=1610]{beamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{gb4e-}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{boxedminipage}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{multicol}
+\usepackage{stmaryrd}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,cd}
+\tikzset{>=latex}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{FiraSans}
+
+\usepackage[maxbibnames=99,
+  maxcitenames=2,
+  uniquelist=false,
+  backend=biber,
+  doi=false,
+  url=false,
+  isbn=false,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp]{biblatex}
+\addbibresource{rs.bib}
+
+\forestset{
+  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
+  Eobl/.style={draw, rounded corners, inner sep=5pt},
+  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
+  Erec/.style={draw, rounded corners, double, inner sep=5pt},
+  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
+  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
+    delay={content=\whyte{##1}}
+  },
+  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
+  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
+  decide/.style={draw, chamfered rectangle, inner sep=2pt},
+  finall/.style={rounded corners, fill=gray, text=white},
+  intrme/.style={draw, rounded corners},
+  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
+  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
+  sake/.style={tier=preterminal},
+  ake/.style={
+    tier=preterminal
+    },
+}
+
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+\forestset{
+  visible on/.style={
+    for tree={
+      /tikz/visible on={#1},
+      edge+={/tikz/visible on={#1}}}}}
+
+\forestset{
+  narroof/.style={roof, inner xsep=-0.25em, rounded corners},
+}
+
+
+\definecolor{lg}{rgb}{.8,.8,.8}
+\newcommand{\Dim}{\cellcolor{lg}}
+
+
+\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
+\newcommand{\UpSub}[2]{\ensuremath{^{\text{#1}}_{\text{#2}}}}
+ 
+\newcommand{\Spur}[1]{t\Sub{#1}}
+\newcommand{\Ti}{\Spur{1}}
+\newcommand{\Tii}{\Spur{2}}
+\newcommand{\Tiii}{\Spur{3}}
+\newcommand{\Tiv}{\Spur{4}}
+
+\newcommand{\Ck}{\CheckmarkBold}
+\newcommand{\Fl}{\XSolidBrush}
+
+\usetheme[hideothersubsections]{Goettingen}
+
+%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
+%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
+\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
+\newcommand{\blaw}[1]{{\color[rgb]{0,0,.9}#1}}
+
+\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
+\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
+\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
+\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+
+\renewcommand<>{\rot}[1]{%
+  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
+}
+\renewcommand<>{\blau}[1]{%
+  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
+}
+\renewcommand<>{\orongsch}[1]{%
+  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+
+\definecolor{trueblue}{rgb}{0,0.0,0.7}
+\setbeamercolor{alerted text}{fg=trueblue}
+
+\newcommand{\xxx}{\hspaceThis{[}}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\Zeile}{\vspace{\baselineskip}}
+\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
+\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
+
+\newcommand{\whyte}[1]{\textcolor{white}{#1}}
+
+\newcommand{\KTArr}[1]{\ding{226}~\textit{#1}~\ding{226}}
+\newcommand{\Ast}{*}
+
+\newcommand{\SL}{\ensuremath{\llbracket}}
+\newcommand{\SR}{\ensuremath{\rrbracket}}
+
+\resetcounteronoverlays{exx}
+
+\title{Einführung in die Sprachwissenschaft\\
+10.~Phrasen (2) und Sätze}
+\author{Roland Schäfer}
+\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
+\date{Wintersemester 2018/2019\\15.~Januar 2019}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% \section{Rückblick}
+% 
+% \begin{frame}
+%   {Rückblick: }
+%   \pause
+%   \begin{itemize}[<+->]
+%     \item x
+%   \end{itemize}
+% \end{frame}
+
+
+\section{Vorbemerkung}
+
+\begin{frame}
+  {Verbtypen und "`Warum eigtl.\ nicht fragen?"'}
+  \pause
+  \begin{itemize}[<+->]
+    \item Frage aus dem Publikum: \alert{Was sind transitive Verben?}
+    \item Warum kommt so eine Frage nur von einer Person?
+    \item Es gibt wahrscheinlich kaum Beschwerden über\ldots
+      \begin{itemize}[<+->]
+        \item meine Antwortzeit auf Emails,
+        \item meinen Stil in Emails,
+        \item die Ausführlichkeit der Antworten.
+      \end{itemize}
+    \Halbzeile
+    \item traditionelle Termini für Verbtypen (s.\ Kapitel 14 für Neuordnung)
+      \begin{itemize}[<+->]
+        \item \alert{intransitiv}: regiert nur einen Nominativ (\textit{leben}, \textit{schlafen})
+        \item \alert{transitiv}: regiert einen Nominativ und einen Akkusativ (\textit{sehen}, \textit{lesen})
+        \item \alert{ditransitiv}: regiert zusätzlich einen Dativ (\textit{geben}, \textit{schicken})
+        \item \alert{präpositional transitiv}: regiert Nom und PP (\textit{leiden +unter})
+        \item \alert{präpositional ditransitiv}: regiert Nom, Akk, PP (\textit{schreiben +an})
+        \item \ldots
+          \Halbzeile
+        \item \alert{eigtl.\ eine überflüssige Terminologie (Valenz als Liste!)}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Frage zwei: Ergänzungen und Angaben}
+  \pause
+  Siehe auch: Kapitel~2, Abschnitt~2.4 (S.~40--48)!\\
+  \pause\Halbzeile
+  \begin{exe}
+    \ex\label{ex:valenz034}
+    \begin{xlist}
+      \ex{Gabriele malt \alert{[ein Bild]}.}
+      \pause
+      \ex{Gabriele malt \rot{[gerne]}.}
+      \pause
+      \ex{Gabriele malt \rot{[einen ganzen Tag]}.}
+      \pause
+      \ex{Gabriele malt \rot{[ihrem Mann]} \orongsch{[zu figürlich]}.}
+    \end{xlist}
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{[ein Bild]} mit besonderer Relation zum Verb
+    \item \alert{Weglassbarkeit} (Optionalität) nicht entscheidend
+      \Halbzeile
+    \item Ergänzungen $\approx$ Subjekte \& Objekte, Komplemente, Argumente
+    \item Angaben $\approx$ Adverbiale, Adjunkte
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Lizenzierung}
+  \pause
+  \begin{exe}
+    \ex 
+    \begin{xlist}
+      \ex[ ]{Gabriele isst \rot{[einen ganzen Tag]} Walnüsse.}
+    \pause
+      \ex[ ]{Gabriele läuft \rot{[einen ganzen Tag]}.}
+      \pause
+      \ex[ ]{Gabriele backt ihrer Schwester \rot{[einen ganzen Tag]} Stollen.}
+      \pause
+      \ex[ ]{Gabriele litt \rot{[einen ganzen Tag]} unter Sonnenbrand.}
+    \end{xlist}
+    \pause\Halbzeile
+    \ex 
+    \begin{xlist}
+      \ex[*]{Gabriele isst \alert{[ein Bild]} Walnüsse.}
+      \pause
+      \ex[*]{Gabriele läuft \alert{[ein Bild]}.}
+      \pause
+      \ex[*]{Gabriele backt ihrer Schwester \alert{[ein Bild]} Stollen.}
+      \pause
+      \ex[*]{Gabriele litt \alert{[ein Bild]} unter Sonnenbrand. }
+      \pause
+    \end{xlist}
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item \rot{Angaben} sind verb-unspezifisch lizenziert
+    \item \alert{Ergänzungen} sind verb(klassen)spezifisch lizenziert
+    \item Valenz = Liste der Ergänzungen eines lexikalischen Worts
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Weiteres zu Ergänzungen und Angaben}
+  \pause
+  \alert{Iterierbarkeit} (= Wiederholbarkeit) von Angaben, nicht Ergänzungen\\
+  \pause
+  \Halbzeile
+  \begin{exe}
+    \ex[ ]{Wir müssen den Wagen \rot{[jetzt]} \orongsch{[mit aller Kraft]} \rot{[vorsichtig]} anschieben.}
+    \pause
+    \ex[ ]{Wir essen \rot{[schnell]} \orongsch{[mit Appetit]} \rot{[an einem Tisch]} \orongsch{[mit der Gabel]} \alert{[einen Salat]}.}
+    \pause
+    \ex[*]{Wir essen \rot{[schnell]} \gruen{[ein Tofugericht]} \orongsch{[mit Appetit]} \rot{[an einem Tisch]} \orongsch{[mit der Gabel]} \alert{[einen Salat]}.}
+  \end{exe}
+  \pause
+  \Halbzeile
+  Semantik von Angaben: \alert{unabhängig}, von Ergänzungen: \alert{verbgebunden}\\
+  \Halbzeile
+  \pause
+  \begin{exe}
+    \ex\label{ex:valenz071}
+    \begin{xlist}
+      \ex{\label{ex:valenz072}Ich lösche \alert{[den Ordner]} \rot{[schnell]}.}
+      \pause
+      \ex{\label{ex:valenz073}Ich mähe \alert{[den Rasen]} \rot{[schnell]}.}
+      \pause
+      \ex{\label{ex:valenz074}Ich fürchte \alert{[den Sturm]} \rot{[während des Sommers]}.}
+    \end{xlist}
+  \end{exe}
+\end{frame}
+
+\section{Überblick}
+
+\begin{frame}
+  {(Neben)sätze}
+  \pause
+  \begin{itemize}[<+->]
+    \item Nebensätze als Komplementiererphrasen
+    \Halbzeile
+    \item Matrix(satz), Nebensatz, Hauptsatz
+    \item Funktionen der unabhängigen und eingebetteten Sätze 
+    \item Aufbau der unabhängigen Satztypen
+    \Halbzeile
+    \item \rot{kein Feldermodell in der Vorlesung}
+  \end{itemize}
+
+\end{frame}
+
+
+\section{Phrasentypen, Fortsetzung}
+
+\begin{frame}
+  {Komplementiererphrasen = eingeleitete Nebensätze}
+  \pause
+  \begin{exe}
+    \ex\label{ex:komplementiererphrase111}
+    \begin{xlist}
+      \ex[]{\label{ex:komplementiererphrase112} Der Arzt möchte, [dass \alert{[der Privatpatient die Rechnung bezahlt]}].}
+      \pause
+      \ex[*]{\label{ex:komplementiererphrase113} Der Arzt möchte, [dass \rot{[der Privatpatient bezahlt die Rechnung]}].}
+      \pause
+      \ex[*]{\label{ex:komplementiererphrase114} Der Arzt möchte, [dass \rot{[bezahlt der Privatpatient die Rechnung]}].}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \centering
+  \begin{forest}
+    [KP, calign=first
+      [\bf K, tier=preterminal
+        [\it dass, name=Kpkopf]
+      ]
+      [VP, tier=preterminal
+        [\it der Kassenpatient geht, narroof]
+      ]
+    ]
+  \end{forest}\\
+  \pause
+  \Zeile
+  \alert{Verb-Letzt-Stellung!}\\
+\end{frame}
+
+
+\begin{frame}
+  {Beispiele für Verbphrasen}
+  \pause
+  \begin{exe}
+  \ex
+    \begin{xlist}
+      \ex{dass [Ischariot malt]}
+      \pause
+      \ex{dass [Ischariot [das Bild] malt]}
+      \pause
+      \ex{dass [Ischariot [dem Arzt] [das Bild] verkauft]}
+      \pause
+      \ex{dass [Ischariot [wahrscheinlich] [dem Arzt] [heimlich] [das Bild] \\schnell verkauft]}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \centering
+  \scalebox{0.8}{
+    \begin{forest}
+      l sep+=3em
+      [VP, calign=last
+        [NP, tier=preterminal
+          [\it Ischariot, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it wahrscheinlich, narroof]
+        ]
+        [NP, tier=preterminal
+          [\it dem Arzt, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it heimlich, narroof]
+        ]
+        [NP, tier=preterminal
+          [\it das Bild, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it schnell, narroof]
+        ]
+        [\bf V, tier=preterminal
+          [\it verkauft]
+        ]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+\begin{frame}
+  {Warum Verbkomplexe?}
+  \pause
+  Deutsch: \alert{Verben werden miteinander kombiniert, um Tempora,\\
+  Modalität, Diathese usw.\ zu kodieren.}\\
+  \pause
+  \begin{exe}
+    \ex{\label{ex:verbkomplex121} dass der Junge ein Eis \alert{[isst]}}
+    \pause
+    \ex\label{ex:verbkomplex122}
+    \begin{xlist}
+      \ex{\label{ex:verbkomplex123} dass der Junge ein Eis \alert{[essen wird]}}
+      \pause
+      \ex{\label{ex:verbkomplex124} dass das Eis \alert{[gegessen wird]}}
+      \pause
+      \ex{\label{ex:verbkomplex125} dass die Freundin das Eis \alert{[kaufen wollen wird]}}
+    \end{xlist}
+  \end{exe}
+  
+\end{frame}
+
+
+\begin{frame}
+  {Verbkomplexe und Statusrektion}
+  \pause
+  \Halbzeile
+  \centering
+  \scalebox{0.7}{
+    \begin{forest}
+      [\bf V, tier=preterminal
+        [\it isst, baseline]
+      ]
+    \end{forest}
+  }
+  \hspace{1em}\scalebox{0.7}{
+    \begin{forest}
+      [\bf V\Sub{2+1}, calign=last
+        [\bf V\Sub{2}, tier=preterminal
+          [\it essen\\(1.~Status)]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it wird, baseline]
+          {\draw [->, bend left=30] (.south) to (!uu11.south);}
+        ]
+      ]
+    \end{forest}
+  }
+  \hspace{1em}\scalebox{0.7}{
+    \begin{forest}
+      [\bf V\Sub{2+1}, calign=last
+        [\bf V\Sub{2}, tier=preterminal
+          [\it gegessen\\(3.~Status)]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it wird, baseline]
+          {\draw [->, bend left=30] (.south) to (!uu11.south);}
+        ]
+      ]
+    \end{forest}
+  }
+  \hspace{1em}\scalebox{0.7}{
+    \begin{forest}
+      [\bf V\Sub{3+2+1}, calign=last
+        [\bf V\Sub{3+2}, calign=last
+          [\bf V\Sub{3}, tier=preterminal
+            [\it kaufen\\(1.~Status)]
+          ]
+          [\bf V\Sub{2}, tier=preterminal
+            [\it wollen\\(1.~Status)]
+            {\draw [->, bend left=30] (.south) to (!uu11.south);}
+          ]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it wird, baseline]
+          {\draw [->, bend left=30] (.south) to (!uu121.south);}
+        ]
+      ]
+    \end{forest}
+  }
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item erste Numerierung: \alert{Verb 1 regiert Verb 2 regiert Verb 3\ldots}
+      \Halbzeile
+    \item zweite Numerierung: \alert{Status}
+      \begin{itemize}[<+->]
+        \item 1.~Status: Infinitiv ohne \textit{zu}
+        \item 2.~Status: Infinitiv mit \textit{zu}
+        \item 3.~Status: Partizip
+      \end{itemize}
+      \Halbzeile
+    \item \alert{infinite Verbformen: solche, die von anderen Verben regiert werden}
+    \item daher: "`Partizip 1"' keine infinite Verbform
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Verbkomplex und Rektion in der VP}
+  \pause
+  \centering
+  \begin{forest}
+    l sep+=2em
+    [VP, calign=last
+      [NP, tier=preterminal
+        [\it die Freundin, narroof]
+      ]
+      [NP, tier=preterminal
+        [\it das Eis, narroof]
+      ]
+      [\bf\Sub{3+2+1}, calign=last
+        [\bf V\Sub{3+2}, calign=last
+          [\bf V\Sub{3}, tier=preterminal
+            [\it kaufen\\(1.~Status)]
+            {\draw [->, bend left=30] (.south) to (!uuuu11.south);}
+            {\draw [->, bend left=30] (.south) to (!uuuu21.south);}
+          ]
+          [\bf V\Sub{2}, tier=preterminal
+            [\it wollen\\(1.~Status)]
+            {\draw [->, bend left=30] (.south) to (!uu11.south);}
+          ]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it wird]
+          {\draw [->, bend left=30] (.south) to (!uu121.south);}
+        ]
+      ]
+    ]
+  \end{forest}
+\end{frame}
+
+
+\begin{frame}
+  {Komplementiererphrase, Verbphrase und Verbkomplex (Schemata)}
+  \centering
+  \begin{forest}
+    phrasenschema
+    [KP, Ephr, calign=first
+      [K, Ehd, name=Kpkopf]
+      [VP, Eobl]
+      {\draw [bend left=45, <-] (.south) to (Kpkopf.south);}
+    ]
+  \end{forest}
+  \pause\hspace{2em}
+  \begin{forest}
+    phrasenschema
+    [VP, Ephr, calign=last
+      [Angaben, Emult, Eopt, Erec [Ergänzungen, Eopt, Emult, Erec, name=Vpergaenzi]]
+      [V, Ehd]
+      {\draw [->, bend left=90] (.south) to (Vpergaenzi.south);}
+    ]
+  \end{forest}
+  \pause\hspace{2em}
+  \begin{forest}
+    phrasenschema
+    [V\Sub{j+i}, Ephr, , calign=last
+      [V\Sub{j}, Eopt, name=Vkkopf]
+      [V\Sub{i}, Ehd]
+      {\draw [->, bend left=30] (.south) to (Vkkopf.south);}
+    ]
+  \end{forest}
+\end{frame}
+
+
+\section{Sätze}
+
+\subsection{Funktion}
+
+\begin{frame}
+  {Sätze und Satzähnliches}
+  \pause
+  \begin{exe}
+    \ex{Wir wissen, dass \alert{[der Arzt das Bild schnell \rot{gemalt hat}].}\label{ex:nebensatz}}
+    \pause
+    \ex{[\alert{Der Arzt} \rot{hat} \alert{das Bild schnell} \rot{gemalt}].}
+    \pause
+    \ex{[\rot{Hat} \alert{der Arzt das Bild schnell} \rot{gemalt}?]}
+    \pause
+    \ex{Nihil besucht [\orongsch{den} \alert{Arzt}, [\orongsch{der} \alert{das Bild schnell} \rot{gemalt hat}]].\label{ex:relsatz}}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Aufgabe der Syntax: \alert{Beschreib das!} Gemeinsamkeiten, Unterschiede?
+    \item Vorteil an (\ref{ex:nebensatz}): \alert{Alle Ergänzungen und Angaben des Verbs\\
+      werden in einer Kette (der intakten VP) realisiert!}
+    \item sonst: Abhängige des Verbs irgendwo verteilt
+    \item $\Rightarrow$ Wenn wir die VP in der KP zugrundelegen,kann das Verhältnis\\
+      von Verb und Abhängigen interphrasal abgehandelt werden!
+    \item \grau{Einige systematische Ausnahmen stehen im Buch,\\
+      gelten aber für diese VL als Transferwissen.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Definition des "`unabhängigen Satzes"'}
+  \pause
+  \begin{exe}
+    \ex Das Bild hängt an der Wand.
+    \pause
+    \ex Hängt das Bild an der Wand?
+    \pause
+    \ex Was hängt an der Wand?
+  \end{exe}
+  \pause
+  \begin{itemize}[<+->]
+    \item Definitionskriterien?
+      \begin{itemize}[<+->]
+        \item Struktur mit \alert{allen Abhängigen} des Verb(komplexe)s
+        \item \alert{von keiner anderen Struktur abhängig}
+          \Halbzeile
+        \item "`Kann eine Aussage\slash einen Sprechakt bilden."' \pause --- \rot{Echt jetzt?}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Funktion unabhängiger Sätze als Definitionskriterium?}
+  \pause
+  Sprechakt = Äußerungsakt mit pragmatischen Funktionen,\\
+  mit sprachlicher Handlungswirkung
+  \Viertelzeile
+  \pause
+  \begin{itemize}[<+->]
+    \item unabhängige Sätze (anders als Nebensätze) \alert{sprechaktkonstituierend}?
+  \end{itemize}
+  \pause
+  \Halbzeile
+  \begin{exe}
+    \ex\label{ex:hauptsatzundmatrixsatz007}
+    \begin{xlist}
+      \ex{\label{ex:hauptsatzundmatrixsatz008} Die Post ist da.}
+      \pause
+      \ex{\label{ex:hauptsatzundmatrixsatz009} A: Sie geht zum Training.\\
+    B: Obwohl es regnet!}
+      \pause
+      \ex{\label{ex:hauptsatzundmatrixsatz010} Hurra!}
+      \pause
+      \ex{\label{ex:hauptsatzundmatrixsatz011} Nieder mit dem König!}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \rot{Was ist ein Satz, wenn auch (\ref{ex:hauptsatzundmatrixsatz009})[B]--(\ref{ex:hauptsatzundmatrixsatz011}) als Sätze gelten?}
+    \item \alert{Sätze sind syntaktisch definiert, nicht pragmatisch!}
+    \item \alert{Nebensätze}? --- vollständig wie unabhängige Sätze,\\
+      aber \alert{abhängig}\slash \alert{regiert}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Parataxe und Hypotaxe}
+  \pause
+  Komplexe Sachverhalte: \alert{Para- und Hypotaxe} oft austauschbar\\
+  bzw.\ \alert{Hypotaxe optional}.
+  \pause
+  \Halbzeile
+  \begin{exe}
+    \ex\begin{xlist}
+      \ex Es regnet. Juliette geht \alert{trotzdem} zum Training.
+      \pause
+      \ex \alert{Obwohl} es regnet, geht Juliette zum Training.
+    \end{xlist}
+    \Halbzeile
+    \pause
+    \ex\begin{xlist}
+      \ex Es regnet. \alert{Deswegen} fährt Adrianna noch nicht nachhause.
+      \pause
+      \ex \alert{Weil} es regnet, fährt Adrianna noch nicht nachhause.
+    \end{xlist}
+    \pause
+    \Halbzeile
+    \ex\begin{xlist}
+      \ex Kristine bleibt im Garten, \rot{damit} sie nach der Hitze\\
+      mehr vom Regen abbekommt.
+      \pause
+      \ex Kristine bleibt im Garten. \rot{Das Ziel ist, dass} sie nach der Hitze\\
+      mehr vom Regen abbekommt.
+      \pause
+      \ex Kristine bleibt im Garten. \rot{Das Ziel ist} das Abbekommen\\
+      von mehr Regen nach der Hitze.
+    \end{xlist}
+  \end{exe}
+  \Halbzeile
+  \pause
+  \alert{Verfügbarkeit para- und hypotaktischer Mittel mehr oder weniger Zufall.}
+\end{frame}
+
+\begin{frame}
+  {Funktionen der Nebensatztypen}
+  \pause
+  \begin{exe}
+    \ex Adrianna weiß, [\alert{dass es bald regnen wird}].\label{ex:ergsatz}
+    \pause
+    \ex Adrianna und Kristine spielen Tennis, [\alert{während es regnet}].\label{ex:angsatz}
+    \pause
+    \ex Kristine trifft später die Freundin, [\alert{die eine Katze zu versorgen hat}].\label{ex:relsatz2}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Komplementsatz} oder \alert{Ergänzungssatz} in (\ref{ex:ergsatz})
+    \item \alert{Adverbialsatz} oder \alert{Angabensatz} in (\ref{ex:angsatz})
+    \item \alert{Relativsatz} in (\ref{ex:relsatz2})
+      \Zeile
+    \item Funktionen?
+      \begin{itemize}[<+->]
+        \item für alle: auf jeden Fall \alert{Hypotaxe =\\
+          Erweiterung bildungssprachlicher Möglichkeiten}
+      \end{itemize}
+    \Halbzeile
+    \item systeminterne Funktionen
+      \begin{itemize}[<+->]
+        \item Semantik des Nebensatzes und der Matrix
+        \item konzeptuelle Unabhängigkeit (beider)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Konzeptuelle Unabhängigkeit von Komplementsatz und Matrix}
+  \pause
+  \alert{Matrix}? --- Die \alert{einbettende} Konstituente.\\
+  \pause\Halbzeile
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Adrianna weiß, [\rot{dass} \alert{es bald regnen wird}].
+      \pause
+      \ex → \alert{es bald regnen wird}
+      \pause
+      \ex → \alert{Es wird bald regnen.}
+    \end{xlist}
+    \pause
+    \ex[*]{\rot{Adrianna weiß.}}
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item Komplement\slash Ergänzungssatz
+      \begin{itemize}[<+->]
+        \item selber \alert{konzeptuell unabhängig}
+        \item Matrix \rot{nicht konzeptuell unabhängig} (ohne Nebensatz)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Konzeptuelle Unabhängigkeit von Adverbialsatz und Matrix}
+  \pause
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex Adrianna und Kristine spielen Tennis, [während es regnet].
+      \pause
+      \ex → Es regnet.
+    \end{xlist}
+    \pause
+    \ex Adrianna und Kristine spielen Tennis.
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item Adverbialsatz\slash Angabensatz
+      \begin{itemize}[<+->]
+        \item selber \alert{konzeptuell unabhängig}
+        \item Matrix \alert{konzeptuell unabhängig}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Konzeptuelle Unabhängigkeit von Relativsatz und Matrix}
+  \pause
+  Matrix des Relativsatzes: eine \alert{NP}
+  \pause
+  \Halbzeile
+  \begin{exe}
+    \ex
+    \begin{xlist}
+      \ex[ ]{Kristine trifft später [die Freundin,\\
+        {}[deren Katze sie verwahren soll]].}
+        \pause
+      \ex[ ]{→ deren Katze sie verwahren soll}
+      \pause
+      \ex[?]{→ \orongsch{Sie soll deren Katze verwahren.}}
+    \end{xlist}
+    \pause
+    \ex \rot{die Freundin}
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item Relativsatz
+      \begin{itemize}[<+->]
+        \item selber \orongsch{eingeschränkt konzeptuell unabhängig}
+        \item Matrix \rot{nicht konzeptuell unabhängig}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Sachverhalte und Objekte}
+  \pause
+  \begin{exe}
+    \ex{\alert{[Chloë lacht über den Regen]\Sub{S}.}}
+    \pause
+    \ex{\orongsch{[eine Kommilitonin, die immer gute Fragen stellt]\Sub{NP}}}
+  \end{exe}
+  \pause\Halbzeile
+  \begin{itemize}[<+->]
+    \item Sätze bezeichnen \alert{(Mengen von) Sachverhalten (SV)}.
+    \item NPs bezeichnen \alert{(Mengen von) (ontologischen) Objekten (OBJ).}
+      \Halbzeile
+    \item \grau{Achtung: Sachverhalte können wie Objekte behandelt werden\\
+      (Reifikation). Wir behandeln den prototypischen Basisfall.}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Semantik der Nebensätze und Matrixkonstituenten}
+  \pause
+  \begin{exe}
+    \ex{\alert{\SL Chloë weiß,} \rot{dass} \orongsch{\SL ihre Freundinnen keinen Regen mögen\SR\Sub{SV\Sub{2}}}\alert{\SR\Sub{SV\Sub{1}}}.}
+    \pause
+    \ex{\alert{\SL Chloë geht zum Sport\SR\Sub{SV\Sub{1}}}, \rot{obwohl} \orongsch{\SL es regnet\SR\Sub{SV\Sub{2}}}.}
+    \pause
+    \ex{\grau{Chloë ist} \alert{\SL eine Sportlerin,} \orongsch{\SL der Regen nichts ausmacht\SR\Sub{SV}}\alert{\SR\Sub{OBJ}}.}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Komplement- oder Ergänzungssätze
+      \begin{itemize}[<+->]
+        \item zwei Sachverhalte
+        \item Nebensatz-Sachverhalt ist \alert{Teil des Matrix-Sachverhalts}
+      \end{itemize}
+    \item Adverbial- oder Angabensätze
+      \begin{itemize}[<+->]
+        \item zwei Sachverhalte
+        \item keine Einschlussrelation
+        \item \alert{argumentative\slash rhethorische Relation} (gem.\ Komplementierer)
+      \end{itemize}
+    \item Relativsätze
+      \begin{itemize}[<+->]
+        \item (Menge von) Objekten
+        \item \alert{zusätzlicher Sachverhalt bzgl.\ dieser Objekte}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Syntax}
+
+\begin{frame}
+  {Zur Erinnerung: KPs}
+  \pause
+  \centering
+  \begin{forest}
+    [\textcolor{gray}{KP}, calign=first
+      [\textcolor{gray}{\bf K}, tier=preterminal, edge={gray}
+        [\textcolor{gray}{\it dass}, edge={gray}]
+      ]
+      l sep+=2em
+      [VP, calign=last, edge={gray}
+        [NP, tier=preterminal
+          [\it Ischariot, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it wahrscheinlich, narroof]
+        ]
+        [NP, tier=preterminal
+          [\it dem Arzt, narroof]
+        ]
+        [NP, tier=preterminal
+          [\it das Bild, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it heimlich, narroof]
+        ]
+        [\bf V, calign=last
+          [\bf V, tier=preterminal
+            [\it verkauft]
+          ]
+          [\bf V, tier=preterminal
+            [\it hat]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}\\
+  \pause
+  \Zeile
+  {\LARGE\alert{In der KP: Verb-Letzt-Stellung (VL)!}}
+\end{frame}
+
+\begin{frame}
+  {Unterschiede von VP in KP zum unabhängigen Aussagesatz}
+  \pause
+  {\Large\alert{In zwei Schritten Material nach links stellen!}}\\
+  \pause
+  \Halbzeile
+  \centering
+  \scalebox{0.8}{%
+    \begin{forest}
+      [, phantom, l sep+=2em
+        [NP, tier=preterminal
+          [\it Ischariot, narroof, name=BeweK]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it hat, name=BeweV]
+        ]
+        [VP, calign=last, s sep+=0.5em
+          [\Tii, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [AdvP, tier=preterminal
+            [\it wahrscheinlich, narroof]
+          ]
+          [NP, tier=preterminal
+            [\it dem Arzt, narroof]
+          ]
+          [NP, tier=preterminal
+            [\it das Bild, narroof]
+          ]
+          [AdvP, tier=preterminal
+            [\it heimlich, narroof]
+          ]
+          [\bf V, calign=last
+            [\bf V, tier=preterminal
+              [\it verkauft]
+            ]
+            [\Ti]
+            {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+          ]
+        ]
+      ]
+    \end{forest}
+  }\\
+  \pause
+  \Zeile
+  {\LARGE\alert{Resultat: Verb-Zweit-Stellung (V2)!}}
+\end{frame}
+
+\begin{frame}
+  {Flexibilität der zweiten Herausstellung}
+  \pause
+  \centering
+  \scalebox{0.5}{%
+    \begin{forest}
+      [, phantom, l sep+=2em
+        [AdvP, tier=preterminal
+          [\it wahrscheinlich, narroof, name=BeweK]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it hat, name=BeweV]
+        ]
+        [VP, calign=last, s sep+=0.5em
+          [NP, tier=preterminal
+            [\it Ischariot, narroof]
+          ]
+          [\Tii, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [NP, tier=preterminal
+            [\it dem Arzt, narroof]
+          ]
+          [NP, tier=preterminal
+            [\it das Bild, narroof]
+          ]
+          [AdvP, tier=preterminal
+            [\it heimlich, narroof]
+          ]
+          [\bf V, calign=last
+            [\bf V, tier=preterminal
+              [\it verkauft]
+            ]
+            [\Ti]
+            {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+          ]
+        ]
+      ]
+    \end{forest}
+  }\\
+  \pause
+  \scalebox{0.5}{%
+    \begin{forest}
+      [, phantom, l sep+=2em
+        [NP, tier=preterminal
+          [\it dem Arzt, narroof, name=BeweK]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it hat, name=BeweV]
+        ]
+        [VP, calign=last, s sep+=0.5em
+          [NP, tier=preterminal
+            [\it Ischariot, narroof]
+          ]
+          [AdvP, tier=preterminal
+            [\it wahrscheinlich, narroof]
+          ]
+          [\Tii, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [NP, tier=preterminal
+            [\it das Bild, narroof]
+          ]
+          [AdvP, tier=preterminal
+            [\it heimlich, narroof]
+          ]
+          [\bf V, calign=last
+            [\bf V, tier=preterminal
+              [\it verkauft]
+            ]
+            [\Ti]
+            {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+          ]
+        ]
+      ]
+    \end{forest}
+  }\\
+  \pause
+  \scalebox{0.5}{%
+    \begin{forest}
+      [, phantom, l sep+=2em
+        [AdvP, tier=preterminal
+          [\it heimlich, narroof, name=BeweK]
+        ]
+        [\bf V\Sub{1}, tier=preterminal
+          [\it hat, name=BeweV]
+        ]
+        [VP, calign=last, s sep+=0.5em
+          [NP, tier=preterminal
+            [\it Ischariot, narroof]
+          ]
+          [AdvP, tier=preterminal
+            [\it wahrscheinlich, narroof]
+          ]
+          [NP, tier=preterminal
+            [\it dem Arzt, narroof]
+          ]
+          [NP, tier=preterminal
+            [\it das Bild, narroof]
+          ]
+          [\Tii, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [\bf V, calign=last
+            [\bf V, tier=preterminal
+              [\it verkauft]
+            ]
+            [\Ti]
+            {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+          ]
+        ]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+
+\begin{frame}
+  {Kopf und Schema des V2-Satzes}
+  \pause
+  Hat der Satz dann einen \alert{Kopf}?\pause --- Nö.\\
+  \pause
+  \grau{Andere behaupten anderes.}\\
+  \pause
+  \centering
+  \scalebox{0.8}{%
+    \begin{forest}
+    [S, calign=child, calign child=2
+      [NP\Sub{2}, tier=preterminal
+        [\it das Bild, narroof, name=BeweBild]
+      ]
+      [\bf V\Sub{1}, tier=preterminal
+        [\it hat, name=BeweHat]
+      ]
+      [VP, calign=last
+        [NP, tier=preterminal, baseline
+          [\it Ischariot, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it wahrscheinlich, narroof]
+        ]
+        [t\Sub{2}, tier=preterminal
+        ]
+        {\draw[dotted, thick, ->] (.south) |- ++(0,-5em) -| (BeweBild.south);}
+        [\bf V, calign=last
+          [\bf V, tier=preterminal
+            [\it verkauft]
+          ]
+          [t\Sub{1}]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+        ]
+      ]
+    ]
+  \end{forest}}
+  \pause
+  \hspace{0.05\textwidth}\scalebox{0.8}{%
+    \begin{forest}
+      [S, calign=child, calign child=2, Ephr
+        [XP\Sub{2}, Eobl, baseline]
+        [V\UpSub{finit}{1}, Eobl]
+        [VP\\{[\ldots\Tii\ldots\Ti]}, Eobl]
+      ]
+    \end{forest}
+  }
+\end{frame}
+
+\begin{frame}
+  {Ja\slash Nein-Fragesätze}
+  \pause
+  Nur eine Umstellungsoperation erforderlich!\\
+  \pause
+  \Zeile
+  \centering
+  \scalebox{0.8}{%
+    \begin{forest}
+    [FS, calign=first
+      [\bf V\Sub{1}, tier=preterminal
+        [\it hat, name=BeweHat]
+      ]
+      [VP, calign=last
+        [NP, tier=preterminal, baseline
+          [\it Ischariot, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it wahrscheinlich, narroof]
+        ]
+        [NP, tier=preterminal
+          [\it das Bild, narroof]
+        ]
+        [\bf V, calign=last
+          [\bf V, tier=preterminal
+            [\it verkauft]
+          ]
+          [t\Sub{1}]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+        ]
+      ]
+    ]
+  \end{forest}
+  }
+  \pause
+  \hspace{0.05\textwidth}\scalebox{0.8}{%
+    \begin{forest}
+    [FS, calign=first, Ephr
+      [V\UpSub{finit}{1}, Eobl, baseline]
+      [VP\\{[\ldots\Ti]}, Eobl]
+    ]
+    \end{forest}
+  }\\
+  \pause
+  \Zeile
+  {\LARGE\alert{Resultat: Verb-Erst-Stellung (V1)!}}
+\end{frame}
+
+
+\begin{frame}
+  {Besonderheiten von Partikelverben}
+  \pause
+  \centering
+  \begin{forest}
+    [S, calign=child, calign child=2
+      [NP\Sub{2}, tier=preterminal
+        [\it Sarah, narroof, name=BeweSarah]
+      ]
+      [\bf V\Sub{1}, tier=preterminal
+        [\it isst, name=BeweIsst]
+      ]
+      [VP, calign=last
+        [\Tii, tier=preterminal]
+        {\draw[dotted, thick, ->] (.south) |- ++(0,-5em) -| (BeweSarah.south);}
+        [NP, tier=preterminal
+          [\it den Kuchen, narroof]
+        ]
+        [AdvP, tier=preterminal
+          [\it alleine, narroof]
+        ]
+        [\bf V, calign=last
+          [Ptkl, tier=preterminal
+            [\it auf{=}]
+          ]
+          [\Ti, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweIsst.south);}
+        ]
+      ]
+    ]
+  \end{forest}\\
+  \pause
+  \Halbzeile
+  {\Large\alert{Wer möchte immer noch den V2-Satz\\
+  ohne Bezug zum VL-Satz beschreiben?}}
+\end{frame}
+
+\begin{frame}
+  {Relativsätze als etwas andere VL-Sätze}
+  \pause
+  Das \alert{Relativelement} wird nach links gestellt!\\
+  \pause
+  \Halbzeile
+  \centering
+  \scalebox{0.7}{%
+  \begin{forest}
+    [NP, calign=child, calign child=2
+      [Art, tier=preterminal
+        [\it einen]
+      ]
+      [\bf N, tier=preterminal
+        [\it Tofu]
+      ]
+      [RS, calign=first
+        [NP\Sub{1}, tier=preterminal
+          [\it der, narroof, name=BeweDer]
+        ]
+        [VP, calign=last
+          [NP, tier=preterminal, baseline
+            [\it mir, narroof]
+          ]
+          [\Ti, tier=preterminal]
+          {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweDer.south);}
+          [Ptkl, tier=preterminal
+            [nicht]
+          ]
+          [\bf V, calign=last
+            [\bf V, tier=preterminal
+              [\it geschmeckt]
+            ]
+            [\bf V, tier=preterminal
+              [\it hat]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}
+  }
+  \pause
+  \hspace{0.05\textwidth}\scalebox{0.7}{%
+  \begin{forest}
+    [RS, Ephr
+      [XP\UpSub{relativ}{1}, Eobl, baseline]
+      [VP\\{[\ldots\Ti\ldots]}, Eobl]
+    ]
+  \end{forest}
+  }\\
+  \pause
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Relativelement
+      \begin{itemize}[<+->]
+        \item \alert{Bedeutung}: Bezugs-Substantiv
+        \item \alert{Genus, Numerus}: Kongruenz mit Bezugs-Substantiv
+        \item \alert{Kasus\slash PP-Form}: gemäß Status als Ergänzung\slash Angabe im RS
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Komplexe Einbettung des Relativelements}
+  \pause
+  Das Relativelement als pränominaler Genitiv \alert{nimmt die ganze NP mit}.\\
+  \pause
+  \Halbzeile
+    \centering
+  \begin{forest}
+    [NP, calign=child, calign child=2
+      [Art, tier=preterminal
+        [\it der]
+      ]
+      [\bf N, tier=preterminal
+        [\it Tofu]
+        {\draw [->, bend right=30] (.south) to node [below, near start] {\footnotesize\textsc{Genus,Numerus}} (RekDessen.south);}
+      ]
+      [RS, calign=first
+        [NP\Sub{1}, calign=first
+          [NP, tier=preterminal
+            [\it dessen, narroof, name=RekDessen]
+          ]
+          [\bf N, tier=preterminal
+            [\it Geschmack, name=RekGeschmack]
+            {\draw [->, bend left=25] (.south) to node [below, near start] {\footnotesize\textsc{Kasus}} (RekDessen.south);}
+          ]
+        ]
+        [VP, calign=last
+          [NP, tier=preterminal
+            [\it ich, narroof]
+          ]
+          [\Ti]
+          [\bf V, tier=preterminal
+            [\it mag]
+            {\draw [->, bend left=15] (.south) to node [below, near start] {\footnotesize\textsc{Kasus}} (RekGeschmack.south);}
+          ]
+        ]
+      ]
+    ]
+  \end{forest}
+\end{frame}
+
+
+\begin{frame}
+  {Objektsätze}
+  \pause
+  \begin{exe}
+    \ex{\label{ex:komplementsaetze127} Michelle weiß, [\rot{dass} die Corvette nicht anspringen wird].}
+    \pause
+    \ex\label{ex:komplementsaetze128}
+    \begin{xlist}
+      \ex{\label{ex:komplementsaetze129} Michelle will wissen, [\rot{wer} die Corvette gewartet hat].}
+      \pause
+      \ex{\label{ex:komplementsaetze130} Michelle will wissen, [\rot{ob} die Corvette gewartet wurde].}
+    \end{xlist}
+  \end{exe}
+  \pause
+  \Halbzeile
+  \alert{Achtung: \textit{ob} ist eigentlich nur ein w-Wort ohne w (\textit{whether}).}\\
+  \pause
+  \Halbzeile
+\end{frame}
+
+\begin{frame}
+  {Regierende Verben und Alternationen}
+  \pause
+  \alert{Drei primäre Muster}, welche Satz-Objekte Verben regieren.\\
+  \pause\Halbzeile
+  \begin{exe}
+    \ex\label{ex:komplementsaetze131}
+    \begin{xlist}
+      \ex[]{\label{ex:komplementsaetze132} Michelle behauptet, \alert{dass} die Corvette nicht anspringt.}
+      \pause
+      \ex[*]{\label{ex:komplementsaetze133} Michelle behauptet, \rot{wie\slash ob} die Corvette nicht anspringt.}
+    \end{xlist}
+    \pause
+    \ex\label{ex:komplementsaetze134}
+    \begin{xlist}
+      \ex[*]{\label{ex:komplementsaetze135} Michelle untersucht, \rot{dass} der Vergaser funktioniert.}
+      \pause
+      \ex[]{\label{ex:komplementsaetze136} Michelle untersucht, \alert{wie\slash ob} der Vergaser funktioniert.}
+    \end{xlist}
+    \pause
+    \ex\label{ex:komplementsaetze137}
+    \begin{xlist}
+      \ex[]{\label{ex:komplementsaetze138} Michelle hört, \alert{dass} die Nockenwelle läuft.}
+      \pause
+      \ex[]{\label{ex:komplementsaetze139} Michelle hört, \alert{wie\slash ob} die Nockenwelle läuft.}
+    \end{xlist}
+  \end{exe}
+  \pause\Halbzeile
+  Außerdem: \textit{dass} alterniert oft mit \textit{zu}-Infinitiv.\\
+  \pause
+  \Halbzeile
+  \begin{exe}
+  \ex\label{ex:komplementsaetze140}
+  \begin{xlist}
+    \ex{\label{ex:komplementsaetze141} Michelle glaubt, [\alert{dass} sie das Geräusch erkennt].}
+    \pause
+    \ex{\label{ex:komplementsaetze142} Michelle glaubt, [das Geräusch \alert{zu} erkennen].}
+  \end{xlist}
+  \end{exe}
+\end{frame}
+
+\begin{frame}
+  {Stellung von Adverbial- und Komplementsätzen}
+  \pause
+  Fast immer Bewegung nach links oder Rechtsversetzung \alert{hinter VK}!\\
+  \pause
+  \Halbzeile
+  \begin{exe}
+  \ex\label{ex:komplementsaetze146}
+  \begin{xlist}
+    \ex[]{\label{ex:komplementsaetze147} \alert{[Dass sie unseren Kuchen mag]}, hat Sarah uns eröffnet.}
+    \pause
+    \ex[]{\label{ex:komplementsaetze148} Sarah hat uns eröffnet, \alert{[dass sie unseren Kuchen mag]}.}
+    \pause
+    \ex[?]{\label{ex:komplementsaetze149} Sarah hat uns, \rot{[dass sie unseren Kuchen mag]}, eröffnet.}
+  \end{xlist}
+    \pause
+
+  \ex\label{ex:komplementsaetze150}
+  \begin{xlist}
+    \ex[]{\label{ex:komplementsaetze151} \alert{[Ob Pavel unseren Kuchen mag]}, haben wir uns oft gefragt.}
+    \pause
+    \ex[]{\label{ex:komplementsaetze152} Wir haben uns oft gefragt, \alert{[ob Pavel unseren Kuchen mag]}.}
+    \pause
+    \ex[?]{\label{ex:komplementsaetze153} Wir haben uns, \rot{[ob Pavel unseren Kuchen mag]}, oft gefragt.}
+  \end{xlist}
+    \pause
+  \ex\label{ex:komplementsaetze154}
+  \begin{xlist}
+    \ex[]{\label{ex:komplementsaetze155} \alert{[Wer die Rosinen geklaut hat]}, wollen wir endlich wissen.}
+    \pause
+    \ex[]{\label{ex:komplementsaetze156} Wir wollen endlich wissen, \alert{[wer die Rosinen geklaut hat]}.}
+    \pause
+    \ex[?]{\label{ex:komplementsaetze157} Wir wollen, \rot{[wer die Rosinen geklaut hat]}, endlich wissen.}
+  \end{xlist}
+  \end{exe}
+  \pause\Halbzeile
+  \grau{Fehlendes Schema für Rechtsversetzung: Transferaufgabe im Buch.}
+\end{frame}
+
+
+\section{Vorschau}
+
+\begin{frame}
+  {Prädikate und Relationen}
+  \pause
+  \begin{itemize}[<+->]
+    \item Vorschau auf Phänomene der klassischen theoretischen Syntax
+    \item \alert{relevant für grammatische Beschreibung}, auch traditionell
+    \item wichtiges Wissen um \rot{Unzulänglichkeiten der Schulterminologie}
+      \Halbzeile
+    \item Prädikate
+    \item Subjekte
+    \item Objekte
+    \item \alert{Passiv}
+  \end{itemize}
+  \pause
+  \Halbzeile
+  \begin{center}
+    Bitte lesen Sie bis nächste Woche:\\
+    \alert{Kapitel 14 (S.~421--465)} (vor allem 14.1--14.5, S.~421--446)
+  \end{center}
+\end{frame}
+
+% \begin{frame}
+%   {Literatur}
+%   \renewcommand*{\bibfont}{\footnotesize}
+%   \setbeamertemplate{bibliography item}{}
+%   \printbibliography
+% \end{frame}
+
+
+\end{document}
