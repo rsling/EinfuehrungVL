@@ -17,6 +17,10 @@ H02JOB = $(FILEPRE)02$(HOSUFF)
 P02JOB = $(FILEPRE)02$(PRESUFF)
 L02FLAGS = \def\TITLE{2. Phonetik}\def\LECTURE{02}
 
+H03JOB = $(FILEPRE)03$(HOSUFF)
+P03JOB = $(FILEPRE)03$(PRESUFF)
+L03FLAGS = \def\TITLE{3. Segmentale Phonologie}\def\LECTURE{03}
+
 create:
 	mkdir -p ./output/includes
 
@@ -39,6 +43,16 @@ p02: create
 	$(LX) $(TEXFLAGS) -jobname=$(P02JOB) $(PREFLAGS) "$(L02FLAGS)$(FINALFLAGS)"
 	cd ./output; $(BX) $(P02JOB)
 	$(LX) $(TEXFLAGS) -jobname=$(P02JOB) "$(L02FLAGS)$(FINALFLAGS)"
+
+h03: create
+	$(LX) $(TEXFLAGS) -jobname=$(H03JOB) $(PREFLAGS) "$(L03FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(H03JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(H03JOB) "$(L03FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+
+p03: create
+	$(LX) $(TEXFLAGS) -jobname=$(P03JOB) $(PREFLAGS) "$(L03FLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(P03JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(P03JOB) "$(L03FLAGS)$(FINALFLAGS)"
 
 clean:
 	cd ./output/; \rm -f *.adx *.and *.aux *.bbl *.blg *.idx *.ilg *.ldx *.lnd *.log *.out *.rdx *.run.xml *.sdx *.snd *.toc *.wdx *.xdv *.nav *.snm *.bcf
