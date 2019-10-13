@@ -176,6 +176,97 @@
 }
 
 
+% Drawing sonority diagrams =========================================== 
+
+\makeatletter
+
+\long\def\ifnodedefined#1#2#3{%
+  \@ifundefined{pgf@sh@ns@#1}{#3}{#2}}
+
+\newcommand\aeundefinenode[1]{%
+  \expandafter\ifx\csname pgf@sh@ns@#1\endcsname\relax
+  \else
+    \typeout{Undefining node "#1"}%
+    \global\expandafter\let\csname pgf@sh@ns@#1\endcsname\relax
+  \fi
+}
+
+\newcommand\aeundefinethesenodes[1]{%
+  \foreach \myn  in {#1}
+    {%
+      \ifnodedefined{\myn}{%
+      \expandafter\aeundefinenode\expandafter{\myn}%
+    }{}
+    }%
+}
+
+\newcommand\aeundefinenumericnodes{%
+  \foreach \myn in {1,2,...,50}
+    {%
+      \ifnodedefined{\myn}{%
+      \expandafter\aeundefinenode\expandafter{\myn}%
+    }{}
+    }%
+}
+\makeatother
+
+\newcommand{\plo}{0}
+\newcommand{\fri}{0.5}
+\newcommand{\nas}{1}
+\newcommand{\liq}{1.5}
+\newcommand{\vok}{2}
+
+% Save text.
+\newcommand{\lastsaved}{}
+\newcommand{\textsave}[1]{\gdef\lastsaved{#1}#1}
+
+\newcommand{\SonDiag}[2][0]{%
+  \begin{tikzpicture}
+    \textsave{.}
+    \tikzset{
+      normalseg/.style={fill=white},
+      extrasyll/.style={circle, draw, fill=white},
+      sylljoint/.style={diamond, draw, fill=white}
+    }
+    \node at (0,\plo) {P};
+    \node at (0,\fri) {F};
+    \node at (0,\nas) {N};
+    \node at (0,\liq) {L};
+    \node at (0,\vok) {V};
+
+    % Draw the helper lines if required.
+    \ifthenelse{\equal{#1}{0}}{}{%
+      \foreach \y in {\plo, \fri, \nas, \liq,\vok} {%
+	\draw [dotted, |-|] (0.25, \y) -- (#1.75, \y);
+      }
+    }
+
+    \foreach [count=\x from 1, remember=\x as \lastx] \p / \y / \g in #2 {
+      \ifthenelse{\equal{\y}{-1}}{\textsave{.}}{%
+
+	% Draw the node, either plain, as Silbenbgelenk, or as extrasyllabic.
+        \ifthenelse{\equal{\g}{1}}{%
+	  \node (\x) [sylljoint] at (\x, \y) {\p};
+	}{%
+	  \ifthenelse{\equal{\g}{2}}{%
+	    \node (\x) [extrasyll] at (\x, \y) {\p};
+	  }{%
+	    \node (\x) [normalseg] at (\x, \y) {\p};
+	  }
+	}
+
+	% Draw the connection unless the previous node was not or was empty.
+	\ifthenelse{\NOT\equal{\lastsaved}{.}}{%
+	  \draw [->] (\lastx) to (\x);
+	}{}
+	\textsave{1}
+      }
+    }
+    \aeundefinenumericnodes
+  \end{tikzpicture}
+}
+
+
 % Meta ================================================================
 
 \title{Einführung in die Sprachwissenschaft\\\TITLE}

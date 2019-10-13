@@ -1,393 +1,3 @@
-\documentclass[handout,aspectratio=1610]{beamer}
-%\documentclass[aspectratio=1610]{beamer}
-
-%\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{color}
-\usepackage{colortbl}
-\usepackage{textcomp}
-\usepackage{multirow}
-\usepackage{nicefrac}
-\usepackage{multicol}
-\usepackage{gb4e-}
-\usepackage{verbatim}
-\usepackage{cancel}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{verbatim}
-\usepackage{boxedminipage}
-\usepackage{rotating}
-\usepackage{booktabs}
-\usepackage{bbding}
-\usepackage{soul}
-
-\usepackage{tikz}
-\usetikzlibrary{positioning,arrows,cd}
-\tikzset{>=latex}
-
-\usepackage[linguistics]{forest}
-
-\usepackage{FiraSans}
-
-\usepackage[maxbibnames=99,
-  maxcitenames=2,
-  uniquelist=false,
-  backend=biber,
-  doi=false,
-  url=false,
-  isbn=false,
-  bibstyle=biblatex-sp-unified,
-  citestyle=sp-authoryear-comp]{biblatex}
-\addbibresource{rs}
-
-\forestset{
-  Ephr/.style={draw, ellipse, thick, inner sep=2pt},
-  Eobl/.style={draw, rounded corners, inner sep=5pt},
-  Eopt/.style={draw, rounded corners, densely dashed, inner sep=5pt},
-  Erec/.style={draw, rounded corners, double, inner sep=5pt},
-  Eoptrec/.style={draw, rounded corners, densely dashed, double, inner sep=5pt},
-  Ehd/.style={rounded corners, fill=gray, inner sep=5pt,
-    delay={content=\whyte{##1}}
-  },
-  Emult/.style={for children={no edge}, for tree={l sep=0pt}},
-  phrasenschema/.style={for tree={l sep=2em, s sep=2em}},
-  decide/.style={draw, chamfered rectangle, inner sep=2pt},
-  finall/.style={rounded corners, fill=gray, text=white},
-  intrme/.style={draw, rounded corners},
-  yes/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Ja}}},
-  no/.style={edge label={node[near end, above, sloped, font=\scriptsize]{Nein}}},
-  sake/.style={tier=preterminal},
-  ake/.style={
-    tier=preterminal
-    },
-}
-
-
-\tikzset{
-    invisible/.style={opacity=0,text opacity=0},
-    visible on/.style={alt=#1{}{invisible}},
-    alt/.code args={<#1>#2#3}{%
-      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
-    },
-}
-\forestset{
-  visible on/.style={
-    for tree={
-      /tikz/visible on={#1},
-      edge+={/tikz/visible on={#1}}}}}
-
-\definecolor{lg}{rgb}{.8,.8,.8}
-\newcommand{\Dim}{\cellcolor{lg}}
-
-
-\newcommand{\Sub}[1]{\ensuremath{_{\text{#1}}}}
-\newcommand{\Up}[1]{\ensuremath{^{\text{#1}}}}
-
-\newcommand{\Ck}{\CheckmarkBold}
-\newcommand{\Fl}{\XSolidBrush}
-
-\usetheme[hideothersubsections]{Goettingen}
-
-%\newcommand{\rot}[1]{{\color[rgb]{0.4,0.2,0}#1}}
-%\newcommand{\blau}[1]{{\color[rgb]{0,0,.9} #1}}
-\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
-\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
-
-\newcommand{\rot}[1]{{\color[rgb]{0.6,0.2,0.0}#1}}
-\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
-\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
-
-\renewcommand<>{\rot}[1]{%
-  \alt#2{\beameroriginal{\rot}{#1}}{#1}%
-}
-\renewcommand<>{\blau}[1]{%
-  \alt#2{\beameroriginal{\blau}{#1}}{#1}%
-}
-\renewcommand<>{\orongsch}[1]{%
-  \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
-}
-
-\definecolor{trueblue}{rgb}{0,0.0,0.7}
-\setbeamercolor{alerted text}{fg=trueblue}
-
-\newcommand{\xxx}{\hspaceThis{[}}
-\newcommand{\zB}{z.\,B.\ }
-\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
-
-\newcommand{\Zeile}{\vspace{\baselineskip}}
-\newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
-\newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
-
-\resetcounteronoverlays{exx}
-
-\makeatletter
-
-\long\def\ifnodedefined#1#2#3{%
-  \@ifundefined{pgf@sh@ns@#1}{#3}{#2}}
-
-\newcommand\aeundefinenode[1]{%
-  \expandafter\ifx\csname pgf@sh@ns@#1\endcsname\relax
-  \else
-    \typeout{Undefining node "#1"}%
-    \global\expandafter\let\csname pgf@sh@ns@#1\endcsname\relax
-  \fi
-}
-
-\newcommand\aeundefinethesenodes[1]{%
-  \foreach \myn  in {#1}
-    {%
-      \ifnodedefined{\myn}{%
-      \expandafter\aeundefinenode\expandafter{\myn}%
-    }{}
-    }%
-}
-
-\newcommand\aeundefinenumericnodes{%
-  \foreach \myn in {1,2,...,50}
-    {%
-      \ifnodedefined{\myn}{%
-      \expandafter\aeundefinenode\expandafter{\myn}%
-    }{}
-    }%
-}
-\makeatother
-
-
-% Drawing sonority diagrams.
-
-\newcommand{\plo}{0}
-\newcommand{\fri}{0.5}
-\newcommand{\nas}{1}
-\newcommand{\liq}{1.5}
-\newcommand{\vok}{2}
-
-% Save text.
-\newcommand{\lastsaved}{}
-\newcommand{\textsave}[1]{\gdef\lastsaved{#1}#1}
-
-\newcommand{\SonDiag}[2][0]{%
-  \begin{tikzpicture}
-    \textsave{.}
-    \tikzset{
-      normalseg/.style={fill=white},
-      extrasyll/.style={circle, draw, fill=white},
-      sylljoint/.style={diamond, draw, fill=white}
-    }
-    \node at (0,\plo) {P};
-    \node at (0,\fri) {F};
-    \node at (0,\nas) {N};
-    \node at (0,\liq) {L};
-    \node at (0,\vok) {V};
-
-    % Draw the helper lines if required.
-    \ifthenelse{\equal{#1}{0}}{}{%
-      \foreach \y in {\plo, \fri, \nas, \liq,\vok} {%
-	\draw [dotted, |-|] (0.25, \y) -- (#1.75, \y);
-      }
-    }
-
-    \foreach [count=\x from 1, remember=\x as \lastx] \p / \y / \g in #2 {
-      \ifthenelse{\equal{\y}{-1}}{\textsave{.}}{%
-
-	% Draw the node, either plain, as Silbenbgelenk, or as extrasyllabic.
-        \ifthenelse{\equal{\g}{1}}{%
-	  \node (\x) [sylljoint] at (\x, \y) {\p};
-	}{%
-	  \ifthenelse{\equal{\g}{2}}{%
-	    \node (\x) [extrasyll] at (\x, \y) {\p};
-	  }{%
-	    \node (\x) [normalseg] at (\x, \y) {\p};
-	  }
-	}
-
-	% Draw the connection unless the previous node was not or was empty.
-	\ifthenelse{\NOT\equal{\lastsaved}{.}}{%
-	  \draw [->] (\lastx) to (\x);
-	}{}
-	\textsave{1}
-      }
-    }
-    \aeundefinenumericnodes
-  \end{tikzpicture}
-}
-
-
-\title{Einführung in die Sprachwissenschaft\\4.~Phonologie: Silben und Wörter}
-\author{Roland Schäfer}
-\institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
-\date{Wintersemester 2018/2019\\23.~Oktober 2018}
-
-
-\resetcounteronoverlays{exx}
-
-\begin{document}
-
-\frame{\titlepage}
-
-\section{Nachspiel}
-
-\begin{frame}
-  {Nachlese auf Nachfrage}
-  \pause
-  \Large
-  \centering
-  Hören Sie sich bitte Sprachbeispiel 1 an\dots\\[0.5\baselineskip]
-  \pause
-  \includegraphics[width=0.5\textwidth]{graphics/wenker1}\\[0.5\baselineskip]
-  \pause
-  Sprachbeispiel 2\dots\\[0.5\baselineskip]
-  \pause
-  \includegraphics[width=0.95\textwidth]{graphics/wenker2}\\[0.5\baselineskip]
-  \pause
-  Sprachbeispiel 3\dots\\[0.5\baselineskip]
-  \pause
-  \includegraphics[width=0.6\textwidth]{graphics/wenker3}\\[0.5\baselineskip]
-\end{frame}
-
-
-\begin{frame}
-  {Um welche Sprache handelt es sich?}
-  \pause
-  \begin{itemize}[<+->]
-    \item einfache Antwort: \alert{Neuhessisch, Elsenfelder Dialekt}
-    \item Aufnahmen der Wenker-Sätze 29, 18 und 38\\
-      (Hausarbeit von Matthias B.\ Döring von 2004\\
-      am Dt. Sprachatlas Marburg)
-      \Zeile
-    \item schwierigere Frage: \alert{Ist das Deutsch?}
-    \item \alert{Ist das ein deutscher Dialekt?}
-    \item \rot{Ist das normgerechte deutsche Standard(aus)sprache?}
-      \Zeile
-    \item Soll die Linguistik \alert{ein} grammatisches System entwerfen,\\
-      das Dialekte usw.\ in die Beschreibung einschließt? \onslide<8->{\rot{Nein!}}
-    \item Die Beschreibung von Dialekten geht extra.
-    \item Sonst müssten wir den Elsenfleder Dialekt und den Standard\\
-      mit einem System beschreiben.
-    \item Wo ist sonst die Grenze zwischen dem, was beschrieben soll,\\
-      und dem, was nicht beschrieben werden soll?
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  {Was ist der Standard und seine Funktion? (Deutschland)}
-  \pause
-  \small
-  \citet[7]{KrechEa2009}: Die Standardaussprache ist so vor allem\\
-  durch folgende Merkmale charakterisiert:
-  \begin{itemize}[<+->]\addtolength{\itemsep}{-0.5\baselineskip}
-    \item \alert{dialektneutral} und enthält keine regional gefärbten umgangssprachlichen Formen
-    \item \alert{überregional und in allen sozialen Gruppen verstanden}\dots 
-    \item besonders \alert{in offiziellen öffentlichen Situationen} genutzt bzw.\ \alert{erwartet}
-    \item in solchen Situationen \alert{prestigefördernd}
-    \item \alert{phonostilistische Differenzierungen}
-    \item \rot{kodifiziert} und kann somit als explizite Norm regulative Funktionen erfüllen
-    \item Kodifikation berücksichtigt den \alert{erwarteten und den realen Sprechgebrauch}
-    \item \alert{ständige Überprüfung} des realen Sprachgebrauchs
-    \item in unterschiedlichem Maß verbindlich
-    \item \alert{Nichtbefolgung kann negative Sanktionen auslösen}
-  \end{itemize}
-  \pause
-  \Zeile
-  \centering
-  \Large
-  Ohne \rot{Kodifikation} gibt es keinen Standard.
-\end{frame}
-
-\begin{frame}[fragile]
-  {Konkretes Problem: Braucht man gespanntes /ɛ/ und ungespanntes /ɛ̆/?}
-  \pause
-  \begin{center}
-    \resizebox{0.6\textwidth}{!}{
-      \begin{tikzpicture}[scale=3.5,baseline=default]
-        \large
-        \tikzset{
-        vowel/.style={fill=white, anchor=mid, text depth=0ex, text height=1ex},
-        vowelgespannt/.style={circle,fill=gray!30, anchor=mid, text depth=0ex, text height=1ex,minimum size=4ex},
-        dot/.style={circle,fill=black,minimum size=0.4ex,inner sep=0pt,outer sep=-1pt},
-        }
-
-        \coordinate (hf) at (0,2); % high front
-        \coordinate (hb) at (2,2); % high back
-        \coordinate (lf) at (1,0); % low front
-        \coordinate (lb) at (2,0); % low back
-        \def\V(#1,#2){barycentric cs:hf={(3-#1)*(2-#2)},hb={(3-#1)*#2},lf={#1*(2-#2)},lb={#1*#2}}
-
-        % Chart key (vorne -- hinten).
-        \draw [{Latex[round]}-] (\V (-.25,0)) -- (\V (-.25,.5))  node [above left] {\footnotesize vorne};
-        \draw [-{Latex[round]}] (\V (-.25,1.5)) -- (\V (-.25,2)) node [above left] {\footnotesize hinten};
-        \path (\V (-.25,1)) node[above] {\footnotesize zentral};
-
-        % Chart key (hoch--tief).
-        \draw [{Latex[round]}-] (\V (0,-.25)) -- +(270:.5cm)  node [above right,rotate=90] (vokaltrapez1) {\footnotesize hoch};
-        \draw [{Latex[round]}-] (\V (3,-2.5)) -- +(270:-.5cm) node [above left,rotate=90] (vokaltrapez2) {\footnotesize tief};
-        \path (\V (1.5,-1)) node[above,rotate=90] {\footnotesize mittel};
-
-        % Grid.
-        \draw [gray,thick] (\V(0,0)) -- (\V(0,2));
-        \draw [gray,thick] (\V(3,0)) -- (\V(3,2));
-        \draw [gray,thick] (\V(0,0)) -- (\V(3,0));
-        \draw [gray,thick] (\V(0,2)) -- (\V(3,2));
-
-        \path (\V(0,0))      node[vowelgespannt] (i)   {i};
-        \path (\V(0.25,0))   node[vowelgespannt] (y)   {y};
-        \path (\V(0.4,0.5))  node[vowel]         (ii)  {ɪ};
-        \path (\V(0.65,0.5)) node[vowel]         (yy)  {ʏ};
-        \path (\V(1,0))      node[vowelgespannt] (e)   {e};
-        \path (\V(1.25,0))   node[vowelgespannt] (oe)  {ø};
-        \path (\V(2,0))      node[vowelgespannt] (ee)  {ɛ};
-        \path (\V(1.4,0.7))  node[vowel]         (eee) {ɛ̆};
-        \path (\V(1.65,0.7)) node[vowel]         (oee) {œ};
-        \path (\V(3,1))      node[vowelgespannt] (a)   {a};
-        \path (\V(2.5,1))    node[vowel]         (aa)  {ă};
-        \path (\V (1,2))     node[vowelgespannt] (o)   {o};
-        \path (\V (1.5,1.4)) node[vowel]         (oo)  {ɔ};
-        \path (\V (0,2))     node[vowelgespannt] (u)   {u};
-        \path (\V (0.5,1.5)) node[vowel]         (uu)  {ʊ};
-
-        \draw (i)  -- (ii);
-        \draw (y)  -- (yy);
-        \draw (e)  -- (eee);
-        \draw (oe) -- (oee);
-        \draw (ee) -- (eee);
-        \draw (a)  -- (aa);
-        \draw (o)  -- (oo);
-        \draw (u)  -- (uu);
-      \end{tikzpicture}
-    }
-  \end{center}
-\end{frame}
-
-
-
-\begin{frame}
-  {Wer darf das entscheiden?}
-  \pause
-  \begin{itemize}[<+->]
-    \item In EGBD3 wird behauptet, \alert{wir hätten uns auf den Standard geeinigt}.
-    \item Ist das im Sinn einer demokratischen Entscheidung gemeint? \rot{Nein!} Gründe:
-      \begin{itemize}[<+->]
-        \item Kosten
-        \item Interesse der "`Bevölkerung"'
-        \item Kompetenz der "`Bevölkerung"' (Register- und Regionalitätsbewusstsein)
-        \item \rot{absurde Frage: "`Wie sagst du das im Standard?"'}
-      \end{itemize}
-      \vspace{0.5\baselineskip}
-    \item Autoritäten (wie \citealt{KrechEa2009})?
-      \begin{itemize}
-        \item Phonetiker*innen, Phonolog*innen, Sprechwissenschaftler*innen,\\
-          Dialektolog*innen, Soziolinguist*innen usw.
-        \item sorgfältige Beobachtung über Jahrzehnte bzw.\ Jahrhunderte
-        \item Urvater der Dialektologie: Georg Wenker (1852--1911),\\
-          Sprachatlas Marburg (digital)
-        \item erste Ausgabe von \citet{KrechEa2009} von Eva-Maria Krech (*1931): 1964
-      \end{itemize}
-      \vspace{0.5\baselineskip}
-    \item \rot{begrenzte sprachliche Erfahrung von Individuen}
-    \item \rot{Demokratische Mehrheit würde wahrscheinlich nicht\\
-      zu allgemeiner Akzeptanz führen!}
-  \end{itemize}
-\end{frame}
 
 \section{Rückblick}
 
@@ -403,20 +13,18 @@
       \end{itemize}
     \item zugrundeliegende Formen und Strukturbedingungen
       \begin{itemize}[<+->]
-        \item /an/ $\Rightarrow$ [ʔan]
-        \item /oːnə/ $\Rightarrow$ [ʔoːnə] 
-        \item /e͡ɐt/ $\Rightarrow$ [ʔe͡ɐt]
+        \item /ăn/ $\Rightarrow$ [ʔan]
+        \item /onə/ $\Rightarrow$ [ʔoːnə] 
       \end{itemize}
     \item Gespanntheit
       \begin{itemize}[<+->]
         \item \alert{phonologisches} Merkmal: /ʃtɛlə/, /ʃtɛ̆lə/
-        \item \alert{überwiegend auch phonetisch}: /mitə/, /mɪtə/
+        \item \rot{gespannt = längbar} und \rot{ungespannt = nicht längbar}
+        \item \rot{/ə/ unbetonbar und damit unlängabr}
         \item Kernwortschatz: entweder \rot{gespannt + betont + lang} [ʔoːfən]\\
           oder \rot{ungespannt + kurz} (und Betonung egal) [ʔɔfən]
         \item erweiterter Wortschatz: \alert{nur} \rot{gespannt + betont $\Rightarrow$ lang}: [ʔuʁaːn]
         \item ungespannte Vokale: immer kurz: [fʏlt], *[fʏːlt]
-        \item \rot{gespannt = längbar} und \rot{ungespannt = nicht längbar}
-        \item \rot{/ə/ unbetonbar und damit unlängabr}
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -661,7 +269,7 @@
 \begin{frame}
   {Was wo steht: Anfangsrand}
   \pause
-  \scalebox{0.85}{\begin{minipage}{\textwidth} 
+  \scalebox{0.75}{\begin{minipage}{\textwidth} 
   \begin{exe}
     \ex Simplex
     \pause
@@ -895,7 +503,8 @@
   \raggedright
   \begin{itemize}[<+->]
     \item \alert{Nur der \textbf{Reim} ist für das Silbengewicht relevant!}
-    \item überleichte (einmorige) Silben \rot{nur mit Schwa} möglich
+    \item überleichte (einmorige) Silben nur mit Schwa\ldots\\
+      und in speziellen Umgebungen (siehe unten, Korrektur zu EGBD3) \\
     \item überschwere (vier- oder mehrmorige) Silben \rot{niemals} möglich
   \end{itemize}
 \end{frame}
@@ -904,6 +513,7 @@
 \begin{frame}
   {Extrasilbisch II}
   \pause
+  \scalebox{0.85}{\begin{minipage}{\textwidth} 
   \begin{exe}
     \ex Nicht überschwer (also max.\ drei Moren):
     \begin{xlist}
@@ -918,7 +528,6 @@
       \ex /ăçt/ $\Rightarrow$ [ʔaχt] (\textit{Acht})
     \end{xlist}
     \pause
-    \Zeile
     \ex Extrasilbizität wegen drohender Überschwere:
     \begin{xlist}
       \ex /lest/ $\Rightarrow$ [leːs+t] (\textit{lest})
@@ -936,6 +545,7 @@
       \ex /fɛ̆lʃst/ $\Rightarrow$ [fɛlʃ+st] (\textit{fälschst})
     \end{xlist}
   \end{exe}
+  \end{minipage}}
 \end{frame}
 
 
@@ -945,18 +555,18 @@
   \Large
   \centering
   \rot{Und [bʊ] in [bʊ.tɐ], [ma] in [mat͡ʃə] und [klɪ] in [klɪ.ŋə]?}\\
-  \Zeile
+  \Halbzeile
   \pause
-  Die sehen wie einmorige (überleichte) Silben mit Vollvokal aus.\\
+  Sind das einmorige (überleichte) Silben mit Vollvokal?\\
   \Zeile
   \pause
   \raggedright
-  Dieser Silbentyp tritt \rot{nur} auf:\\
+  Dieser Silbentyp tritt auf:\\
   \begin{itemize}[<+->]
-    \item \alert{in offenen Silben} (sonst nicht überleicht möglich)
+    \item \alert{in (scheinbar) offenen Silben} (sonst nicht überleicht)
     \item \alert{in der betonten Silbe eines Trochäus}
     \item \alert{vor simplexen Anfangsrändern}
-    \item \alert{\dots aus zugrundeliegenden Konsonanten}
+    \item \alert{\dots nur bei zugrundeliegendem Anfangsrand-Konsonanten}
   \end{itemize}
 \end{frame}
 
@@ -1034,6 +644,28 @@ zum Anfangsrand der zweiten Silbe}.\\
 \end{frame}
 
 \begin{frame}
+  {Nachtrag zu EGBD3}
+  \pause
+  In EGBD3 steht, einmorige Silben gäbe es nur mit Schwa\ldots
+  \pause
+  \Zeile
+  \begin{itemize}[<+->]
+    \item \textit{wenigere} /venɪgəʁə/ $\Rightarrow$ [ˈveː.nɪ.gə.ʁə]
+    \item \textit{Neunziger} /nɔ͡ʏnt͡sɪgəʁ/ $\Rightarrow$ [ˈnɔ͡ʏn.t͡sɪ.gɐ]
+    \item \textit{unterschiedliche} /ʊntʁʃidlɪçə/ $\Rightarrow$ [ˈʔʊn.tɐ.ʃiːd.lɪ.çə]
+  \end{itemize}
+  \pause
+  \begin{alertblock}{Korrektur: einmorige Silben mit Nicht-Schwa}
+    In abgeleiteten mehrsilbigen Wörtern können überleichte Silben mit anderen Vokalen als Schwa auftreten.
+    Es handelt sich im Wesentlichen um [ɪ] in abgeleiteten Adjektiven.
+  \end{alertblock}
+  \pause
+  \Zeile
+  Achtung: Da \textit{-in} einen Nebenakzent trägt, liegt in \textit{Studentinnen} /ʃtudɛ̆ntɪnən/ $\Rightarrow$ [ʃtu.ˈdɛn.ˌtɪṇən] und ähnlichen Wörtern ein Silbengelenk vor!
+\end{frame}
+
+
+\begin{frame}
   {Maximierung des Anfangsrands}
   \pause
   Es bleiben immer noch Zweifelsfälle bei der wortinternen Silbifizierung\dots\\
@@ -1051,11 +683,6 @@ zum Anfangsrand der zweiten Silbe}.\\
   \Large
   Strukturbedingung: So viele Konsonanten wie möglich\\
   in den \alert{Anfangsrand} statt in den Endrand.\\
-  \Zeile
-  \pause
-  \normalsize
-  Und denken Sie schonmal über \alert{morphologische Beschränkungen} auf Silbifizierung nach.
-  Vielleicht kommen wir in der Morphologie darauf zurück.
 \end{frame}
 
 
@@ -1084,31 +711,29 @@ zum Anfangsrand der zweiten Silbe}.\\
 
 \begin{frame}
   {Und wie geht es richtig?}
-  \Zeile
-  \large
-  Denken Sie bitte bis zur nächsten Woche darüber nach, wie sie Silbenstruktur im schulischen Bereich vermitteln würden!
-  Wichtige Punkte sind zum Beispiel:\\
-  \Zeile
-  \begin{itemize}
+  \pause
+  \Halbzeile
+  Ganz allgemein wichtig für Grammatikvermittlung:\\
+ \Halbzeile 
+ \pause
+ \begin{itemize}[<+->]
     \item Was ist die \alert{Fähigkeit}, die vermittelt werden soll?
     \item Welches \alert{Wissen} ist nötig, um diese zu erwerben?
     \item Welchen \alert{Übungs-Input} müssen Sie den Lernenden geben?
-    \item Wie stellen Sie diesen Input zusammen\\
-      (\alert{Form und Gruppierung des Inputs})?
   \end{itemize}
-%   \begin{itemize}[<+->]
-%     \item eigentlich nicht meine Aufgabe, aber\dots
-%       \Zeile
-%     \item \alert{Bewusstsein für Länge}
-%     \item Bewusstsein für \alert{Länge je nach Position}
-%     \item kurz vor Vokal im Wort $\Rightarrow$ Silbengelenk, Gelenkschreibung
-%       \Zeile
-%     \item \rot{Formenreihen als Ausgangsbasis}, \alert{nur Kernwortschatz}
-%     \item Anfang mit dem \alert{Einsilbler} (ohne Dehnungsschreibung?)
-%     \item weiter mit dem \alert{trochäischen Zweisilbler ohne Silbengelenk}
-%     \item schließlich \alert{Zweisilbler mit Silbengelenk}
-%     \item für Anfangsrandmaximierung: Parallele zum \alert{Einsilbler}
-%   \end{itemize}
+ \Halbzeile
+ \pause
+  Mögliches Vorgehen:
+  \pause
+  \begin{itemize}[<+->]
+    \item \alert{Bewusstsein für Länge}
+    \item Bewusstsein für \alert{Länge je nach Position}
+    \item kurz vor Vokal im Wort $\Rightarrow$ Silbengelenk, Gelenkschreibung
+    \item \rot{Formenreihen als Ausgangsbasis}: \alert{nur Kernwortschatz}
+    \item Anfang mit dem \alert{Einsilbler} (ohne Dehnungsschreibung?)
+    \item weiter mit dem \alert{trochäischen Zweisilbler ohne Silbengelenk}
+    \item schließlich \alert{Zweisilbler mit Silbengelenk}
+  \end{itemize}
 \end{frame}
 
 \section{Vorschau}
@@ -1136,12 +761,3 @@ zum Anfangsrand der zweiten Silbe}.\\
   \pause
 \end{frame}
 
-
-\begin{frame}
-  {Literatur}
-  \renewcommand*{\bibfont}{\footnotesize}
-  \setbeamertemplate{bibliography item}{}
-  \printbibliography
-\end{frame}
-
-\end{document}
