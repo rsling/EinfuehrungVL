@@ -84,6 +84,8 @@
 \newcommand{\Ast}{*}
 \newcommand{\SL}{\ensuremath{\llbracket}}
 \newcommand{\SR}{\ensuremath{\rrbracket}}
+\def\lspbottomrule{\bottomrule}
+\def\lsptoprule{\toprule}
 
 % Beamer ==============================================================
 
@@ -183,14 +185,20 @@
 \frame{\titlepage}
 
 \ifdefined\LECTURE
-  \ifthenelse{\equal{\LECTURE}{01}}{\include{includes/\LECTURE}}
+  \include{includes/\LECTURE}
 \else
   \include{includes/01}
 \fi
 
+\makeatletter
+\setcounter{lastpagemainpart}{\the\c@framenumber}
+\makeatother
+
+\appendix
+
 \begin{frame}
-  {}
-  \begin{block}{Autor}
+  {Autor}
+  \begin{block}{Kontakt}
     Dr.\ Roland Schäfer\\
     Deutsche und niederländische Philologie\\
     Freie Universität Berlin\\
@@ -202,20 +210,14 @@
 \end{frame}
 
 \begin{frame}
-  {}
-  \begin{block}{Lizenz}
+  {Lizenz}
+  \begin{block}{Creative Commons BY-SA-3.0-DE}
     Dieses Werk ist unter einer Creative Commons Lizenz vom Typ \textit{Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Deutschland} zugänglich.
     Um eine Kopie dieser Lizenz einzusehen, konsultieren Sie \url{http://creativecommons.org/licenses/by-sa/3.0/de/} oder wenden Sie sich brieflich an Creative Commons, Postfach 1866, Mountain View, California, 94042, USA.
   \end{block}
 \end{frame}
 
-\makeatletter
-\setcounter{lastpagemainpart}{\the\c@framenumber}
-\makeatother
-
-\appendix
-
-\begin{frame}
+\begin{frame}[allowframebreaks]
   {Literatur}
   \renewcommand*{\bibfont}{\footnotesize}
   \setbeamertemplate{bibliography item}{}
