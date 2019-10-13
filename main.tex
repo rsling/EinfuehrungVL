@@ -178,7 +178,8 @@
 \title{Einführung in die Sprachwissenschaft\\\TITLE}
 \author{Roland Schäfer}
 \institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
-\date{Diese Version ist vom \today.}
+\date{Diese Version ist vom \today.\\\Zeile%
+  \scriptsize \grau{stets aktuelle Fassungen: \url{https://github.com/rsling/EinfuehrungVL/tree/master/output}}}
 
 \begin{document}
 
@@ -195,6 +196,13 @@
 \makeatother
 
 \appendix
+
+\begin{frame}[allowframebreaks]
+  {Literatur}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \setbeamertemplate{bibliography item}{}
+  \printbibliography
+\end{frame}
 
 \begin{frame}
   {Autor}
@@ -215,13 +223,6 @@
     Dieses Werk ist unter einer Creative Commons Lizenz vom Typ \textit{Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Deutschland} zugänglich.
     Um eine Kopie dieser Lizenz einzusehen, konsultieren Sie \url{http://creativecommons.org/licenses/by-sa/3.0/de/} oder wenden Sie sich brieflich an Creative Commons, Postfach 1866, Mountain View, California, 94042, USA.
   \end{block}
-\end{frame}
-
-\begin{frame}[allowframebreaks]
-  {Literatur}
-  \renewcommand*{\bibfont}{\footnotesize}
-  \setbeamertemplate{bibliography item}{}
-  \printbibliography
 \end{frame}
 
 \mode<beamer>{\setcounter{framenumber}{\thelastpagemainpart}}
