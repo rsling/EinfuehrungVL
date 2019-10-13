@@ -1,38 +1,24 @@
 LX = xelatex
-MI = makeindex
 BX = biber
 
 FILEN = main
-TEXFLAGS =
+PREFLAGS = -no-pdf
+TEXFLAGS = -output-directory=output
 
-once:
-	-$(LX) $(TEXFLAGS) $(FILEN) 
+JOB_H01 = SchaeferEinfuehrung01Handout
+ADDFLAGS_H01 = -jobname=$(JOB_H01) "\def\HANDOUT{}\def\TITLE{1. Sprache \& Sprache und Lehramt}\def\LECTURE{01}\input{main}"
 
-quick:
-	-$(LX) $(TEXFLAGS) $(PREFLAGS) $(FILEN)
-	printf "\033c"
-	@echo
-	@echo " === LAST RUN === "
-	@echo
-	-$(LX) $(TEXFLAGS) $(FILEN) | grep 'Warning\|Error'
+create:
+	mkdir -p ./output/includes
+
+h01: create
+	$(LX) $(TEXFLAGS) $(PREFLAGS) $(ADDFLAGS_H01) $(FILEN)
+	cd ./output; $(BX) $(JOB_H01)
+	$(LX) $(TEXFLAGS) $(ADDFLAGS_H01) $(FILEN)
 
 clean:
-	\rm *.adx *.and *.aux *.bbl *.blg *.idx *.ilg *.ldx *.lnd *.log *.out *.pdf *.rdx *.run.xml *.sdx *.snd *.toc *.wdx *.xdv *.nav *.snm *.bcf
-	\rm includes/*.aux
-
-all:
-	-$(LX) $(TEXFLAGS) $(PREFLAGS) $(FILEN)
-	-$(BX) $(FILEN)
-	-$(LX) $(TEXFLAGS) $(PREFLAGS) $(FILEN)
-	printf "\033c"
-	@echo
-	@echo " === LAST RUN === "
-	@echo
-	-$(LX) $(TEXFLAGS) $(FILEN) | grep 'Warning\|Error'
-
-
-view:
-	/Applications/Skim.app/Contents/MacOS/Skim $(FILEN).pdf & 
+	cd ./output/; \rm -f *.adx *.and *.aux *.bbl *.blg *.idx *.ilg *.ldx *.lnd *.log *.out *.rdx *.run.xml *.sdx *.snd *.toc *.wdx *.xdv *.nav *.snm *.bcf
+	cd ./output/includes/; \rm -f *.aux
 
 edit:
 	mvim -c ':set spell spelllang=de' -c ':nnoremap <F15> ]s' -c ':nnoremap <F14> [s' $(FILEN).tex includes/*.tex

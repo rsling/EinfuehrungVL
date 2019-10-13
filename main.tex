@@ -12,13 +12,14 @@
 \fi
 
 \usepackage[ngerman]{babel}
+\usepackage{ifthen}
 \usepackage{color}
 \usepackage{colortbl}
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{nicefrac}
 \usepackage{multicol}
-\usepackage{gb4e-}
+\usepackage{langsci-gb4e}
 \usepackage{verbatim}
 \usepackage{cancel}
 \usepackage{graphicx}
@@ -175,12 +176,30 @@
 \title{Einführung in die Sprachwissenschaft\\\TITLE}
 \author{Roland Schäfer}
 \institute{Deutsche und niederländische Philologie\\Freie Universität Berlin}
-\date{Version: \today}
+\date{Diese Version ist vom \today.}
 
 \begin{document}
 
 \frame{\titlepage}
 
+\ifdefined\LECTURE
+  \ifthenelse{\equal{\LECTURE}{01}}{\include{includes/\LECTURE}}
+\else
+  \include{includes/01}
+\fi
+
+\begin{frame}
+  {}
+  \begin{block}{Autor}
+    Dr.\ Roland Schäfer\\
+    Deutsche und niederländische Philologie\\
+    Freie Universität Berlin\\
+    Habelschwerdter Allee 45\\
+    14195 Berlin\\[\baselineskip]
+    \url{http://rolandschaefer.net}\\
+    \texttt{roland.schaefer@fu-berlin.de}
+  \end{block}
+\end{frame}
 
 \begin{frame}
   {}
