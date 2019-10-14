@@ -29,6 +29,10 @@ H05JOB = $(FILEPRE)05$(HOSUFF)
 P05JOB = $(FILEPRE)05$(PRESUFF)
 L05FLAGS = \def\TITLE{5. Wortklassen}\def\LECTURE{05}
 
+H06JOB = $(FILEPRE)06$(HOSUFF)
+P06JOB = $(FILEPRE)06$(PRESUFF)
+L06FLAGS = \def\TITLE{6. Morphologie}\def\LECTURE{06}
+
 create:
 	mkdir -p ./output/includes
 
@@ -81,6 +85,16 @@ p05: create
 	$(LX) $(TEXFLAGS) -jobname=$(P05JOB) $(PREFLAGS) "$(L05FLAGS)$(FINALFLAGS)"
 	cd ./output; $(BX) $(P05JOB)
 	$(LX) $(TEXFLAGS) -jobname=$(P05JOB) "$(L05FLAGS)$(FINALFLAGS)"
+
+h06: create
+	$(LX) $(TEXFLAGS) -jobname=$(H06JOB) $(PREFLAGS) "$(L06FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(H06JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(H06JOB) "$(L06FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+
+p06: create
+	$(LX) $(TEXFLAGS) -jobname=$(P06JOB) $(PREFLAGS) "$(L06FLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(P06JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(P06JOB) "$(L06FLAGS)$(FINALFLAGS)"
 
 clean:
 	cd ./output/; \rm -f *.adx *.and *.aux *.bbl *.blg *.idx *.ilg *.ldx *.lnd *.log *.out *.rdx *.run.xml *.sdx *.snd *.toc *.wdx *.xdv *.nav *.snm *.bcf
