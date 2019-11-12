@@ -1,9 +1,9 @@
 % Communication with make =============================================
 
 \ifdefined\HANDOUT
-  \documentclass[handout,aspectratio=1610]{beamer}
+  \documentclass[handout,aspectratio=1610,dvipsnames]{beamer}
 \else
-  \documentclass[aspectratio=1610]{beamer}
+  \documentclass[aspectratio=1610,dvipsnames]{beamer}
 \fi
 
 \ifdefined\TITLE
@@ -103,6 +103,9 @@
 }
 \renewcommand<>{\orongsch}[1]{%
   \alt#2{\beameroriginal{\orongsch}{#1}}{#1}%
+}
+\renewcommand<>{\gruen}[1]{%
+  \alt#2{\beameroriginal{\gruen}{#1}}{#1}%
 }
 
 \setbeamercolor{alerted text}{fg=trueblue}
