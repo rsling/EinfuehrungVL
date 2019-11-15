@@ -64,6 +64,12 @@ L13FLAGS = \def\TITLE{13. Graphematik und Morphosyntax}\def\LECTURE{13}
 create:
 	mkdir -p ./output/includes
 
+all: handouts presentations
+
+handouts: h01 h02 h03 h04 h05 h06 h07 h08 h09 h10 h11 h12
+
+presentations: p01 p02 p03 p04 p05 p06 p07 p08 p09 p10 p11 p12
+
 h01: create
 	$(LX) $(TEXFLAGS) -jobname=$(H01JOB) $(PREFLAGS) "$(L01FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
 	cd ./output; $(BX) $(H01JOB)
