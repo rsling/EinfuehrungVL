@@ -39,7 +39,6 @@
       \Halbzeile
     \item Morphe (= Wortbestandteile) und ihre Funktionen
     \item Morphe: alle Stämme und alle nicht-lexikalischen Morphe
-    \item Umlaut und Ablaut (bzw.\ Vokalstufen)
       \Halbzeile
     \item statische und volatile Merkmale
     \item Wortbildung vs.\ Flexion, definiert anhand von Merkmalen
@@ -286,194 +285,7 @@
   \end{itemize}
 \end{frame}
 
-\section{Umlaut und Ablaut}
 
-\begin{frame}
-  {Umlaut vs.\ Ablaut: Warum erst jetzt?}
-  \pause
-  \alert{"`So ein chaotisches Buch! Plötzlich geht es\\
-  in der Morphologie wieder um Phonologie!"'}\pause --- Ja\dots
-  \pause
-  \Zeile
-  \begin{itemize}[<+->]
-    \item Morphophonologie
-    \item Morphosyntax
-    \item Syntax-Semantik-Schnittstelle
-    \item Prosodie-Pragmatik-Schnittstelle
-    \item usw.
-      \Zeile
-    \item \rot{Die Grammatik nutzt die verfügbaren Mittel gut aus,\\
-      und Markierungsmöglichkeiten aller Ebenen können\\
-    auf anderen Ebenen zum Einsatz kommen.}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  {Umlaut}
-  \pause
-  \begin{center}
-    \resizebox{0.4\textwidth}{!}{
-    \begin{tikzpicture}[scale=3.5,baseline=default]
-      \large
-      \tikzset{
-        vowel/.style={fill=white, anchor=mid, text depth=0ex, text height=1ex},
-        vowelgespannt/.style={circle,fill=gray!30, anchor=mid, text depth=0ex, text height=1ex,minimum size=4ex},
-        dot/.style={circle,fill=black,minimum size=0.4ex,inner sep=0pt,outer sep=-1pt},
-      }
-
-      \coordinate (hf) at (0,2); % high front
-      \coordinate (hb) at (2,2); % high back
-      \coordinate (lf) at (1,0); % low front
-      \coordinate (lb) at (2,0); % low back
-      \def\V(#1,#2){barycentric cs:hf={(3-#1)*(2-#2)},hb={(3-#1)*#2},lf={#1*(2-#2)},lb={#1*#2}}
-
-      % Chart key (vorne -- hinten).
-      \draw [{Latex[round]}-] (\V (-.25,0)) -- (\V (-.25,.5)) node[above left] {\footnotesize vorne};
-      \draw [-{Latex[round]}] (\V (-.25,1.5)) -- (\V (-.25,2)) node[above left] {\footnotesize hinten};
-      \path (\V (-.25,1)) node[above] {\footnotesize zentral};
-
-      % Chart key (hoch -- tief).
-      \draw [{Latex[round]}-] (\V (0,-.25)) -- +(270:.5cm) node[above right,rotate=90] (vokaltrapez1) {\footnotesize hoch};
-      \draw [{Latex[round]}-] (\V (3,-2.5)) -- +(270:-.5cm) node[above left,rotate=90] (vokaltrapez2) {\footnotesize tief};
-      \path (\V (1.5,-1)) node[above,rotate=90] {\footnotesize mittel};
-
-      % Grid.
-      \draw [gray, thick] (\V(0,0)) -- (\V(0,2));
-      \draw [gray, thick] (\V(3,0)) -- (\V(3,2));
-      \draw [gray, thick] (\V(0,0)) -- (\V(3,0));
-      \draw [gray, thick] (\V(0,2)) -- (\V(3,2));
-
-      % Vowels.
-      \path (\V (0,2))     node[vowelgespannt] (u)   {u};
-      \path (\V(0,0))      node[vowelgespannt] (y)   {y};
-      \path (\V (0.5,1.5)) node[vowel]         (uu)  {ʊ};
-      \path (\V(0.5,0.5))  node[vowel]         (yy)  {ʏ};
-      \path (\V (1,2))     node[vowelgespannt] (o)   {o};
-      \path (\V(1.25,0))   node[vowelgespannt] (oe)  {ø};
-      \path (\V(3,1))      node[vowelgespannt] (a)   {a};
-      \path (\V(2,0))      node[vowelgespannt] (ee)  {ɛ};
-      \path (\V(2.5,1))    node[vowel]         (aa)  {ă};
-      \path (\V(1.65,0.5)) node[vowel]         (eee) {ɛ̆};
-      \path (\V (1.5,1.4)) node[vowel]         (oo)  {ɔ};
-      \path (\V(1.4,0.5))  node[vowel]         (oee) {œ};
-
-      \only<3>{\path (u)  edge [-{Latex[round]}, bend left=10]  (y);}
-      \only<4>{\path (uu) edge [-{Latex[round]}, bend left=10]  (yy);}
-      \only<5>{\path (o)  edge [-{Latex[round]}, bend right=10] (oe);}
-      \only<6>{\path (oo) edge [-{Latex[round]}, bend right=5]  (oee);}
-      \only<7>{\path (aa) edge [-{Latex[round]}, bend right=10] (eee);}
-      \only<8>{\path (a)  edge [-{Latex[round]}, bend left=10]  (ee);}
-      
-      \only<9->{\path (u)  edge [-{Latex[round]}, bend left=10]  (y);
-        \path (uu) edge [-{Latex[round]}, bend left=10]  (yy);
-        \path (o)  edge [-{Latex[round]}, bend right=10] (oe);
-        \path (oo) edge [-{Latex[round]}, bend right=5]  (oee);
-        \path (aa) edge [-{Latex[round]}, bend right=10] (eee);
-        \path (a)  edge [-{Latex[round]}, bend left=10]  (ee);}
-    \end{tikzpicture}
-    }
-  \end{center}
-  \raggedleft
-  \only<3>{G\rot{u}t [g\rot{uː}t] -- G\rot{ü}ter [g\rot{yː}tɐ]\AbUmlautBreaker}
-  \only<4>{M\rot{u}tter [m\rot{ʊ}tɐ] -- M\rot{ü}tter [m\rot{ʏ}tɐ]\AbUmlautBreaker}
-  \only<5>{T\rot{o}n [t\rot{oː}n]-- T\rot{ö}ne [t\rot{øː}nə]\AbUmlautBreaker}
-  \only<6>{\rot{o}ft [ʔ\rot{ɔ}ft] -- \rot{ö}fter [ʔ\rot{œ}ftɐ]\AbUmlautBreaker}
-  \only<7>{kr\rot{a}nk [kʁ\rot{a}ŋk] -- kr\rot{ä}nker [kʁ\rot{ɛ}ŋkɐ]\AbUmlautBreaker}
-  \only<8>{B\rot{a}d [b\rot{aː}t] -- B\rot{ä}der [b\rot{ɛ}dɐ]}
-  \ifdefined\HANDOUT
-    \newline
-  \fi
-  \onslide<9->{Ein vorhersagbarer Prozess: \alert{Frontierung!}}
-\end{frame}
-
-\begin{frame}[fragile]
-  {Vokalstufen (überwiegend Ablaut)}
-  \pause
-  Eine kleine Auswahl der möglichen Reihen von Vokalstufen\ldots
-  \pause
-  \begin{center}
-    \resizebox{0.4\textwidth}{!}{
-    \begin{tikzpicture}[scale=3.5,baseline=default]
-      \large
-      \tikzset{
-        vowel/.style={fill=white, anchor=mid, text depth=0ex, text height=1ex},
-        dot/.style={circle,fill=black,minimum size=0.4ex,inner sep=0pt,outer sep=-1pt},
-      }
-
-      \coordinate (hf) at (0,2); % high front
-      \coordinate (hb) at (2,2); % high back
-      \coordinate (lf) at (1,0); % low front
-      \coordinate (lb) at (2,0); % low back
-      \def\V(#1,#2){barycentric cs:hf={(3-#1)*(2-#2)},hb={(3-#1)*#2},lf={#1*(2-#2)},lb={#1*#2}}
-
-      % Chart key (vorne -- hinten).
-      \draw [{Latex[round]}-] (\V (-.25,0))   -- (\V (-.25,.5)) node [above left] {\footnotesize vorne};
-      \draw [-{Latex[round]}] (\V (-.25,1.5)) -- (\V (-.25,2))  node [above left] {\footnotesize hinten};
-      \path (\V (-.25,1)) node[above] {\footnotesize zentral};
-
-      % Chart key (hoch--tief).
-      \draw [{Latex[round]}-] (\V (0,-.25)) -- +(270:.5cm)  node [above right,rotate=90] (vokaltrapez1) {\footnotesize hoch};
-      \draw [{Latex[round]}-] (\V (3,-2.5)) -- +(270:-.5cm) node [above left,rotate=90] (vokaltrapez2) {\footnotesize tief};
-      \path (\V (1.5,-1)) node[above,rotate=90] {\footnotesize mittel};
-
-      % Grid. 
-      \draw [gray, thick] (\V(0,0)) -- (\V(0,2));
-      \draw [gray, thick] (\V(1,0)) -- (\V(1,2));
-      \draw [gray, thick] (\V(2,0)) -- (\V(2,2));
-      \draw [gray, thick] (\V(3,0)) -- (\V(3,2));
-      \draw [gray, thick] (\V(0,0)) -- (\V(3,0));
-      \draw [gray, thick] (\V(0,1)) -- (\V(3,1));
-      \draw [gray, thick] (\V(0,2)) -- (\V(3,2));
-
-      % Unrounded-rounded pairs.
-      \path (\V(0,0))     node [vowel] (i)   {i};
-      \path (\V(0.5,0.5)) node [vowel] (I)   {ɪ};   
-      \path (\V(1,0))     node [vowel] (e)   {e};
-      \path (\V(2,0))     node [vowel] (E)   {ɛ};
-
-      % Unpaired symbols.
-      \path (\V(3,1))      node [vowel] (a)  {a};
-      \path (\V (2,2))     node [vowel] (oo) {ɔ};
-      \path (\V (1,2))     node [vowel] (o)  {o};
-      \path (\V (0,2))     node [vowel] (u)  {u};
-      \path (\V (0.5,1.5)) node [vowel] (uu) {ʊ};
-
-      \only<4>{\path (i)  edge [red, *-{Latex[round, width=5pt]}, bend left=10] (o);}
-      \only<5>{\path (e)  edge [cyan, *-{Latex[round, width=5pt]}, bend left=10] (o);}
-      \only<6>{\path (I)  edge [blue, *-, bend right=10] (a);\path (a)  edge [blue, -{Latex[round, width=5pt]}, bend right=10] (uu);}
-      \only<7>{\path (E)  edge [green, *-{Latex[round, width=5pt]}, bend right=10] (a);\path (a)  edge [green, -{Latex[round, width=5pt]}, bend right=10] (oo);}
-      \only<8>{\path (a)  edge [brown, *-, bend right=10] (u);\path (u)  edge [brown, -{Latex[round, width=5pt]}, bend right=10] (a);}
-      \only<9>{\path (u)  edge [orange, *-, bend right=10] (i);\path (i)  edge [orange, -{Latex[round, width=5pt]}, bend right=10] (u);}
-      \only<10>{\path (I)  edge [purple, *-, bend left=10] (a);\path (a)  edge [purple, -{Latex[round, width=5pt]}, bend right=10] (E);}
-
-      \only<11>{\path (i)  edge [red, *-{Latex[round, width=5pt]}, bend left=10] (o);
-        \path (e)  edge [cyan, *-{Latex[round, width=5pt]}, bend left=10] (o);
-        \path (I)  edge [blue, *-, bend right=10] (a);\path (a)  edge [blue, -{Latex[round, width=5pt]}, bend right=10] (uu);
-        \path (E)  edge [green, *-{Latex[round, width=5pt]}, bend right=10] (a);\path (a)  edge [green, -{Latex[round, width=5pt]}, bend right=10] (oo);
-        \path (a)  edge [brown, *-, bend right=10] (u);\path (u)  edge [brown, -{Latex[round, width=5pt]}, bend right=10] (a);
-        \path (u)  edge [orange, *-, bend right=10] (i);\path (i)  edge [orange, -{Latex[round, width=5pt]}, bend right=10] (u);
-        \path (I)  edge [purple, *-, bend left=10] (a);\path (a)  edge [purple, -{Latex[round, width=5pt]}, bend right=10] (E);}
-
-
-    \end{tikzpicture}
-    }
-  \end{center}
-  \raggedleft
-  \ifdefined\HANDOUT
-    \tiny
-  \fi
-  \only<4>{fr\textcolor{red}{ie}ren [fʁ\textcolor{red}{iː}ʁən] -- fr\textcolor{red}{o}r [fr\textcolor{red}{oː}͡ɐ] -- gefr\textcolor{red}{o}ren [gəfr\textcolor{red}{oː}ʁən]\AbUmlautBreaker}
-  \only<5>{h\textcolor{cyan}{e}ben [h\textcolor{cyan}{eː}bən] -- h\textcolor{cyan}{o}b [h\textcolor{cyan}{oː}p] -- geh\textcolor{cyan}{o}ben [gəh\textcolor{cyan}{oː}bən]\AbUmlautBreaker}
-  \only<6>{b\textcolor{blue}{i}nden [b\textcolor{blue}{ɪ}ndən] -- b\textcolor{blue}{a}nd [b\textcolor{blue}{a}nt] -- geb\textcolor{blue}{u}nden [gəb\textcolor{blue}{ʊ}ndən]\AbUmlautBreaker}
-  \only<7>{b\textcolor{green}{e}rgen [b\textcolor{green}{ɛ}͡əgən] -- b\textcolor{green}{a}rg [b\textcolor{green}{a}͡ək] -- geb\textcolor{green}{o}rgen [gəb\textcolor{green}{ɔ}͡əgən]\AbUmlautBreaker}
-  \only<8>{sch\textcolor{brown}{a}ffen [ʃ\textcolor{brown}{a}fən] -- sch\textcolor{brown}{u}f [ʃ\textcolor{brown}{uː}f] -- gesch\textcolor{brown}{a}ffen [gəʃ\textcolor{brown}{a}fən]\AbUmlautBreaker}
-  \only<9>{sch\textcolor{orange}{i}nden [ʃ\textcolor{orange}{ɪ}ndən] -- sch\textcolor{orange}{u}nd [ʃ\textcolor{orange}{ʊ}nt] -- gesch\textcolor{orange}{u}nden [gəʃ\textcolor{orange}{ʊ}ndən]\AbUmlautBreaker}
-  \only<10>{s\textcolor{purple}{i}tzen [z\textcolor{purple}{ɪ}t͡sən] -- s\textcolor{purple}{a}ß [z\textcolor{purple}{aː}s] -- ges\textcolor{purple}{e}ssen [gəz\textcolor{purple}{ɛ}sən]}
-  \ifdefined\HANDOUT
-    \newline
-  \fi
-  \onslide<11->{\rot{Kein vorhersagbarer Prozess!} Lexikalisch\slash verbklassenbasiert.}
-\end{frame}
 
 \section{Merkmale in Flexion und Wortbildung}
 
@@ -638,7 +450,10 @@
   \pause
   \centering
 
-  \Large Kasus stellt Relationen zwischen Nomina und anderen Wörtern (\zB\ Verben, Präpositionen, anderen Nomina) her.\\
+  \Large
+  Kasus stellt \alert{Relationen zwischen\\
+  den kasustragenden Nomina und anderen Wörtern}\\
+  (Verben, Präpositionen, anderen Nomina) her.\\
 \end{frame}
 
 \begin{frame}
