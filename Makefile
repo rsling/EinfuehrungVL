@@ -35,11 +35,11 @@ L06FLAGS = \def\TITLE{6. Morphologie}\def\LECTURE{06}
 
 H07JOB = $(FILEPRE)07$(HOSUFF)
 P07JOB = $(FILEPRE)07$(PRESUFF)
-L07FLAGS = \def\TITLE{7. Wortbildung}\def\LECTURE{07}
+L07FLAGS = \def\TITLE{7. Flexion}\def\LECTURE{07}
 
 H08JOB = $(FILEPRE)08$(HOSUFF)
 P08JOB = $(FILEPRE)08$(PRESUFF)
-L08FLAGS = \def\TITLE{8. Flexion}\def\LECTURE{08}
+L08FLAGS = \def\TITLE{8. Wortbildung}\def\LECTURE{08}
 
 H09JOB = $(FILEPRE)09$(HOSUFF)
 P09JOB = $(FILEPRE)09$(PRESUFF)
@@ -66,9 +66,9 @@ create:
 
 all: handouts presentations
 
-handouts: h01 h02 h03 h04 h05 h06 h07 h08 h09 h10 h11 h12
+handouts: h01 h02 h03 h04 h05 h06 h07 h08 h09 h10 h11 h12 hFull
 
-presentations: p01 p02 p03 p04 p05 p06 p07 p08 p09 p10 p11 p12
+presentations: p01 p02 p03 p04 p05 p06 p07 p08 p09 p10 p11 p12 pFull
 
 h01: create
 	$(LX) $(TEXFLAGS) -jobname=$(H01JOB) $(PREFLAGS) "$(L01FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
@@ -196,6 +196,16 @@ h13: create
 	$(LX) $(TEXFLAGS) -jobname=$(H13JOB) "$(L13FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
 
 p13: create
+	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) $(PREFLAGS) "$(L13FLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(P13JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) "$(L13FLAGS)$(FINALFLAGS)"
+
+hFull: create
+	$(LX) $(TEXFLAGS) -jobname=$(H13JOB) $(PREFLAGS) "$(L13FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(H13JOB)
+	$(LX) $(TEXFLAGS) -jobname=$(H13JOB) "$(L13FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+
+pFull: create
 	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) $(PREFLAGS) "$(L13FLAGS)$(FINALFLAGS)"
 	cd ./output; $(BX) $(P13JOB)
 	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) "$(L13FLAGS)$(FINALFLAGS)"
