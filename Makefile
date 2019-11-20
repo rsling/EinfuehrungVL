@@ -61,6 +61,9 @@ H13JOB = $(FILEPRE)13$(HOSUFF)
 P13JOB = $(FILEPRE)13$(PRESUFF)
 L13FLAGS = \def\TITLE{13. Graphematik und Morphosyntax}\def\LECTURE{13}
 
+FULLJOB = $(FILEPRE)Handout
+
+
 create:
 	mkdir -p ./output/includes
 
@@ -200,15 +203,11 @@ p13: create
 	cd ./output; $(BX) $(P13JOB)
 	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) "$(L13FLAGS)$(FINALFLAGS)"
 
-hFull: create
-	$(LX) $(TEXFLAGS) -jobname=$(H13JOB) $(PREFLAGS) "$(L13FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
-	cd ./output; $(BX) $(H13JOB)
-	$(LX) $(TEXFLAGS) -jobname=$(H13JOB) "$(L13FLAGS)$(HANDIFLAGS)$(FINALFLAGS)"
+full: create
+	$(LX) $(TEXFLAGS) -jobname=$(FULLJOB) $(PREFLAGS) "$(HANDIFLAGS)$(FINALFLAGS)"
+	cd ./output; $(BX) $(FULLJOB)
+	$(LX) $(TEXFLAGS) -jobname=$(FULLJOB) "$(HANDIFLAGS)$(FINALFLAGS)"
 
-pFull: create
-	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) $(PREFLAGS) "$(L13FLAGS)$(FINALFLAGS)"
-	cd ./output; $(BX) $(P13JOB)
-	$(LX) $(TEXFLAGS) -jobname=$(P13JOB) "$(L13FLAGS)$(FINALFLAGS)"
 
 clean:
 	cd ./output/; \rm -f *.adx *.and *.aux *.bbl *.blg *.idx *.ilg *.ldx *.lnd *.log *.out *.rdx *.run.xml *.sdx *.snd *.toc *.wdx *.xdv *.nav *.snm *.bcf

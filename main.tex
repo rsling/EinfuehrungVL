@@ -294,18 +294,80 @@
 \ifdefined\LECTURE
   \include{includes/\LECTURE}
 \else
+
+  \makeatletter
+  \setbeamertemplate{section in sidebar}{\vspace{0.25\baselineskip}\vbox{%
+      \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionhead}\vspace{-0.25\baselineskip}}}
+  \setbeamertemplate{section in sidebar shaded}{\vspace{0.25\baselineskip}\vbox{%
+      \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionhead}\vspace{-0.25\baselineskip}}}
+  \setbeamertemplate{subsection in sidebar}{\hspace{1em}\vbox{%
+    \beamer@sidebarformat{3pt}{subsection in sidebar}{\insertsubsectionhead}\vspace{-0.5\baselineskip}}}
+  \setbeamertemplate{subsection in sidebar shaded}{\hspace{1em}\vbox{%
+      \beamer@sidebarformat{3pt}{subsection in sidebar shaded}{\insertsubsectionhead}\vspace{-0.5\baselineskip}}}
+  \makeatother
+
+  \section[Sprache]{Sprache \& Sprache und Lehramt}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/01}
+
+  \let\subsection\section\let\section\woopsi
+  \section{Phonetik}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/02}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Segmente]{Segmentale Phonologie}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/03}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Silben]{Silbenphonologie}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/04}
+  
+  \let\subsection\section\let\section\woopsi
+  \section{Wortklassen}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/05}
+  
+  \let\subsection\section\let\section\woopsi
+  \section{Morphologie}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/06}
+  
+  \let\subsection\section\let\section\woopsi
+  \section{Flexion}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/07}
+  
+  \let\subsection\section\let\section\woopsi
+  \section{Wortbildung}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/08}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Phrasen]{Konstituenten und Phrasen}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/09}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Sätze]{Phrasen und Sätze}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/10}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Relationen]{Relationen und Prädikate}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/11}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Graphematik~I]{Graphematik und Phonologie}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/12}
+  
+  \let\subsection\section\let\section\woopsi
+  \section[Graphematik~II]{Graphematik und Morphosyntax}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
   \include{includes/13}
 \fi
 
