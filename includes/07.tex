@@ -351,40 +351,6 @@
   \end{center}
 \end{frame}
 
-\begin{frame}
-  {Zusammenfassung (außer Substantive mit s-Plural)}
-  \pause
-  Die traditionelle \alert{Klassenzugehörigkeiten}, nicht aber die vollen\\
-  \alert{Paradigmen}, lassen sich als \alert{Entscheidungsbaum} zusammenfassen:\\
-  \pause
-  \begin{center}
-    \resizebox{0.7\textwidth}{!}{
-      \begin{forest}
-        for tree={l sep=2em},
-        decide/.style={draw, chamfered rectangle, inner sep=2pt},
-        finall/.style={rounded corners, fill=gray}
-          [Genus?, s sep=10em, decide
-            [Genitiv\\Singular?, s sep+=2em, decide,
-              edge label={node[pos=0.6, above, sloped, font=\scriptsize]{maskulin\slash neutrum}}
-              [\whyte{Schwache}\\\whyte{Maskulina (S1)}, finall,
-                edge label={node[pos=0.7, above, sloped, font=\scriptsize]{-(e)n}}
-              ]
-              [Nominativ\\Plural?, s sep+=0.5em, decide,
-                edge label={node[pos=0.7, above, sloped, font=\scriptsize]{-(e)s}}
-                [\whyte{Gemischte Maskulina}\\\whyte{und Neutra (S3)}, finall,
-                  edge label={node[pos=0.7, above, sloped, font=\scriptsize]{-(e)n}}]
-                [\whyte{Starke Maskulina}\\\whyte{und Neutra (S2)}, finall,
-                  edge label={node[pos=0.7, above, sloped, font=\scriptsize]{\char`~er\slash \char`~e\slash-e}}]
-              ]
-            ]
-            [\whyte{Feminina (S4)}, finall,
-              edge label={node[midway, above, sloped, font=\scriptsize]{feminin}}]
-          ]
-      \end{forest}
-    }
-  \end{center}
-\end{frame}
-
 
 \begin{frame}
   {Der Ansatz in EGBD}
@@ -392,9 +358,9 @@
   \pause
   \Halbzeile
   \normalsize
-  Erstens: \alert{Der Plural ist immer \orongsch{stärker markiert} als\\
-  oder mindestens \gruen{gleich stark markiert} wie der Singular.}\\
-  → \alert{Pluralbildung ist die dominante Flexionseigenschaft}.
+  Erstens: Der Plural ist nahezu immer \orongsch{stärker markiert} als\\
+  oder mindestens \gruen{gleich stark markiert} wie der Singular.\\
+  → Pluralbildung ist die \alert{dominante Flexionseigenschaft}.
   \pause
   \Zeile
   \begin{center}
@@ -404,7 +370,7 @@
         \textbf{Klasse} & \textbf{Kasus} & \textbf{Sg} & \textbf{Pl} \\
         \midrule
         S1 & Nom & (der) Mensch & (die) Mensch\orongsch{-en} \\
-        S2a & Gen & (des) Stuhl\gruen{-es} & (der) Stühl\gruen{-e} \\
+        S2a & Gen & (des) Stuhl\rot{-es} & (der) Stühl\rot{-e} \\
         S2b & Akk & (den) Gurt & (die) Gurt\orongsch{-e} \\
         S2c & Dat & (dem) Haus & (den) Häus\orongsch{-ern} \\
         S3 & Akk & (den) Staat & (die) Staat\orongsch{-en} \\
@@ -474,11 +440,11 @@
         \multirow{4}{*}{\textbf{Sg}} & \textbf{Nom} && Stuhl & Haus && Staat && Frau & \multicolumn{1}{l}{Sau} && Auto \\
         & \textbf{Akk} && Stuhl & Haus && Staat && Frau & \multicolumn{1}{l}{Sau} && Auto \\
         & \textbf{Dat} && Stuhl & Haus && Staat && Frau & \multicolumn{1}{l}{Sau} && Auto \\
-        & \textbf{Gen} && Stuhl\rot{-es} & Haus\rot{-(e)s} && Staat\rot{-(e)s} && Frau\onslide<5->{\rot{*-s}} & \multicolumn{1}{l}{Sau\onslide<5->{\rot{*-s}}} && Auto\rot{-s} \\
+        & \textbf{Gen} && Stuhl\gruen{-es} & Haus\gruen{-(e)s} && Staat\gruen{-(e)s} && Frau\onslide<5->{\rot{*-s}} & \multicolumn{1}{l}{Sau\onslide<5->{\rot{*-s}}} && Auto\gruen{-s} \\
         \midrule
         \multirow{4}{*}{\textbf{Pl}} & \textbf{Nom} && Stühl-e & Häus-er && Staat-en && Frau-en & \multicolumn{1}{l}{Säu-e} && Auto-s \\
         & \textbf{Akk} && Stühl-e & Häus-er && Staat-en && Frau-en & \multicolumn{1}{l}{Säu-e} && Auto-s \\
-        & \textbf{Dat} && Stühl-e\alert{-n} & Häus-er\alert{-n} && Staat-en\onslide<4->{\alert{*-n}} && Frau-en\onslide<4->{\alert{*-n}} & \multicolumn{1}{l}{Säu-e\alert{-n}} && Auto-s\onslide<4->{\alert{*-n}} \\
+        & \textbf{Dat} && Stühl-e\alert{-n} & Häus-er\alert{-n} && Staat-en\onslide<4->{\rot{*-n}} && Frau-en\onslide<4->{\rot{*-n}} & \multicolumn{1}{l}{Säu-e\alert{-n}} && Auto-s\onslide<4->{\rot{*-n}} \\
         & \textbf{Gen} && Stühl-e & Häus-er && Staat-en && Frau-en & \multicolumn{1}{l}{Säu-e} && Auto-s \\
         \bottomrule
       \end{tabular}
@@ -553,8 +519,7 @@
   \end{exe}
   \pause
   \Zeile
-  In dieser Funktion stehen Pronomina\\
-  \alert{anstelle einer vollen Nominalphrase}.
+  In dieser Funktion stehen Pronomina \alert{anstelle einer vollen Nominalphrase}.
 \end{frame}
 
 
@@ -585,25 +550,21 @@
 \begin{frame}
   {Warum ist das so schwer? I}
   \pause
-  \begin{block}{Artikel und Pronomen}
-    Wenn die Formen in Artikelfunktion und Pronominalfunktion nicht durchgehend gleich sind, nehmen wir \textbf{zwei verschiedene lexikalische Wörter mit gleichlautendem Stamm} an: Artikel und Pronomen.
-  \end{block}
-    \Halbzeile
-    \pause
     \begin{center}
-      \resizebox{0.7\textwidth}{!}{
-        \begin{tabular}[h]{lp{1em}llp{2em}l}
+      \resizebox{1\textwidth}{!}{
+        \begin{tabular}[h]{lp{3em}cllp{5em}cl}
           \toprule
-          \textbf{Kasus (Singular)} &&  \gruen{\textbf{Artikel}} &       && \alert{\textbf{Pronomen}} \\
+          \textbf{Kasus (Singular)} &&&  \gruen{\textbf{Artikel}} &       &&& \alert{\textbf{Pronomen}} \\
           \midrule
-          \textbf{Nominativ}        &&  \rot{ein}   & Mantel  && \rot{ein-er} \\
-          \textbf{Akkusativ}        &&  ein-en & Mantel  && ein-en \\
-          \textbf{Dativ}            &&  ein-em & Mantel  && ein-em \\
-          \textbf{Genitiv}          &&  ein-es & Mantels && ein-es \\
+          \textbf{Nominativ}        && \onslide<3->{\rot{\HandCuffRight}} & \textbf{\gruen{ein}}   & Mantel  && \onslide<3->{\rot{\HandCuffRight}} & \textbf{\alert{ein-er}} \\
+          \textbf{Akkusativ}        &&&  \gruen{ein-en} & Mantel  &&& \alert{ein-en} \\
+          \textbf{Dativ}            &&&  \gruen{ein-em} & Mantel  &&& \alert{ein-em} \\
+          \textbf{Genitiv}          &&&  \gruen{ein-es} & Mantels &&& \alert{ein-es} \\
           \bottomrule
         \end{tabular}
     }
     \end{center}
+    \pause
     \pause
     \Halbzeile
     Also gibt es \gruen{einen Artikel \textit{ein}} und \alert{ein Pronomen \textit{ein}}.
@@ -613,25 +574,21 @@
 \begin{frame}
   {Warum ist das so schwer? II}
   \pause
-  \begin{block}{Artikel und Pronomen}
-    Wenn die Formen in Artikelfunktion und Pronominalfunktion nicht durchgehend gleich sind, nehmen wir \textbf{zwei verschiedene lexikalische Wörter mit gleichlautendem Stamm} an: Artikel und Pronomen.
-  \end{block}
-    \Halbzeile
-    \pause
     \begin{center}
-      \resizebox{0.7\textwidth}{!}{
-        \begin{tabular}[h]{lp{1em}llp{2em}l}
+      \resizebox{1\textwidth}{!}{
+        \begin{tabular}[h]{lp{2em}cllp{4em}cl}
           \toprule
-          \textbf{Kasus (Plural)}   &&  \gruen{\textbf{Artikel}} &        && \alert{\textbf{Pronomen}} \\
+          \textbf{Kasus (Plural)}   &&&  \gruen{\textbf{Artikel}} &        &&& \alert{\textbf{Pronomen}} \\
           \midrule
-          \textbf{Nominativ}        && die               & Rottweiler  && die \\
-          \textbf{Akkusativ}        && die               & Rottweiler  && die \\
-          \textbf{Dativ}            && \rot{den}         & Rottweilern && \rot{denen} \\
-          \textbf{Genitiv}          && \rot{der}         & Rottweiler  && \rot{derer} \\
+          \textbf{Nominativ}        &&& \gruen{die}               & Rottweiler  &&& \alert{die} \\
+            \textbf{Akkusativ}      &&& \gruen{die}               & Rottweiler  &&&  \alert{die} \\
+            \textbf{Dativ}            && \onslide<3->{\rot{\HandCuffRight}} & \textbf{\gruen{den}}         & Rottweilern && \onslide<3->{\rot{\HandCuffRight}} & \textbf{\alert{denen}} \\
+            \textbf{Genitiv}          && \onslide<3->{\rot{\HandCuffRight}} & \textbf{\gruen{der}}         & Rottweiler  &&  \onslide<3->{\rot{\HandCuffRight}} & \textbf{\alert{derer}} \\
           \bottomrule
         \end{tabular}
       }
     \end{center}
+    \pause
     \pause
     \Halbzeile
     Also gibt es \gruen{einen Artikel \textit{d-}} und \alert{ein Pronomen \textit{d-}}.
@@ -641,11 +598,6 @@
 \begin{frame}
   {Warum ist das so schwer? III}
   \pause
-  \begin{block}{Artikel und Pronomen}
-    Wenn die Formen in Artikelfunktion und Pronominalfunktion nicht durchgehend gleich sind, nehmen wir \textbf{zwei verschiedene lexikalische Wörter mit gleichlautendem Stamm} an: Artikel und Pronomen.
-  \end{block}
-    \Halbzeile
-    \pause
     \begin{center}
       \resizebox{0.7\textwidth}{!}{
         \begin{tabular}[h]{llp{1em}llp{2em}l}
@@ -666,14 +618,25 @@
         \end{tabular}
       }
     \end{center}
+    \Halbzeile
     \pause
     Also gibt es nur \alert{ein Pronomen \textit{dies}}, das \alert{in beiden Funktionen} auftritt.\\
+    \pause
    Es gibt \rot{keinen Artikel \textit{dies}!}
 \end{frame}
 
 
 \begin{frame}
   {Warum ist das so schwer? IV}
+  \pause
+  \Zeile
+  \begin{block}{Artikel und Pronomen}
+    Wenn die Formen in Artikelfunktion und Pronominalfunktion nicht durchgehend gleich sind, nehmen wir \textbf{zwei verschiedene lexikalische Wörter mit gleichlautendem Stamm} an: einen Artikel und ein Pronomen.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  {Warum ist das so schwer? V}
   \pause
   \begin{block}{Artikel und Pronomina mit gleichlautendem Stamm I}
     Treten die Stämme \textit{ein}, \textit{kein}, \textit{mein}, \textit{dein}, \textit{sein}, \textit{ihr}, \textit{euer}, \textit{unser} oder \textit{d-} in Artikelfunktion auf, \textbf{sind sie Artikel}.
@@ -822,20 +785,20 @@
       \toprule
       \multicolumn{3}{l}{} & \textbf{Mask} & \textbf{Neut} & \textbf{Fem} & \textbf{Pl} \\
       \midrule
-      \multirow{4}{*}{\textbf{stark}} & \textbf{Nom} & \multirow{4}{*}{heiß-} & er & es & e & e \\
-      & \textbf{Akk} && en & es & e & e \\
-      & \textbf{Dat} && em & em & er & en \\
-      & \textbf{Gen} && en & en & er & er \\
+      \multirow{4}{*}{\rot<4->{\textbf{stark}}} & \textbf{Nom} & \multirow{4}{*}{\rot<4->{$\emptyset$} heiß-} & \rot<4->{er} & \rot<4->{es} & \rot<4->{e} & \rot<4->{e} \\
+      & \textbf{Akk} && \rot<4->{en} & \rot<4->{es} & \rot<4->{e} & \rot<4->{e} \\
+      & \textbf{Dat} && \rot<4->{em} & \rot<4->{em} & \rot<4->{er} & \rot<4->{en} \\
+      & \textbf{Gen} && \rot<4->{en} & \rot<4->{en} & \rot<4->{er} & \rot<4->{er} \\
       \midrule
-      \multirow{4}{*}{\textbf{schwach}} & \textbf{Nom} & \multirow{4}{*}{(der) heiß-} & e & e & e & en \\
-      & \textbf{Akk} && en & e & e & en \\
-      & \textbf{Dat} && en & en & en & en \\
-      & \textbf{Gen} && en & en & en & en \\
+      \multirow{4}{*}{\alert<5->{\textbf{schwach}}} & \textbf{Nom} & \multirow{4}{*}{\alert<5->{der} heiß-} & \alert<5->{e} & \alert<5->{e} & \alert<5->{e} & \alert<5->{en} \\
+      & \textbf{Akk} && \alert<5->{en} & \alert<5->{e} & \alert<5->{e} & \alert<5->{en} \\
+      & \textbf{Dat} && \alert<5->{en} & \alert<5->{en} & \alert<5->{en} & \alert<5->{en} \\
+      & \textbf{Gen} && \alert<5->{en} & \alert<5->{en} & \alert<5->{en} & \alert<5->{en} \\
       \midrule
-      \multirow{4}{*}{\textbf{gemischt}} & \textbf{Nom} & \multirow{4}{*}{(kein) heiß-} & er & es & e & en \\
-      & \textbf{Akk} && en & es & e & en \\
-      & \textbf{Dat} && en & en & en & en \\
-      & \textbf{Gen} && en & en & en & en \\
+      \multirow{4}{*}{\gruen<6->{\textbf{gemischt}}} & \textbf{Nom} & \multirow{4}{*}{\gruen<6->{kein} heiß-} & \gruen<6->{er} & \gruen<6->{es} & \gruen<6->{e} & \gruen<6->{en} \\
+      & \textbf{Akk} && \gruen<6->{en} & \gruen<6->{es} & \gruen<6->{e} & \gruen<6->{en} \\
+      & \textbf{Dat} && \gruen<6->{en} & \gruen<6->{en} & \gruen<6->{en} & \gruen<6->{en} \\
+      & \textbf{Gen} && \gruen<6->{en} & \gruen<6->{en} & \gruen<6->{en} & \gruen<6->{en} \\
       \bottomrule
     \end{tabular}
   }
@@ -844,9 +807,9 @@
   \begin{itemize}[<+->]
     \item "`Merke"' (oder vielleicht auch nicht):
       \begin{itemize}[<+->]
-        \item \alert{ohne} Artikel: \alert{starkes} Adjektiv
+        \item \rot{ohne} Artikel: \rot{starkes} Adjektiv
         \item mit \alert{definitem} Artikel: \alert{schwaches} Adjektiv
-        \item mit \alert{indefinitem} Artikel: \alert{gemischtes} Adjektiv
+        \item mit \gruen{indefinitem} Artikel: \gruen{gemischtes} Adjektiv
       \end{itemize} 
   \end{itemize} 
 \end{frame}
@@ -907,7 +870,7 @@
 \begin{frame}
   {Die adjektivische Flexion}
   \pause
-  Ein Meisterstück der systeminternen Funktionsoptimierung:\\
+  Fast perfekte systeminterne Funktionsoptimierung:\\
   \Zeile
   \pause
   \begin{center}
@@ -949,12 +912,12 @@
     \scalebox{0.9}{
       \begin{tabular}{lll}
         \toprule
-        mein\hspace{2em}\rot{\HandCuffRight}  & lecker\rot{-er}   & Kaffee   \\
+        mein-$\emptyset$\hspace{2em}\onslide<4->{\rot{\HandCuffRight}} & lecker\rot{-er}   & Kaffee   \\
         mein\alert{-en} & lecker\grau{-en} & Kaffee   \\
         mein\alert{-em} & lecker\grau{-en} & Kaffee   \\
         mein\alert{-es} & lecker\grau{-en} & Kaffees  \\
         \midrule
-        mein\hspace{2em}\rot{\HandCuffRight}  & lecker\rot{-es}   & Dessert  \\
+        mein-$\emptyset$\hspace{2em}\onslide<4->{\rot{\HandCuffRight}} & lecker\rot{-es}   & Dessert  \\
         mein\alert{-em} & lecker\grau{-en} & Dessert  \\
         mein\alert{-es} & lecker\grau{-en} & Desserts \\
         \midrule
@@ -968,6 +931,7 @@
       \end{tabular}
     }
   \end{center}
+  \pause
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1047,26 +1011,26 @@
         && \multicolumn{2}{c}{\textbf{schwach}} \\
         \multicolumn{2}{c}{} & \textbf{Präsens} & \textbf{Präteritum} \\
         \midrule
-        \multirow{3}{*}{\textbf{Singular}} & \textbf{1} & lach\orongsch{-(e)} & lach\rot{-te} \\
-        & \textbf{2} & lach-st & lach\rot{-te}-st \\
-        &\textbf{3} & lach\orongsch{-t} & lach\rot{-te} \\
+        \multirow{3}{*}{\textbf{Singular}} & \textbf{1} & lach\orongsch<4->{-(e)} & lach\alert<8->{-te} \\
+        & \textbf{2} & lach-st & lach\alert<8->{-te}-st \\
+        &\textbf{3} & lach\orongsch<5->{-t} & lach\alert<8->{-te}\orongsch<5->{-$\emptyset$}\\
         \midrule
-        \multirow{3}{*}{\textbf{Plural}} & \textbf{1} & lach-en & lach\rot{-te}-n \\
-        & \textbf{2} & lach-t & lach\rot{-te}-t \\
-        & \textbf{3} & lach-en & lach\rot{-te}-n \\
+        \multirow{3}{*}{\textbf{Plural}} & \textbf{1} & lach-en & lach\alert<8->{-te}-n \\
+        & \textbf{2} & lach-t & lach\alert<8->{-te}-t \\
+        & \textbf{3} & lach-en & lach\alert<8->{-te}-n \\
         \bottomrule
       \end{tabular}~\begin{tabular}{ll}
         \toprule
         \multicolumn{2}{c}{\textbf{stark}} \\
         \textbf{Präsens} & \textbf{Präteritum} \\
         \midrule
-        brech\orongsch{-(e)} & brach \\
-        brich-st & brach-st \\
-        brich\orongsch{-t} & brach \\
+        br\gruen<7->{e}ch\orongsch<4->{-(e)} & br\gruen<7->{a}ch \\
+        br\gruen<7->{i}ch-st & br\gruen<7->{a}ch-st \\
+        br\gruen<7->{i}ch\orongsch<5->{-t} & br\gruen<7->{a}ch\orongsch<5->{-$\emptyset$} \\
         \midrule
-        brech-en & brach-en \\
-        brech-t & brach-t \\
-        brech-en & brach-en \\
+        br\gruen<7->{e}ch-en & br\gruen<7->{a}ch-en \\
+        br\gruen<7->{e}ch-t & br\gruen<7->{a}ch-t \\
+        br\gruen<7->{e}ch-en & br\gruen<7->{a}ch-en \\
         \bottomrule
       \end{tabular}
     }
@@ -1075,13 +1039,13 @@
   \begin{itemize}[<+->]
     \item Person-Numerus:
       \begin{itemize}[<+->]
-        \item erste Singular \textit{-(e)} nur im Präsens
-        \item dritte Singular \textit{-t} nur im Präsens
+        \item erste Singular \orongsch{\textit{-(e)}} nur im Präsens
+        \item dritte Singular \orongsch{\textit{-t}} nur im Präsens
       \end{itemize}
     \item Präteritum
       \begin{itemize}[<+->]
-        \item mit Vokalstufe (stark)
-        \item mit Affix \textit{-te} (schwach)
+        \item mit \gruen{Vokalstufe} (stark)
+        \item mit Affix \alert{\textit{-te}} (schwach)
       \end{itemize} 
   \end{itemize}
 \end{frame}
@@ -1120,26 +1084,26 @@
         && \multicolumn{2}{c}{\textbf{schwach}} \\
         \multicolumn{2}{c}{} & \textbf{Präsens} & \textbf{Präteritum} \\
         \midrule
-        \multirow{3}{*}{\textbf{Singular}} & \textbf{1} & lach\alert{-e} & lach-t\alert{-e} \\
-        & \textbf{2} & lach\alert{-e}-st & lach-t\alert{-e}-st \\
-        & \textbf{3} & lach\alert{-e} & lach-t\alert{-e} \\
+        \multirow{3}{*}{\textbf{Singular}} & \textbf{1} & lach\alert<6->{-e} & lach-t\alert<6->{-e} \\
+        & \textbf{2} & lach\alert<6->{-e}\orongsch<4->{-st} & lach-t\alert<6->{-e}\orongsch<4->{-st} \\
+        & \textbf{3} & lach\alert<6->{-e} & lach-t\alert<6->{-e} \\
         \midrule
-        \multirow{3}{*}{\textbf{Plural}} & \textbf{1} & lach\alert{-e}-n & lach-t\alert{-e}-n \\
-        & \textbf{2} & lach\alert{-e}-t & lach-t\alert{-e}-t \\
-        & \textbf{3} & lach\alert{-e}-n & lach-t\alert{-e}-n \\
+        \multirow{3}{*}{\textbf{Plural}} & \textbf{1} & lach\alert<6->{-e}\orongsch<4->{-n} & lach-t\alert<6->{-e}\orongsch<4->{-n} \\
+        & \textbf{2} & lach\alert<6->{-e}\orongsch<4->{-t} & lach-t\alert<6->{-e}\orongsch<4->{-t} \\
+        & \textbf{3} & lach\alert<6->{-e}\orongsch<4->{-n} & lach-t\alert<6->{-e}\orongsch<4->{-n} \\
         \bottomrule
       \end{tabular}~\begin{tabular}{ll}
         \toprule
         \multicolumn{2}{c}{\textbf{stark}} \\
         \textbf{Präsens} & \textbf{Präteritum} \\
         \midrule
-        brech\alert{-e} & bräch\alert{-e} \\
-        brech\alert{-e}-st & bräch\alert{-e}-st \\
-        brech\alert{-e} & bräch\alert{-e} \\
+        brech\alert<6->{-e} & br\rot<5->{ä}ch\alert<6->{-e} \\
+        brech\alert<6->{-e}\orongsch<4->{-st} & br\rot<5->{ä}ch\alert<6->{-e}\orongsch<4->{-st} \\
+        brech\alert<6->{-e} & br\rot<5->{ä}ch\alert<6->{-e} \\
         \midrule
-        brech\alert{-e}-n & bräch\alert{-e}-n \\
-        brech\alert{-e}-t & bräch\alert{-e}-t \\
-        brech\alert{-e}-n & bräch\alert{-e}-n \\
+        brech\alert<6->{-e}\orongsch<4->{-n} & br\rot<5->{ä}ch\alert<6->{-e}\orongsch<4->{-n} \\
+        brech\alert<6->{-e}\orongsch<4->{-t} & br\rot<5->{ä}ch\alert<6->{-e}\orongsch<4->{-t} \\
+        brech\alert<6->{-e}\orongsch<4->{-n} & br\rot<5->{ä}ch\alert<6->{-e}\orongsch<4->{-n} \\
         \bottomrule
       \end{tabular}
     }
@@ -1147,9 +1111,9 @@
   \pause
   \begin{itemize}[<+->]
     \item unabhängig von Funktion: Präsens und Präteritum
-    \item \alert{immer PN2}
-    \item \alert{Umlaut} bei starken Verben
-    \item \alert{immer -e} nach Stamm bzw.\ Stamm\textit{-t}(\textit{e})
+    \item immer \orongsch<4->{PN2}
+    \item wenn möglich \rot<5->{Umlaut} bei starken Verben
+    \item immer \alert<6->{-e} nach Stamm bzw.\ Stamm\textit{-t}(\textit{e})
   \end{itemize}
 \end{frame}
 
@@ -1158,18 +1122,18 @@
   {Infinite Formen}
   \pause
   Kein Tempus, keine Person, keinen Numerus, keinen Modus\ldots\\
-  \alert{aber verbregiert}.\\
+  \gruen{aber verbregiert}.\\
 
   \pause
   \Halbzeile
   \begin{center}
     \scalebox{0.7}{
-      \begin{tabular}{lp{11em}p{11em}}
+      \begin{tabular}{lp{13em}p{13em}}
         \toprule
         & \textbf{Infinitiv} & \textbf{Partizip} \\
         \midrule
-        \textbf{schwach} & lach\rot{-en} & ge-lach\rot{-t} \\
-        \textbf{stark} & brech\rot{-en} & ge-broch\rot{-en} \\
+        \textbf{schwach} & lach\alert{-en} & ge-lach\alert{-t} \\
+        \textbf{stark} & brech\alert{-en} & ge-broch\alert{-en} \\
         \bottomrule
       \end{tabular}
     }
@@ -1177,12 +1141,12 @@
     \pause
     \Zeile
     \scalebox{0.7}{
-      \begin{tabular}{lp{11em}p{11em}}
+      \begin{tabular}{lp{13em}p{13em}}
         \toprule
         & \textbf{Infinitiv} & \textbf{Partizip} \\
         \midrule
-        \textbf{schwach} & Stamm-\textit{en} & (\textit{ge})-Stamm-\textit{t} \\
-        \textbf{stark} & Präsensstamm-\textit{en} & (\textit{ge})-Partizipstamm-\textit{en} \\
+        \textbf{schwach} & Stamm + \textit{en} & (\textit{ge}) + Stamm + \textit{t} \\
+        \textbf{stark} & Präsensstamm + \textit{en} & (\textit{ge}) + Partizipstamm + \textit{en} \\
         \bottomrule
       \end{tabular}
     }
@@ -1191,12 +1155,12 @@
     \Zeile
     \Zeile
     \scalebox{0.7}{
-      \begin{tabular}{lp{11em}p{11em}}
+      \begin{tabular}{lp{13em}p{13em}}
         \toprule
         & \textbf{Präfixverb} & \textbf{Partikelverb} \\
         \midrule
-        \textbf{schwach} & \textbf{ver:}lach\rot{-t} & \textbf{aus=ge-}lach\rot{-t} \\
-        \textbf{stark} & \textbf{unter:}broch\rot{-en} & \textbf{ab=ge-}broch\rot{-en} \\
+        \textbf{schwach} & \hspace{0em} \rot{\textbf{ver:}}lach\alert{-t} & \hspace{0em} \rot{\textbf{aus=ge-}}lach\alert{-t} \\
+        \textbf{stark} & \hspace{0em} \rot{\textbf{unter:}}broch\alert{-en} & \hspace{0em} \rot{\textbf{ab=ge-}}broch\alert{-en} \\
         \bottomrule
       \end{tabular}
     }
