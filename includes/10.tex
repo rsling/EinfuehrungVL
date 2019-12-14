@@ -1,20 +1,20 @@
-\section{Rückblick}
-
-\begin{frame}
-  {Konstituenten}
-  \pause
-  \begin{itemize}[<+->]
-    \item .
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  {Phrasen}
-  \pause
-  \begin{itemize}[<+->]
-    \item .
-  \end{itemize}
-\end{frame}
+% \section{Rückblick}
+% 
+% \begin{frame}
+%   {Konstituenten}
+%   \pause
+%   \begin{itemize}[<+->]
+%     \item .
+%   \end{itemize}
+% \end{frame}
+% 
+% \begin{frame}
+%   {Phrasen}
+%   \pause
+%   \begin{itemize}[<+->]
+%     \item .
+%   \end{itemize}
+% \end{frame}
 
 \section{Überblick}
 
@@ -42,11 +42,11 @@
   \begin{exe}
     \ex\label{ex:komplementiererphrase111}
     \begin{xlist}
-      \ex[]{\label{ex:komplementiererphrase112} Der Arzt möchte, [dass \alert{[der Privatpatient die Rechnung bezahlt]}].}
+      \ex[]{\label{ex:komplementiererphrase112} Der Arzt möchte, [dass [der Privatpatient die Rechnung \alert{bezahlt}]].}
       \pause
-      \ex[*]{\label{ex:komplementiererphrase113} Der Arzt möchte, [dass \rot{[der Privatpatient bezahlt die Rechnung]}].}
+      \ex[*]{\label{ex:komplementiererphrase113} Der Arzt möchte, [dass [der Privatpatient \rot{bezahlt} die Rechnung]].}
       \pause
-      \ex[*]{\label{ex:komplementiererphrase114} Der Arzt möchte, [dass \rot{[bezahlt der Privatpatient die Rechnung]}].}
+      \ex[*]{\label{ex:komplementiererphrase114} Der Arzt möchte, [dass [\rot{bezahlt} der Privatpatient die Rechnung]].}
     \end{xlist}
   \end{exe}
   \pause
@@ -57,8 +57,8 @@
       [\bf K, tier=preterminal
         [\it dass, name=Kpkopf]
       ]
-      [VP, tier=preterminal
-        [\it der Kassenpatient geht, narroof]
+      [\alert{VP}, tier=preterminal
+        [\it der Kassenpatient \alert{geht}, narroof]
       ]
     ]
   \end{forest}\\
@@ -74,13 +74,13 @@
   \begin{exe}
   \ex
     \begin{xlist}
-      \ex{dass [Ischariot malt]}
+      \ex{dass [Ischariot \alert{malt}]}
       \pause
-      \ex{dass [Ischariot [das Bild] malt]}
+      \ex{dass [Ischariot [das Bild] \alert{malt}]}
       \pause
-      \ex{dass [Ischariot [dem Arzt] [das Bild] verkauft]}
+      \ex{dass [Ischariot [dem Arzt] [das Bild] \alert{verkauft}]}
       \pause
-      \ex{dass [Ischariot [wahrscheinlich] [dem Arzt] [heimlich] [das Bild] \\schnell verkauft]}
+      \ex{dass [Ischariot [wahrscheinlich] [dem Arzt] [heimlich] [das Bild] \\schnell \alert{verkauft}]}
     \end{xlist}
   \end{exe}
   \pause
@@ -108,7 +108,7 @@
         [AdvP, tier=preterminal
           [\it schnell, narroof]
         ]
-        [\bf V, tier=preterminal
+        [\bf V, tier=preterminal, bluetree
           [\it verkauft]
         ]
       ]
@@ -122,6 +122,7 @@
   Deutsch: \alert{Verben werden miteinander kombiniert, um Tempora,\\
   Modalität, Diathese usw.\ zu kodieren.}\\
   \pause
+  \Zeile
   \begin{exe}
     \ex{\label{ex:verbkomplex121} dass der Junge ein Eis \alert{[isst]}}
     \pause
@@ -152,45 +153,45 @@
   }
   \hspace{1em}\scalebox{0.7}{
     \begin{forest}
-      [\bf V\Sub{2+1}, calign=last
-        [\bf V\Sub{2}, tier=preterminal
+      [\bf V\Sub{B+A}, calign=last, bluetree
+        [\bf V\Sub{B}, tier=preterminal, gruentree
           [\it essen\\(1.~Status)]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{A}, tier=preterminal
           [\it wird, baseline]
-          {\draw [->, bend left=30] (.south) to (!uu11.south);}
+          {\draw [->, trueblue, bend left=30] (.south) to (!uu11.south);}
         ]
       ]
     \end{forest}
   }
   \hspace{1em}\scalebox{0.7}{
     \begin{forest}
-      [\bf V\Sub{2+1}, calign=last
-        [\bf V\Sub{2}, tier=preterminal
+      [\bf V\Sub{B+A}, calign=last, bluetree
+        [\bf V\Sub{B}, tier=preterminal, gruentree
           [\it gegessen\\(3.~Status)]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{A}, tier=preterminal
           [\it wird, baseline]
-          {\draw [->, bend left=30] (.south) to (!uu11.south);}
+          {\draw [->, trueblue, bend left=30] (.south) to (!uu11.south);}
         ]
       ]
     \end{forest}
   }
   \hspace{1em}\scalebox{0.7}{
     \begin{forest}
-      [\bf V\Sub{3+2+1}, calign=last
-        [\bf V\Sub{3+2}, calign=last
-          [\bf V\Sub{3}, tier=preterminal
+      [\bf V\Sub{C+B+A}, calign=last, bluetree
+        [\bf V\Sub{C+B}, calign=last, gruentree
+          [\bf V\Sub{C}, tier=preterminal, orongschtree
             [\it kaufen\\(1.~Status)]
           ]
-          [\bf V\Sub{2}, tier=preterminal
+          [\bf V\Sub{B}, tier=preterminal
             [\it wollen\\(1.~Status)]
-            {\draw [->, bend left=30] (.south) to (!uu11.south);}
+            {\draw [->, gruen, bend left=30] (.south) to (!uu11.south);}
           ]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{A}, tier=preterminal
           [\it wird, baseline]
-          {\draw [->, bend left=30] (.south) to (!uu121.south);}
+          {\draw [->, trueblue, bend left=30] (.south) to (!uu121.south);}
         ]
       ]
     \end{forest}
@@ -198,17 +199,15 @@
   \pause
   \Halbzeile
   \begin{itemize}[<+->]
-    \item erste Numerierung: \alert{Verb 1 regiert Verb 2 regiert Verb 3\ldots}
-      \Halbzeile
-    \item zweite Numerierung: \alert{Status}
+    \item Buchstaben (im Buch Zahlen): \alert{Verb A} regiert \gruen{Verb B} regiert \orongsch{Verb C}
+    \item Numerierung: Status
       \begin{itemize}[<+->]
         \item 1.~Status: Infinitiv ohne \textit{zu}
         \item 2.~Status: Infinitiv mit \textit{zu}
         \item 3.~Status: Partizip
       \end{itemize}
-      \Halbzeile
-    \item \alert{infinite Verbformen: solche, die von anderen Verben regiert werden}
-    \item daher: "`Partizip 1"' keine infinite Verbform
+    \item infinite Verbformen: solche, die von anderen Verben regiert werden
+    \item "`Partizip 1"' keine infinite Verbform (Derivation zum Adjektiv)
   \end{itemize}
 \end{frame}
 
@@ -216,35 +215,42 @@
 \begin{frame}
   {Verbkomplex und Rektion in der VP}
   \pause
+  Die Hilfsverben \textit{heben} die \alert{Valenz-Anforderungen}\\
+  lexikalischer Verben zu sich \textit{an}.\\
+  \pause
   \centering
-  \begin{forest}
-    l sep+=2em
-    [VP, calign=last
-      [NP, tier=preterminal
-        [\it die Freundin, narroof]
-      ]
-      [NP, tier=preterminal
-        [\it das Eis, narroof]
-      ]
-      [\bf\Sub{3+2+1}, calign=last
-        [\bf V\Sub{3+2}, calign=last
-          [\bf V\Sub{3}, tier=preterminal
-            [\it kaufen\\(1.~Status)]
-            {\draw [->, bend left=30] (.south) to (!uuuu11.south);}
-            {\draw [->, bend left=30] (.south) to (!uuuu21.south);}
+  \adjustbox{max width=0.5\textwidth}{%
+    \begin{forest}
+      l sep+=2em
+      [VP, calign=last
+        [NP, tier=preterminal, name=subj
+          [\it die Freundin, narroof]
+        ]
+        [NP, tier=preterminal, name=obj
+          [\it das Eis, narroof]
+        ]
+        [\bf V\Sub{\orongsch{C}\gruen{+B}\alert{+A}}, calign=last, bluetree, name=CBAnode
+          [\bf V\Sub{\orongsch{C}\gruen{+B}}, calign=last, gruentree, name=CBnode
+            [\bf V\Sub{C}, tier=preterminal, orongschtree
+              [\it kaufen]
+            ]
+            {\draw [->, orongsch, bend left=15] (.north) to node [above, near start] {\tiny{(Nom, Akk)}} (CBnode.west);}
+            [\bf V\Sub{B}, tier=preterminal
+              [\it wollen]
+              {\draw [->, gruen, bend left=30] (.south) to node [below] {\footnotesize{1.~Status}} (!uu11.south);}
+            ]
           ]
-          [\bf V\Sub{2}, tier=preterminal
-            [\it wollen\\(1.~Status)]
-            {\draw [->, bend left=30] (.south) to (!uu11.south);}
+          {\draw [->, orongsch, bend left=15] (.north) to node [above, near start] {\tiny{(Nom, Akk)}} (CBAnode.west);}
+          [\bf V\Sub{A}, tier=preterminal
+            [\it wird]
+            {\draw [->, trueblue, bend left=30] (.south) to node [below, near start] {\footnotesize{1.~Status}} (!uu121.south);}
           ]
         ]
-        [\bf V\Sub{1}, tier=preterminal
-          [\it wird]
-          {\draw [->, bend left=30] (.south) to (!uu121.south);}
-        ]
+        {\draw [->, orongsch, bend right=80] (.north) to node [above] {\footnotesize{Nom}} (subj.north);}
+        {\draw [->, orongsch, bend right=60] (.north) to node [above] {\footnotesize{Akk}} (obj.north);}
       ]
-    ]
-  \end{forest}
+    \end{forest}
+  }
 \end{frame}
 
 
@@ -303,10 +309,9 @@
     \item Vorteil an (\ref{ex:nebensatz}): \alert{Alle Ergänzungen und Angaben des Verbs\\
       werden in einer Kette (der intakten VP) realisiert!}
     \item sonst: Abhängige des Verbs irgendwo verteilt
-    \item $\Rightarrow$ Wenn wir die VP in der KP zugrundelegen,kann das Verhältnis\\
-      von Verb und Abhängigen interphrasal abgehandelt werden!
-    \item \grau{Einige systematische Ausnahmen stehen im Buch,\\
-      gelten aber für diese VL als Transferwissen.}
+    \item $\Rightarrow$ Wenn wir die VP in der KP zugrundelegen, kann das Verhältnis\\
+      des Verbs und seinen Abhängigen intraphrasal abgehandelt werden!
+    \item \alert{Einige systematische Ausnahmen stehen im Buch.}
   \end{itemize}
 \end{frame}
 
@@ -343,7 +348,6 @@
     \item unabhängige Sätze (anders als Nebensätze) \alert{sprechaktkonstituierend}?
   \end{itemize}
   \pause
-  \Halbzeile
   \begin{exe}
     \ex\label{ex:hauptsatzundmatrixsatz007}
     \begin{xlist}
@@ -358,7 +362,6 @@
     \end{xlist}
   \end{exe}
   \pause
-  \Halbzeile
   \begin{itemize}[<+->]
     \item \rot{Was ist ein Satz, wenn auch (\ref{ex:hauptsatzundmatrixsatz009})[B]--(\ref{ex:hauptsatzundmatrixsatz011}) als Sätze gelten?}
     \item \alert{Sätze sind syntaktisch definiert, nicht pragmatisch!}
@@ -374,14 +377,13 @@
   Komplexe Sachverhalte: \alert{Para- und Hypotaxe} oft austauschbar\\
   bzw.\ \alert{Hypotaxe optional}.
   \pause
-  \Halbzeile
   \begin{exe}
     \ex\begin{xlist}
       \ex Es regnet. Juliette geht \alert{trotzdem} zum Training.
       \pause
       \ex \alert{Obwohl} es regnet, geht Juliette zum Training.
     \end{xlist}
-    \Halbzeile
+    \Viertelzeile
     \pause
     \ex\begin{xlist}
       \ex Es regnet. \alert{Deswegen} fährt Adrianna noch nicht nachhause.
@@ -389,7 +391,7 @@
       \ex \alert{Weil} es regnet, fährt Adrianna noch nicht nachhause.
     \end{xlist}
     \pause
-    \Halbzeile
+    \Viertelzeile
     \ex\begin{xlist}
       \ex Kristine bleibt im Garten, \rot{damit} sie nach der Hitze\\
       mehr vom Regen abbekommt.
@@ -401,9 +403,8 @@
       von mehr Regen nach der Hitze.
     \end{xlist}
   \end{exe}
-  \Halbzeile
   \pause
-  \alert{Verfügbarkeit para- und hypotaktischer Mittel mehr oder weniger Zufall.}
+  \alert{Verfügbarkeit para- und hypotaktischer Mittel ist mehr oder weniger Zufall.}
 \end{frame}
 
 \begin{frame}
@@ -422,13 +423,11 @@
     \item \alert{Komplementsatz} oder \alert{Ergänzungssatz} in (\ref{ex:ergsatz})
     \item \alert{Adverbialsatz} oder \alert{Angabensatz} in (\ref{ex:angsatz})
     \item \alert{Relativsatz} in (\ref{ex:relsatz2})
-      \Zeile
     \item Funktionen?
       \begin{itemize}[<+->]
         \item für alle: auf jeden Fall \alert{Hypotaxe =\\
           Erweiterung bildungssprachlicher Möglichkeiten}
       \end{itemize}
-    \Halbzeile
     \item systeminterne Funktionen
       \begin{itemize}[<+->]
         \item Semantik des Nebensatzes und der Matrix
@@ -584,9 +583,6 @@
         [NP, tier=preterminal
           [\it Ischariot, narroof]
         ]
-        [AdvP, tier=preterminal
-          [\it wahrscheinlich, narroof]
-        ]
         [NP, tier=preterminal
           [\it dem Arzt, narroof]
         ]
@@ -600,7 +596,7 @@
           [\bf V, tier=preterminal
             [\it verkauft]
           ]
-          [\bf V, tier=preterminal
+          [\bf V, tier=preterminal, bluetree
             [\it hat]
           ]
         ]
@@ -613,77 +609,111 @@
 \end{frame}
 
 \begin{frame}
-  {Unterschiede von VP in KP zum unabhängigen Aussagesatz}
+  {Von der VP zum V1-Satz: Verb-Erst-Stellung}
   \pause
-  {\Large\alert{In zwei Schritten Material nach links stellen!}}\\
+  {\Large\alert{Finites Verb ganz nach links stellen:}}\\
   \pause
-  \Halbzeile
-  \centering
-  \scalebox{0.8}{%
+  \begin{center}
     \begin{forest}
-      [, phantom, l sep+=2em
-        [NP, tier=preterminal
-          [\it Ischariot, narroof, name=BeweK]
-        ]
-        [\bf V\Sub{1}, tier=preterminal
-          [\it hat, name=BeweV]
-        ]
-        [VP, calign=last, s sep+=0.5em
-          [\Tii, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
-          [AdvP, tier=preterminal
-            [\it wahrscheinlich, narroof]
+        [, phantom, l sep+=2em
+          [\bf V\Sub{1}, tier=preterminal, bluetree
+            [\it hat, name=BeweV]
           ]
-          [NP, tier=preterminal
-            [\it dem Arzt, narroof]
-          ]
-          [NP, tier=preterminal
-            [\it das Bild, narroof]
-          ]
-          [AdvP, tier=preterminal
-            [\it heimlich, narroof]
-          ]
-          [\bf V, calign=last
-            [\bf V, tier=preterminal
-              [\it verkauft]
+          [VP, calign=last, s sep+=0.5em
+            [NP, tier=preterminal
+              [\it Ischariot, narroof]
             ]
-            [\Ti]
-            {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+            [NP, tier=preterminal
+              [\it dem Arzt, narroof]
+            ]
+            [NP, tier=preterminal
+              [\it das Bild, narroof]
+            ]
+            [AdvP, tier=preterminal
+              [\it heimlich, narroof]
+            ]
+            [\bf V, calign=last
+              [\bf V, tier=preterminal
+                [\it verkauft]
+              ]
+              [\Ti, bluetree]
+              {\draw[dotted, trueblue, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+            ]
           ]
         ]
-      ]
-    \end{forest}
-  }\\
-  \pause
-  \Zeile
-  {\LARGE\alert{Resultat: Verb-Zweit-Stellung (V2)!}}
+      \end{forest}\\
+    \pause
+    \Halbzeile
+    {\Large\alert{Resultat: Verb-Erst-Stellung (V1)!}}
+  \end{center}
 \end{frame}
+
+\begin{frame}
+  {Von der V1-Stellung zum V2-Satz: Verb-Zweit-Stellung}
+  \pause
+  {\Large\alert{Eine beliebige Phrase aus der VP ganz nach links stellen:}}\\
+  \pause
+  \begin{center}
+    \begin{forest}
+        [, phantom, l sep+=2em
+          [NP, tier=preterminal, orongschtree
+            [\it Ischariot, narroof, name=BeweK]
+          ]
+          [\bf V\Sub{1}, tier=preterminal, bluetree
+            [\it hat, name=BeweV]
+          ]
+          [VP, calign=last, s sep+=0.5em
+            [\Tii, tier=preterminal, orongschtree]
+            {\draw[dotted, orongsch, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+            [NP, tier=preterminal
+              [\it dem Arzt, narroof]
+            ]
+            [NP, tier=preterminal
+              [\it das Bild, narroof]
+            ]
+            [AdvP, tier=preterminal
+              [\it heimlich, narroof]
+            ]
+            [\bf V, calign=last
+              [\bf V, tier=preterminal
+                [\it verkauft]
+              ]
+              [\Ti, bluetree]
+              {\draw[dotted, trueblue, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
+            ]
+          ]
+        ]
+      \end{forest}\\
+    \pause
+    \Halbzeile
+    {\Large\alert{Resultat: Verb-Zweit-Stellung (V2)!}}
+  \end{center}
+\end{frame}
+
+
 
 \begin{frame}
   {Flexibilität der zweiten Herausstellung}
   \pause
   \centering
-  \scalebox{0.5}{%
-    \begin{forest}
+  \gruen{Akkusativ-Objekt:} \scalebox{0.5}{%
+   \begin{forest}
       [, phantom, l sep+=2em
-        [AdvP, tier=preterminal
-          [\it wahrscheinlich, narroof, name=BeweK]
+        [NP, tier=preterminal, gruentree
+          [\it das Bild, narroof, name=BeweK]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{1}, tier=preterminal, bluetree
           [\it hat, name=BeweV]
         ]
         [VP, calign=last, s sep+=0.5em
           [NP, tier=preterminal
             [\it Ischariot, narroof]
           ]
-          [\Tii, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
           [NP, tier=preterminal
             [\it dem Arzt, narroof]
           ]
-          [NP, tier=preterminal
-            [\it das Bild, narroof]
-          ]
+          [\Tii, tier=preterminal, gruentree]
+          {\draw[dotted, gruen, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
           [AdvP, tier=preterminal
             [\it heimlich, narroof]
           ]
@@ -691,7 +721,7 @@
             [\bf V, tier=preterminal
               [\it verkauft]
             ]
-            [\Ti]
+            [\Ti, bluetree]
             {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
           ]
         ]
@@ -699,24 +729,21 @@
     \end{forest}
   }\\
   \pause
-  \scalebox{0.5}{%
+  \braun{Dativ-Objekt:} \scalebox{0.5}{%
     \begin{forest}
       [, phantom, l sep+=2em
-        [NP, tier=preterminal
+        [NP, tier=preterminal, brauntree
           [\it dem Arzt, narroof, name=BeweK]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{1}, tier=preterminal, bluetree
           [\it hat, name=BeweV]
         ]
         [VP, calign=last, s sep+=0.5em
           [NP, tier=preterminal
             [\it Ischariot, narroof]
           ]
-          [AdvP, tier=preterminal
-            [\it wahrscheinlich, narroof]
-          ]
-          [\Tii, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [\Tii, tier=preterminal, brauntree]
+          {\draw[dotted, braun, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
           [NP, tier=preterminal
             [\it das Bild, narroof]
           ]
@@ -727,7 +754,7 @@
             [\bf V, tier=preterminal
               [\it verkauft]
             ]
-            [\Ti]
+            [\Ti, bluetree]
             {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
           ]
         ]
@@ -735,21 +762,18 @@
     \end{forest}
   }\\
   \pause
-  \scalebox{0.5}{%
+  \rot{Adverbialphrase:} \scalebox{0.5}{%
     \begin{forest}
       [, phantom, l sep+=2em
-        [AdvP, tier=preterminal
+        [AdvP, tier=preterminal, rottree
           [\it heimlich, narroof, name=BeweK]
         ]
-        [\bf V\Sub{1}, tier=preterminal
+        [\bf V\Sub{1}, tier=preterminal, bluetree
           [\it hat, name=BeweV]
         ]
         [VP, calign=last, s sep+=0.5em
           [NP, tier=preterminal
             [\it Ischariot, narroof]
-          ]
-          [AdvP, tier=preterminal
-            [\it wahrscheinlich, narroof]
           ]
           [NP, tier=preterminal
             [\it dem Arzt, narroof]
@@ -757,13 +781,13 @@
           [NP, tier=preterminal
             [\it das Bild, narroof]
           ]
-          [\Tii, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
+          [\Tii, tier=preterminal, rottree]
+          {\draw[dotted, rot, thick, ->] (.south) |- ++(0,-5.5em) -| (BeweK.south);}
           [\bf V, calign=last
             [\bf V, tier=preterminal
               [\it verkauft]
             ]
-            [\Ti]
+            [\Ti, bluetree]
             {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweV.south);}
           ]
         ]
@@ -772,102 +796,108 @@
   }
 \end{frame}
 
-
 \begin{frame}
-  {Kopf und Schema des V2-Satzes}
+  {Schema des V1-Satzes (Ja\slash Nein-Frage)}
   \pause
-  Hat der Satz dann einen \alert{Kopf}?\pause --- Nö.\\
-  \pause
-  \grau{Andere behaupten anderes.}\\
-  \pause
-  \centering
-  \scalebox{0.8}{%
-    \begin{forest}
-    [S, calign=child, calign child=2
-      [NP\Sub{2}, tier=preterminal
-        [\it das Bild, narroof, name=BeweBild]
-      ]
-      [\bf V\Sub{1}, tier=preterminal
-        [\it hat, name=BeweHat]
-      ]
-      [VP, calign=last
-        [NP, tier=preterminal, baseline
-          [\it Ischariot, narroof]
-        ]
-        [AdvP, tier=preterminal
-          [\it wahrscheinlich, narroof]
-        ]
-        [t\Sub{2}, tier=preterminal
-        ]
-        {\draw[dotted, thick, ->] (.south) |- ++(0,-5em) -| (BeweBild.south);}
-        [\bf V, calign=last
-          [\bf V, tier=preterminal
-            [\it verkauft]
+  \Zeile
+  \begin{center}
+    \adjustbox{max width=0.5\textwidth}{%
+      \begin{minipage}{0.7\textwidth}
+        \begin{forest}
+        [FS, calign=first
+          [\bf V\Sub{1}, tier=preterminal, bluetree
+            [\it hat, name=BeweHat]
           ]
-          [t\Sub{1}]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+          [VP, calign=last
+            [NP, tier=preterminal, baseline
+              [\it Ischariot, narroof]
+            ]
+            [AdvP, tier=preterminal
+              [\it wahrscheinlich, narroof]
+            ]
+            [NP, tier=preterminal
+              [\it das Bild, narroof]
+            ]
+            [\bf V, calign=last
+              [\bf V, tier=preterminal
+                [\it verkauft]
+              ]
+              [t\Sub{1}, bluetree]
+              {\draw[dotted, trueblue, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+            ]
+          ]
         ]
-      ]
-    ]
-  \end{forest}}
-  \pause
-  \hspace{0.05\textwidth}\scalebox{0.8}{%
-    \begin{forest}
-      [S, calign=child, calign child=2, Ephr
-        [XP\Sub{2}, Eobl, baseline]
-        [V\UpSub{finit}{1}, Eobl]
-        [VP\\{[\ldots\Tii\ldots\Ti]}, Eobl]
-      ]
-    \end{forest}
-  }
+      \end{forest}
+    \end{minipage}
+    }
+    \pause
+    \hspace{0.05\textwidth}\adjustbox{max width=0.5\textwidth}{%
+      \begin{minipage}{0.35\textwidth}
+        \begin{forest}
+        [FS, calign=first, Ephr
+          [V\UpSub{finit}{1}, bluetree, Eobl, baseline]
+          [VP\\{[\ldots\alert{\Ti}]}, Eobl]
+        ]
+        \end{forest}
+      \end{minipage}
+    }
+  \end{center}
 \end{frame}
 
 \begin{frame}
-  {Ja\slash Nein-Fragesätze}
+  {Schema des V2-Satzes ("`Aussagesatz"')}
   \pause
-  Nur eine Umstellungsoperation erforderlich!\\
-  \pause
-  \Zeile
-  \centering
-  \scalebox{0.8}{%
-    \begin{forest}
-    [FS, calign=first
-      [\bf V\Sub{1}, tier=preterminal
-        [\it hat, name=BeweHat]
-      ]
-      [VP, calign=last
-        [NP, tier=preterminal, baseline
-          [\it Ischariot, narroof]
-        ]
-        [AdvP, tier=preterminal
-          [\it wahrscheinlich, narroof]
-        ]
-        [NP, tier=preterminal
-          [\it das Bild, narroof]
-        ]
-        [\bf V, calign=last
-          [\bf V, tier=preterminal
-            [\it verkauft]
+  \begin{center}
+    \adjustbox{max width=0.5\textwidth}{%
+      \begin{minipage}{0.7\textwidth}
+        \begin{forest}
+        [S, calign=child, calign child=2
+          [NP\Sub{2}, tier=preterminal, gruentree
+            [\it das Bild, narroof, name=BeweBild]
           ]
-          [t\Sub{1}]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+          [\bf V\Sub{1}, tier=preterminal, bluetree
+            [\it hat, name=BeweHat]
+          ]
+          [VP, calign=last
+            [NP, tier=preterminal, baseline
+              [\it Ischariot, narroof]
+            ]
+            [AdvP, tier=preterminal
+              [\it heimlich, narroof]
+            ]
+            [t\Sub{2}, tier=preterminal, gruentree
+            ]
+            {\draw[dotted, gruen, thick, ->] (.south) |- ++(0,-5em) -| (BeweBild.south);}
+            [\bf V, calign=last
+              [\bf V, tier=preterminal
+                [\it verkauft]
+              ]
+              [t\Sub{1}, bluetree]
+              {\draw[dotted, trueblue, thick, ->] (.south) |- ++(0,-4em) -| (BeweHat.south);}
+            ]
+          ]
         ]
-      ]
-    ]
-  \end{forest}
-  }
+      \end{forest}
+    \end{minipage}
+    }
+    \pause
+    \hspace{0.05\textwidth}\adjustbox{max width=0.5\textwidth}{%
+      \begin{minipage}{0.35\textwidth}
+        \begin{forest}
+          [S, calign=child, calign child=2, Ephr
+            [XP\Sub{2}, Eobl, baseline, gruentree]
+            [V\UpSub{finit}{1}, Eobl, bluetree]
+            [VP\\{[\ldots\gruen{\Tii}\ldots\alert{\Ti}]}, Eobl]
+          ]
+        \end{forest}
+      \end{minipage}
+    }
+  \end{center}
   \pause
-  \hspace{0.05\textwidth}\scalebox{0.8}{%
-    \begin{forest}
-    [FS, calign=first, Ephr
-      [V\UpSub{finit}{1}, Eobl, baseline]
-      [VP\\{[\ldots\Ti]}, Eobl]
-    ]
-    \end{forest}
-  }\\
+  \Halbzeile
+  Hat der Satz dann einen \alert{Kopf}?\pause --- In EGBD nicht.\\
   \pause
-  \Zeile
-  {\LARGE\alert{Resultat: Verb-Erst-Stellung (V1)!}}
+  \grau{In manchen Theorien\slash Beschreibungen aber schon.}\\
 \end{frame}
 
 
@@ -877,15 +907,15 @@
   \centering
   \begin{forest}
     [S, calign=child, calign child=2
-      [NP\Sub{2}, tier=preterminal
+      [NP\Sub{2}, tier=preterminal, orongschtree
         [\it Sarah, narroof, name=BeweSarah]
       ]
-      [\bf V\Sub{1}, tier=preterminal
+      [\bf V\Sub{1}, tier=preterminal, bluetree
         [\it isst, name=BeweIsst]
       ]
       [VP, calign=last
-        [\Tii, tier=preterminal]
-        {\draw[dotted, thick, ->] (.south) |- ++(0,-5em) -| (BeweSarah.south);}
+        [\Tii, tier=preterminal, orongschtree]
+        {\draw[dotted, orongsch, thick, ->] (.south) |- ++(0,-5em) -| (BeweSarah.south);}
         [NP, tier=preterminal
           [\it den Kuchen, narroof]
         ]
@@ -893,72 +923,76 @@
           [\it alleine, narroof]
         ]
         [\bf V, calign=last
-          [Ptkl, tier=preterminal
+          [Ptkl, tier=preterminal, rottree
             [\it auf{=}]
           ]
-          [\Ti, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-4em) -| (BeweIsst.south);}
+          [\Ti, tier=preterminal, bluetree]
+          {\draw[dotted, trueblue, thick, ->] (.south) |- ++(0,-4em) -| (BeweIsst.south);}
         ]
       ]
     ]
   \end{forest}\\
   \pause
   \Halbzeile
-  {\Large\alert{Wer möchte immer noch den V2-Satz\\
+  {\Large\alert{Wer möchte jetzt immer noch den V2-Satz\\
   ohne Bezug zum VL-Satz beschreiben?}}
 \end{frame}
 
 \begin{frame}
   {Relativsätze als etwas andere VL-Sätze}
   \pause
-  Das \alert{Relativelement} wird nach links gestellt!\\
+  Das \tuerkis{Relativelement} wird nach links gestellt. Das \alert{Verb} bleibt rechts.\\
   \pause
-  \Halbzeile
-  \centering
-  \scalebox{0.7}{%
-  \begin{forest}
-    [NP, calign=child, calign child=2
-      [Art, tier=preterminal
-        [\it einen]
-      ]
-      [\bf N, tier=preterminal
-        [\it Tofu]
-      ]
-      [RS, calign=first
-        [NP\Sub{1}, tier=preterminal
-          [\it der, narroof, name=BeweDer]
-        ]
-        [VP, calign=last
-          [NP, tier=preterminal, baseline
-            [\it mir, narroof]
+  \begin{center}
+    \adjustbox{max width=0.4\textwidth}{%
+      \begin{minipage}{0.7\textwidth}
+      \begin{forest}
+        [NP, calign=child, calign child=2
+          [Art, tier=preterminal
+            [\it einen]
           ]
-          [\Ti, tier=preterminal]
-          {\draw[dotted, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweDer.south);}
-          [Ptkl, tier=preterminal
-            [nicht]
+          [\bf N, tier=preterminal
+            [\it Tofu]
           ]
-          [\bf V, calign=last
-            [\bf V, tier=preterminal
-              [\it geschmeckt]
+          [RS, calign=first
+            [NP\Sub{1}, tier=preterminal, tuerkistree
+              [\it der, narroof, name=BeweDer]
             ]
-            [\bf V, tier=preterminal
-              [\it hat]
+            [VP, calign=last
+              [NP, tier=preterminal, baseline
+                [\it mir, narroof]
+              ]
+              [\Ti, tier=preterminal, tuerkistree]
+              {\draw[dotted, tuerkis, thick, ->] (.south) |- ++(0,-4.5em) -| (BeweDer.south);}
+              [Ptkl, tier=preterminal
+                [nicht]
+              ]
+              [\bf V, calign=last
+                [\bf V, tier=preterminal
+                  [\it geschmeckt]
+                ]
+                [\bf V, tier=preterminal, bluetree
+                  [\it hat]
+                ]
+              ]
             ]
           ]
         ]
-      ]
-    ]
-  \end{forest}
-  }
-  \pause
-  \hspace{0.05\textwidth}\scalebox{0.7}{%
-  \begin{forest}
-    [RS, Ephr
-      [XP\UpSub{relativ}{1}, Eobl, baseline]
-      [VP\\{[\ldots\Ti\ldots]}, Eobl]
-    ]
-  \end{forest}
-  }\\
+      \end{forest}
+    \end{minipage}
+    }
+    \pause
+    \hspace{0.1\textwidth}\adjustbox{max width=0.35\textwidth}{%
+      \begin{minipage}{0.35\textwidth}
+      \begin{forest}
+        [RS, Ephr
+          [XP\UpSub{relativ}{1}, Eobl, baseline, tuerkis]
+          [VP\\{[\ldots\tuerkis{\Ti}\ldots]}, Eobl]
+        ]
+      \end{forest}
+      \end{minipage}
+    }
+  \end{center}
   \pause
   \Halbzeile
   \begin{itemize}[<+->]
@@ -975,10 +1009,10 @@
 \begin{frame}
   {Komplexe Einbettung des Relativelements}
   \pause
-  Das Relativelement als pränominaler Genitiv \alert{nimmt die ganze NP mit}.\\
+  Das \tuerkis{Relativelement} als pränominaler Genitiv nimmt die Matrix-NP mit.\\
   \pause
   \Halbzeile
-    \centering
+  \centering
   \begin{forest}
     [NP, calign=child, calign child=2
       [Art, tier=preterminal
@@ -989,7 +1023,7 @@
         {\draw [->, bend right=30] (.south) to node [below, near start] {\footnotesize\textsc{Genus,Numerus}} (RekDessen.south);}
       ]
       [RS, calign=first
-        [NP\Sub{1}, calign=first
+        [NP\Sub{1}, calign=first, tuerkistree
           [NP, tier=preterminal
             [\it dessen, narroof, name=RekDessen]
           ]
@@ -1002,7 +1036,7 @@
           [NP, tier=preterminal
             [\it ich, narroof]
           ]
-          [\Ti]
+          [\Ti, tuerkistree]
           [\bf V, tier=preterminal
             [\it mag]
             {\draw [->, bend left=15] (.south) to node [below, near start] {\footnotesize\textsc{Kasus}} (RekGeschmack.south);}
@@ -1013,6 +1047,53 @@
   \end{forest}
 \end{frame}
 
+\begin{frame}
+  {Kopulasätze als normale V2-Sätze}
+  \pause
+  Kopulasätze brauchen kein eigenes Schema.
+  \pause
+  \begin{center}
+    \adjustbox{max width=0.45\textwidth}{%
+      \begin{minipage}{0.7\textwidth}
+        \begin{forest}
+          s sep=3em
+          [S, calign=child, calign child=2
+            [NP\Sub{2}, tier=preterminal, orongschtree
+              [\it die Frau, narroof, name=BeweDiefrau]
+            ]
+            [\bf V\Sub{1}, tier=preterminal, bluetree
+              [\it ist]
+            ]
+            [VP, calign=last, s sep=2em
+              [\Tii, tier=preterminal, forky, orongschtree]
+              {\draw[dotted, orongsch, thick, ->] (.south) |- ++(0,-5em) -| (BeweDiefrau.south);}
+              [AP, calign=first, gruentree
+                [\bf A, tier=preterminal
+                  [\it stolz]
+                ]
+                [PP, tier=preterminal
+                  [\it auf ihre Tochter, narroof]
+                ]
+              ]
+              [\Ti, fit=band, bluetree, tier=preterminal]
+              {\draw[dotted, blue, thick, ->] (.south) |- ++(0,-4em) -| (BeweIsst.south);}
+            ]
+          ]
+        \end{forest}
+      \end{minipage}
+    }
+  \end{center}
+  \pause
+  \begin{itemize}[<+->]
+    \item Die \alert{Kopula} regiert eine \gruen{AP}, NP oder PP \\
+      und eine \orongsch{NP im Nominativ (= "`Subjekt"')}.
+    \item Die \gruen{AP} hat eine andere Konstituentenstellung als die attributive.
+    \item \grau{Wer sieht ein Problem bei dieser Analyse?}
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Objektsätze}
 
 \begin{frame}
   {Objektsätze}

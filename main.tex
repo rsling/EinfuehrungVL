@@ -29,6 +29,7 @@
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{boxedminipage}
+\usepackage{adjustbox}
 \usepackage{rotating}
 \usepackage{booktabs}
 \usepackage{bbding}
@@ -55,17 +56,26 @@
 
 % Colors ==============================================================
 
-\definecolor{lg}{rgb}{.8,.8,.8}
+\definecolor{grau}{rgb}{0.5,0.5,0.5}
+\definecolor{lg}{rgb}{0.8,0.8,0.8}
 \definecolor{trueblue}{rgb}{0.3,0.3,1}
 \definecolor{ltb}{rgb}{0.8,0.8,1}
 \definecolor{lgr}{rgb}{0.5,1,0.5}
-\newcommand{\gruen}[1]{{\color[rgb]{0,0.4,0}#1}}
-\newcommand{\blaw}[1]{{\color[rgb]{0,0,.9}#1}}
-\newcommand{\rot}[1]{{\color[rgb]{0.7,0.2,0.0}#1}}
-\newcommand{\blau}[1]{{\color[rgb]{0.0,0.0,0.9}#1}}
-\newcommand{\orongsch}[1]{{\color[RGB]{255,165,0}#1}}
-\newcommand{\grau}[1]{{\color[rgb]{0.5,0.5,0.5}#1}}
+\definecolor{orongsch}{RGB}{255,165,0}
+\definecolor{gruen}{rgb}{0,0.4,0}
+\definecolor{rot}{rgb}{0.7,0.2,0.0}
+\definecolor{tuerkis}{RGB}{63,136,143}
+\definecolor{braun}{RGB}{108,71,65}
+\definecolor{blaw}{rgb}{0,0,0.9}
+\newcommand{\gruen}[1]{\textcolor{gruen}{#1}}
+\newcommand{\blaw}[1]{\textcolor{blaw}{#1}}
+\newcommand{\rot}[1]{\textcolor{rot}{#1}}
+\newcommand{\blau}[1]{\textcolor{trueblue}{#1}}
+\newcommand{\orongsch}[1]{\textcolor{orongsch}{#1}}
+\newcommand{\grau}[1]{\textcolor{grau}{#1}}
 \newcommand{\whyte}[1]{\textcolor{white}{#1}}
+\newcommand{\tuerkis}[1]{\textcolor{tuerkis}{#1}}
+\newcommand{\braun}[1]{\textcolor{braun}{#1}}
 
 % Newcommands =========================================================
 
@@ -190,8 +200,17 @@
       /tikz/visible on={#1},
       edge+={/tikz/visible on={#1}}}}}
 
+\useforestlibrary{edges}
+
 \forestset{
   narroof/.style={roof, inner xsep=-0.25em, rounded corners},
+  forky/.style={forked edge, fork sep-=7.5pt},
+  bluetree/.style={for tree={trueblue}, for children={edge=trueblue}},
+  orongschtree/.style={for tree={orongsch}, for children={edge=orongsch}},
+  rottree/.style={for tree={rot}, for children={edge=rot}},
+  gruentree/.style={for tree={gruen}, for children={edge=gruen}},
+  tuerkistree/.style={for tree={tuerkis}, for children={edge=tuerkis}},
+  brauntree/.style={for tree={braun}, for children={edge=braun}},
 }
 
 
@@ -317,8 +336,8 @@
     {Stand der Überarbeitung}
     \begin{center}
       \Large Dieser Foliensatz ist erst bis\\
-      einschließlich \alert{Vorlesung 9}\\
-      für das Wintersemester 2020 überarbeitet.
+      einschließlich \alert{Vorlesung 10}\\
+      für das Wintersemester 2019\slash 2020 überarbeitet.
     \end{center}
   \end{frame}
 
